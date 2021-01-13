@@ -8,5 +8,11 @@ class Login extends CI_Controller {
         parent:: __construct();
     }
     
+	public function index()
+	{
+		$data['page_title'] = "Login";
+		$this->load->view('login', $data);
+    }
+    
     
 }
