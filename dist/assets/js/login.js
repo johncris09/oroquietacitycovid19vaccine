@@ -33,6 +33,13 @@ var Login = function () {
             }
         ); 
 
+       $('input').keypress(function (e) {
+          if (e.which == 13) {
+            $('#login-btn').click();
+            return false;    //<---- Add this line
+          }
+        });
+
         $('#login-btn').on('click', function (e) {
             e.preventDefault(); 
 
