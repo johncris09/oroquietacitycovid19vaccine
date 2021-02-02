@@ -26,6 +26,16 @@ class Record extends CI_Controller {
 		$data = [];
 		$record = $this->record_model->record();
 		foreach($record as $row){
+			$birthDate = date('m/d/Y', strtotime($row['birthdate']));
+			$birthDate = explode("/", $birthDate);
+			$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+			    ? ((date("Y") - $birthDate[2]) - 1)
+			    : (date("Y") - $birthDate[2]));
+			$row['age'] = $age;
+			$row['lastname'] = ucwords($row['lastname']);
+			$row['firstname'] = ucwords($row['firstname']);
+			$row['middlename'] = ucwords($row['middlename']);
+			$row['street'] = ucwords($row['street']);
 			$row['Actions']  = null;
 			$data['data'][] = $row; 
 
@@ -141,4 +151,5 @@ class Record extends CI_Controller {
 		} 
 		echo json_encode($data); 
 	}
+
 }
