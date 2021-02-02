@@ -7,7 +7,7 @@ var AddRecord = function () {
         var validation;
 
         validation = FormValidation.formValidation(
-            KTUtil.getById("record-form"),
+            KTUtil.getById("add-record-form"),
             {
                 fields: {
                     lastname: {
@@ -111,9 +111,9 @@ var AddRecord = function () {
 
                 if (status == 'Valid') {
                     $.ajax({
-                        url: $("#record-form").attr('action'),
-                        method: $("#record-form").attr('method'),
-                        data: $("#record-form").serialize(),
+                        url: $("#add-record-form").attr('action'),
+                        method: $("#add-record-form").attr('method'),
+                        data: $("#add-record-form").serialize(),
                         dataType: "json",
                         beforeSend: function () {
                             KTApp.block('body', {
@@ -139,7 +139,7 @@ var AddRecord = function () {
                                     icon: "success",
                                     showCancelButton: true, 
                                 }).then(function(result) {
-                                    $("#record-form")[0].reset()
+                                    $("#add-record-form")[0].reset()
                                     $('input[name="lastname"]').focus()
                                     KTUtil.scrollTop()
                                 });

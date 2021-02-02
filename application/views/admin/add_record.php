@@ -40,7 +40,7 @@
 										</button>
 									</div>
 								</div>
-								<form id="record-form" action="<?php echo base_url() ?>record/insert" method="post" enctype="multipart/form-data">
+								<form id="add-record-form" action="<?php echo base_url() ?>record/insert" method="post" enctype="multipart/form-data">
 									<div class="card card-custom gutter-b">
 										<div class="card-body"> 
 																					
@@ -260,7 +260,24 @@
 	<script src="<?php echo base_url(); ?>dist/assets/js/add_record.js"></script> 
 	<script type="text/javascript">
 		(function ($) {
-			
+			$('input[name="contactnumber"]').inputmask("mask", {
+	            mask: "+63999 999 9999"
+	            // +63 (XXX) YYY ZZZZ
+	        })
+
+	        $(document).on('change', 'input[name="birthdate"]', function() {
+	        	var bdate = new Date($(this).val());
+	        	var today = new Date();
+	        	var age = Math.floor((today-bdate) / (365.25 * 24 * 60 * 60 * 1000));
+	        	console.info(age)
+	        	// if(age){
+	        	if(age != NaN){
+	        		$('input[name="age"]').val(age)
+	        	}
+	        	
+
+			});
+
 			$(document).on('click', 'input[type="radio"]',function(){
 				var txtname = $(this).attr('id')
 				var val = $(this).val()
