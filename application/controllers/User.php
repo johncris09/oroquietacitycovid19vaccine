@@ -73,4 +73,12 @@ class User extends CI_Controller {
 		echo json_encode($data); 
 	}
 
+	public function edit($id)
+	{
+    	$data['page_title'] = "Edit User";
+    	$data['user'] = $this->user_model->get_user($id);
+		$this->load->view('admin/edit_user', $data);
+	}
+
+
 }
