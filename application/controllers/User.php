@@ -45,4 +45,32 @@ class User extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function insert()
+	{
+		$data = array(
+			'last_name' => trim($this->input->post('lastname')),
+			'first_name' => trim($this->input->post('firstname')),
+			'middle_name' => trim($this->input->post('middlename')),
+			'username' => trim($this->input->post('username')),
+			'password' => trim($this->input->post('password')),
+			'role_type' => trim($this->input->post('roletype')),
+		); 
+
+		$insert = $this->user_model->insert($data);
+		if($insert > 0){
+			$data = array(
+				'response' => true,
+				'message'  => 'Data inserted successfully!',
+			);
+  
+		}else{ 
+			$data = array(
+				'response' => false,
+				'message'  => 'Data not inserted!',
+				// 'message' => $this->db->error()['message'],
+			);
+		} 
+		echo json_encode($data); 
+	}
+
 }
