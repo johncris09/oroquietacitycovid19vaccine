@@ -69,5 +69,13 @@ class User_model extends CI_Model
         return $this->db->where('user_id', $id)
             ->update('user', $data);
     }
+
+    public function number_of_user()
+    {
+        return $this->db
+            ->where('deletestatus', 0)
+            ->get('user')
+            ->num_rows();
+    }
     
 }
