@@ -17,6 +17,13 @@ class User extends CI_Controller {
 		$data['page_title'] = "User";
 		$this->load->view('admin/user', $data);
     }
+
+
+    public function add()
+    {
+    	$data['page_title'] = "Add User";
+		$this->load->view('admin/add_user', $data);
+    }
     
 
 	public function get_user()
@@ -36,5 +43,6 @@ class User extends CI_Controller {
 
 		} 
 		echo json_encode($data);
-	} 
+	}
+
 }
