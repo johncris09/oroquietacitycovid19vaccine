@@ -169,4 +169,11 @@ class Record extends CI_Controller {
 
 		echo json_encode($data);
 	}
+
+	public function view($id)
+	{
+    	$data['page_title'] = "View Record";
+    	$data['record'] = $this->record_model->get_record($id);
+		$this->load->view('admin/view_record', $data);
+	}
 }
