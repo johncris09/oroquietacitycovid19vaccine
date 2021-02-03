@@ -93,7 +93,7 @@ class User extends CI_Controller {
 			'role_type' => trim($this->input->post('roletype')),
 		);
 
-		$insert = $this->record_model->update($data);
+		$insert = $this->user_model->update($data);
 		if($insert > 0){
 			$data = array(
 				'response' => true,
@@ -108,6 +108,24 @@ class User extends CI_Controller {
 			);
 		} 
 		echo json_encode($data); 
+	}
+
+	public function delete($id)
+	{
+		$delete = $this->user_model->delete($id);
+
+		if($delete){
+			$data = array(
+				'response' => true,
+				'message'  => 'Data deleted successfully!',
+			);
+		}else{
+			$data = array(
+				'response' => false,
+			);
+		}
+
+		echo json_encode($data);
 	}
 
 }
