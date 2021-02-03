@@ -11,6 +11,13 @@ class Dashboard extends CI_Controller {
             redirect('login');
         }
     }
+    
+	public function index()
+	{
+		$data['page_title'] = "Dashboard";
+        $data['number_of_user'] = $this->user_model->number_of_user();
+		$this->load->view('admin/dashboard', $data);
+    }
 
 
 }
