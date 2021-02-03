@@ -40,54 +40,48 @@
 										</button>
 									</div>
 								</div>
-								<form id="add-user-form" action="<?php echo base_url() ?>user/insert" method="post" enctype="multipart/form-data">
+								<form id="update-user-form"  action="<?php echo base_url() ?>user/update/<?php echo $user['user_id']; ?>" method="post"  enctype="multipart/form-data">
 									<div class="card card-custom gutter-b">
 										<div class="card-header py-3">
 											<div class="card-title">
 												<h3 class="card-label"><?php echo $page_title; ?></h3>
 											</div>
-											 
 										</div>
-										<div class="card-body">  
+										<div class="card-body">
 											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Last Name<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
-													<input class="form-control input-sm" type="text" name="lastname" placeholder="Last Name" autocomplete="off" autofocus="" />
+													<input class="form-control input-sm" type="text" name="lastname" value="<?php echo ucwords($user['last_name']); ?>" placeholder="Last Name" autocomplete="off" autofocus="" />
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">First Name<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
-													<input class="form-control input-sm" type="text" name="firstname" placeholder="First Name" autocomplete="off" />
+													<input class="form-control input-sm" type="text" name="firstname" placeholder="First Name"  value="<?php echo ucwords($user['first_name']); ?>" autocomplete="off" />
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Middle Name </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
-													<input class="form-control input-sm" type="text" name="middlename" placeholder="Middle Name" autocomplete="off" />
+													<input class="form-control input-sm" type="text" name="middlename"  value="<?php echo ucwords($user['middle_name']); ?>" placeholder="Middle Name" autocomplete="off" />
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Username<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
-													<input class="form-control input-sm" type="text" name="username" placeholder="Username" autocomplete="off" />
+													<input class="form-control input-sm" type="text" name="username" placeholder="Username"  value="<?php echo ucwords($user['username']); ?>" autocomplete="off" />
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Password<span class="text-danger">*</span> </label>
-												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
-													<input class="form-control input-sm" type="password" name="password" placeholder="Password" autocomplete="off" />
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Password<span class="text-danger">*</span> </label>
+												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Role Type<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
 													<select name="roletype" class="form-control" >
 														<option value="">Select</option>
 														<?php
 															foreach ($this->config->item('role_type') as $row) {
+																$selected = ($row == $user['role_type']) ? 'selected="selected"' : '' ; 
 																echo '
-																	<option value="'.$row.'">'.$row.'</option>';
+																	<option value="'.$row.'" '.$selected.' >'.$row.'</option>';
 															}
 														?>
 
@@ -99,7 +93,7 @@
 										<div class="card-footer">
 											<div class="text-right">
 												<a href="<?php echo base_url(); ?>user" class="btn btn-danger"> <i class="fas fa-arrow-left"></i> Back</a>
-												<button type="button" id="save-btn" class="btn btn-primary"> <i class="fas fa-save"></i> Save</button>
+												<button type="button" id="update-user-btn" class="btn btn-primary"> <i class="fas fa-save"></i> Update</button>
 												
 											</div>
 										</div>
@@ -117,7 +111,7 @@
 	<?php $this->view('template/quick-panel.php'); ?>
 	<?php $this->view('template/js-src.php'); ?>
 
-	<script src="<?php echo base_url(); ?>dist/assets/js/add_user.js"></script> 
+	<script src="<?php echo base_url(); ?>dist/assets/js/edit_user.js"></script> 
 	<script type="text/javascript">
 	</script>
 
