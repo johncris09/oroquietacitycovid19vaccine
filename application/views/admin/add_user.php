@@ -80,7 +80,7 @@
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Password<span class="text-danger">*</span> </label>
+												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Role Type<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
 													<select name="roletype" class="form-control" >
 														<option value="">Select</option>
