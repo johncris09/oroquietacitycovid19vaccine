@@ -42,6 +42,15 @@ class User_model extends CI_Model
         }else{
             return $insert;
         }
+    }
+
+
+    public function get_user($id)
+    {
+        return $this->db
+            ->where('user_id', $id)
+            ->get('user')
+            ->result_array()[0];
     } 
     
 }
