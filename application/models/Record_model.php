@@ -54,4 +54,14 @@ class Record_model extends CI_Model
     }
 
 
+
+    public function number_of_record()
+    {
+        return $this->db
+            ->where('deletestatus', 0)
+            ->get('record')
+            ->num_rows();
+    }
+
+
 }

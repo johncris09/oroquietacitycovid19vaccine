@@ -16,6 +16,7 @@ class Dashboard extends CI_Controller {
 	{
 		$data['page_title'] = "Dashboard";
         $data['number_of_user'] = $this->user_model->number_of_user();
+        $data['number_of_record'] = $this->record_model->number_of_record();
 		$this->load->view('admin/dashboard', $data);
     }
 
