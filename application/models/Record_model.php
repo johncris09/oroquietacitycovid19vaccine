@@ -14,7 +14,7 @@ class Record_model extends CI_Model
     {
          // $this->db->cache_on();
         return $this->db
-        	->limit(10)
+            ->where('deletestatus', 0)
         	->get('record')
         	->result_array();
     }
@@ -43,6 +43,15 @@ class Record_model extends CI_Model
         return $this->db->where('id', $data['id'])
             ->update('record', $data); 
     } 
+
+    public function delete($id)
+    {
+        $data = array(
+            'deletestatus' => 1
+        );
+        return $this->db->where('id', $id)
+            ->update('record', $data);
+    }
 
 
 }
