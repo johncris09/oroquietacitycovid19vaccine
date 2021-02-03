@@ -33,5 +33,15 @@ class User_model extends CI_Model
             ->get('user')
             ->result_array();
     }
+
+    public function insert($data)
+    { 
+        $insert = $this->db->insert('user', $data); 
+        if(!$insert && $this->db->error()['code'] == 1062){
+            return 0;
+        }else{
+            return $insert;
+        }
+    } 
     
 }
