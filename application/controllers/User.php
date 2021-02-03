@@ -81,4 +81,33 @@ class User extends CI_Controller {
 	}
 
 
+
+	public function update($id)
+	{
+		$data = array(
+			'user_id' => $id,
+			'last_name' => trim($this->input->post('lastname')),
+			'first_name' => trim($this->input->post('firstname')),
+			'middle_name' => trim($this->input->post('middlename')),
+			'username' => trim($this->input->post('username')),
+			'role_type' => trim($this->input->post('roletype')),
+		);
+
+		$insert = $this->record_model->update($data);
+		if($insert > 0){
+			$data = array(
+				'response' => true,
+				'message'  => 'Data updated successfully!',
+			);
+  
+		}else{ 
+			$data = array(
+				'response' => false,
+				'message'  => 'Data not inserted!',
+				// 'message' => $this->db->error()['message'],
+			);
+		} 
+		echo json_encode($data); 
+	}
+
 }
