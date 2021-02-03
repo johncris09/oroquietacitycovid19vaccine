@@ -152,4 +152,21 @@ class Record extends CI_Controller {
 		echo json_encode($data); 
 	}
 
+	public function delete($id)
+	{
+		$delete = $this->record_model->delete($id);
+
+		if($delete){
+			$data = array(
+				'response' => true,
+				'message'  => 'Data deleted successfully!',
+			);
+		}else{
+			$data = array(
+				'response' => false,
+			);
+		}
+
+		echo json_encode($data);
+	}
 }
