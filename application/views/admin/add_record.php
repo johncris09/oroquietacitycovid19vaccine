@@ -4,7 +4,7 @@
 		<?php $this->view('template/meta-info.php'); ?>
 		<?php $this->view('template/css-link.php'); ?>
 		<style>
-			input[type="radio"]:checked+label { font-weight: bold; }
+			input[type="radio"]:checked+label { font-weight: bold; } 
 		</style>
 
 	</head>
@@ -59,7 +59,7 @@
 
 
 											<!-- PERSONAL INFORMATION -->
-											<div class="d-flex flex-column bg-info mt-2 text-white font-weight-bolder mb-2">
+											<!-- <div class="d-flex flex-column bg-info mt-2 text-white font-weight-bolder mb-2">
 											    <div class="p-2">PERSONAL INFORMATION</div>
 											</div> 
 
@@ -168,13 +168,13 @@
 													<label class="text-sm">Occupation<span class="text-danger">*</span></label>
 													<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation"  />
 												</div>
-											</div>
+											</div> -->
  
 											<hr>
 											<!-- MEDICAL HISTORY -->
 											<div class="d-flex flex-column bg-info mt-2 text-white font-weight-bolder">
 											    <div class="p-2">MEDICAL HISTORY</div>
-											</div>
+											</div> 
 											<?php 
 
 												$medical_history = $this->config->item('medical_history');
@@ -202,30 +202,32 @@
 
 													}else{
 														echo '
-															<div class="d-flex justify-content-between border">
-																<div class="d-flex flex-row">
+															<div class="row justify-content-between">
+																<div class="col-7 align-self-start">
 																	<div class="p-2">'.$row['question'].'</div>
 																</div>
-																<div class="d-flex flex-row">
-																	<div class="radio-inline">';
-																	foreach ($row['choices'] as $choice) {
-																		foreach ($choice as  $opt) {
-																			if($opt['value'] == 0){
-																				echo '
-																		            <label class="radio radio-square">
-																		            <input type="radio" checked="checked" id="'.$row['txtname'].'" name="'.$row['optname'].'" value="'.$opt['value'].'"  />
-																		            <span></span>'.$opt['text'].'</label>';
-																			}else{
-																				echo '
-																		            <label class="radio radio-square">
-																		            <input type="radio"  id="'.$row['txtname'].'" name="'.$row['optname'].'" value="'.$opt['value'].'"  />
-																		            <span></span>'.$opt['text'].'</label>';
+																<div class="col-5 align-self-end text-rigt">
+																	<div class="float-right">
+																		<div class="radio-inline">';
+																		foreach ($row['choices'] as $choice) {
+																			foreach ($choice as  $opt) {
+																				if($opt['value'] == 0){
+																					echo '
+																			            <label class="radio radio-square">
+																			            <input type="radio" checked="checked" id="'.$row['txtname'].'" name="'.$row['optname'].'" value="'.$opt['value'].'"  />
+																			            <span></span>'.$opt['text'].'</label>';
+																				}else{
+																					echo '
+																			            <label class="radio radio-square">
+																			            <input type="radio"  id="'.$row['txtname'].'" name="'.$row['optname'].'" value="'.$opt['value'].'"  />
+																			            <span></span>'.$opt['text'].'</label>';
+																				}
 																			}
+																			
 																		}
-																		
-																	}
 														echo '
-																		<input type="hidden"  name="'.$row['txtname'].'">
+																			<input type="hidden"  name="'.$row['txtname'].'">
+																		</div>
 																	</div>
 																</div>
 															</div>';
