@@ -16,7 +16,7 @@
 
 	</head>
 
-	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
+	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 
 		<noscript>
 			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -24,23 +24,36 @@
 		<div class="d-flex flex-column flex-root">
 			<div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
 
-				<div class="login-aside order-2   d-flex flex-row-auto position-relative overflow-hidden">
+				<div class="login-aside order-2 d-flex flex-row-auto position-relative overflow-hidden">
 					<div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
 						<a href="#" class="text-center pt-2">
-							<img src="<?php echo base_url(); ?>dist/assets/media/img/login.png" class="max-h-75px" alt="" />
+							<img src="<?php echo base_url(); ?>dist/assets/media/img/login.png" class="max-h-50px " id="logo" alt="logo" />
 						</a>
 						<div class="d-flex flex-column-fluid flex-column flex-center">
-							<div class="login-form login-signin py-11 mb-10">
+							<div class="login-form login-signin py-11 mb-10"> 
 								<form class="form" id="login-form" action="<?php echo base_url(); ?>login/login" method="post">
+									<div class="text-center pb-8">
+										<h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Sign In</h2> 
+									</div>
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Username</label>
-										<input class="form-control  h-auto py-7 px-6 rounded-lg" type="text" name="username" autocomplete="off" autofocus="" />
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"> <i class="fa fa-user text-primary"></i>	</span>
+											</div>
+											<input class="form-control  h-auto py-7 px-6  " type="text" name="username" autocomplete="off" autofocus="" />
+										</div>
 									</div>
 									<div class="form-group">
 										<div class="d-flex justify-content-between mt-n5">
 											<label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
 										</div>
-										<input  class="form-control  h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"> <i class="fa fa-key text-primary"></i>	</span>
+											</div>
+											<input  class="form-control  h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
+										</div>
 									</div>
 									<div class="pt-2">
 										<button type="button" id="login-btn" class="btn btn-primary btn-block font-weight-bolder font-size-h6 px-8 py-4 my-3"> <i class="fas fa-user"></i> Sign In</button>
@@ -51,7 +64,7 @@
 					</div>
 				</div>
    
-				<div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-image: url('<?php echo base_url() ?>dist/assets/media/img/vaccine.png') ">
+				<div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-image: url('<?php echo base_url() ?>dist/assets/media/img/vaccine.png'); background-repeat: no-repeat;">
 				</div>
 			 
 
