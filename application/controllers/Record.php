@@ -26,6 +26,7 @@ class Record extends CI_Controller {
 		$data = [];
 		$record = $this->record_model->record();
 		foreach($record as $row){
+			$row['dateregistered'] = date('Y-m-d h:i:s a', strtotime($row['timestamp']));
 			$birthDate = date('m/d/Y', strtotime($row['birthdate']));
 			$birthDate = explode("/", $birthDate);
 			$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
