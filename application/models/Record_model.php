@@ -161,4 +161,14 @@ class Record_model extends CI_Model
             ->get('record')
             ->result_array()[0]['tot'];
     }
+
+    public function age_statistic($age)
+    {
+         return $this->db
+            ->select('count(*) tot')
+            ->where('timestampdiff(year, birthdate, curdate()) '.$age)
+            ->where('deletestatus', 0)  
+            ->get('record')
+            ->result_array()[0]['tot'];
+    }
 }

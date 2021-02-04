@@ -169,6 +169,32 @@
 								</div>
 
 							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="card card-custom gutter-b">
+										<div class="card-header">
+											<div class="card-title">
+												<h3 class="card-label">Gender Statistics</h3>
+											</div>
+										</div>
+										<div class="card-body">
+											<div id="gender-statistic" class="d-flex justify-content-center"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="card card-custom gutter-b">
+										<div class="card-header">
+											<div class="card-title">
+												<h3 class="card-label">Age Statistics</h3>
+											</div>
+										</div>
+										<div class="card-body">
+											<div id="age-statistic" class="d-flex justify-content-center"></div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					</div>

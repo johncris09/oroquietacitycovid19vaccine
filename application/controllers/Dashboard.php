@@ -41,12 +41,13 @@ class Dashboard extends CI_Controller {
         $data = [];
         if($_POST['filter_by'] == 'this month'){
             $start_date = date('Y-m-d', strtotime('first day of this month'));
-            $end_date   = date('Y-m-t', strtotime('this month'));
-            $today = date('d', strtotime('today'));
+            $end_date   = date('Y-m-d', strtotime('today'));
+            $today = (int)date('d', strtotime('today'));
 
             while (strtotime($start_date) <= strtotime($end_date)) {
                 $date = $start_date;
-                // if($today == date('d', strtotime($date))){
+                // echo (int)date('d', strtotime($date));
+                // if($today == (int)date('d', strtotime($date))){
                 //     break;
                 // }else{
                 //     continue;
@@ -167,6 +168,16 @@ class Dashboard extends CI_Controller {
         $lst = ['male', 'female'];
         foreach ($lst as $gender) {
             $data['data'][] = (int)$this->record_model->gender_statistic($gender);
+        }
+
+        echo json_encode($data);
+    }
+
+    public function age_statistic()
+    {
+        $lst = [' > 59', '< 60'];
+        foreach ($lst as $age) {
+            $data['data'][] = (int)$this->record_model->age_statistic($age);
         }
 
         echo json_encode($data);

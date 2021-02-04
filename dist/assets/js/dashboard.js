@@ -182,7 +182,73 @@ var GenderStatistic = function () {
                                 }
                             }
                         }],
-                        colors: [warning, danger]
+                        colors: [success, info]
+                    };
+
+                    var chart = new ApexCharts(document.querySelector(apexChart), options);
+                    chart.render();
+
+                },
+                error: function (xhr, status, error) {
+                    // error here...   
+                    console.info(xhr.responseText);
+                    
+                }
+            });
+
+        
+
+    };
+
+    return {
+        // Init
+        init: function () {
+            _init();
+        },
+    };
+}();
+
+
+var AgeStatistic = function () {
+    var _init = function () {
+        const apexChart = "#age-statistic";
+        
+
+        $.ajax({
+                url   : BASE_URL + 'dashboard/age_statistic',
+                method  : 'post',
+                dataType: "json",
+                beforeSend: function () {
+                    KTApp.block('#age-statistic', {
+                        overlayColor: '#000000',
+                        state       : 'primary',
+                        message     : 'Processing...'
+                    });
+                },
+                complete: function () {
+                    KTApp.unblock('#age-statistic');
+                },
+                success: function (data) {
+                    console.info(data)
+                    var options = {
+                        series: data.data,
+                        chart: {
+                            width: 455,
+                            type: 'pie',
+                        },
+                        labels: ['Senior Citizen', 'Not Senior Citizen'],
+                        responsive: [{
+                            breakpoint: 480,
+                            options: {
+                                chart: {
+                                    width: 200
+                                },
+                                legend: {
+                                    position: 'bottom'
+                                }
+                            }
+                        }],
+                        colors: [primary, warning]
                     };
 
                     var chart = new ApexCharts(document.querySelector(apexChart), options);
@@ -212,6 +278,8 @@ var GenderStatistic = function () {
 
 // Class Initialization
 jQuery(document).ready(function () {
-    // RecordChart.init();
+    RecordChart.init();
     GenderStatistic.init();
+    AgeStatistic.init();
+
 });
