@@ -51,15 +51,15 @@
 											<div class="form-group row">
 												<input type="hidden" name="id" value="<?php echo ucwords($record['id']); ?>" class="form-control input-sm"  />
 												<div class="col-lg-3 col-xl-3">
-													<label>Lastname<span class="text-danger">*</span> </label>
+													<label>Last Name<span class="text-danger">*</span> </label>
 													<input type="text" name="lastname" value="<?php echo ucwords($record['lastname']); ?>" class="form-control input-sm" placeholder="Last Name" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
-													<label>Firstname<span class="text-danger">*</span></label>
+													<label>First Name<span class="text-danger">*</span></label>
 													<input type="text" name="firstname" value="<?php echo ucwords($record['firstname']); ?>" class="form-control input-sm" placeholder="First Name" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
-													<label>Middlename</label>
+													<label>Middle Name</label>
 													<input type="text" name="middlename"  value="<?php echo ucwords($record['middlename']); ?>" class="form-control input-sm" placeholder="Middle Name" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
@@ -146,8 +146,8 @@
 
 											<div class="form-group row">
 												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Birthdate<span class="text-danger">*</span></label>
-													<input type="date" class="form-control input-sm"  value="<?php echo ucwords($record['birthdate']); ?>"  name="birthdate"  />
+													<label class="text-sm">Birthdate<span class="text-danger">*</span></label> 
+													<input type="text" id="birthdate" value="<?php echo date('d/m/Y', strtotime( $record['birthdate'])); ?>" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
 												</div>
 												<div class="col-lg-1 col-xl-1">
 													<?php
@@ -161,7 +161,21 @@
 													<input type="text" class="form-control input-sm" name="age" value="<?php echo $age; ?>" placeholder="0" readonly="" disabled="" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Occupation<span class="text-danger">*</span></label>
+													<label class="text-sm">Sector<span class="text-danger">*</span></label>
+													<select name="sector" class="form-control" >
+														<option value="">Select</option>
+														<?php
+														foreach ($this->config->item('sector') as $row) {
+															$selected = ($row == $record['sector']) ? 'selected="selected"' : '' ;
+															echo '
+																<option value="'.$row.'" '.$selected.' >'.$row.'</option>';
+														}
+														?>
+
+													</select>
+												</div>
+												<div class="col-lg-3 col-xl-3">
+													<label class="text-sm">Position<span class="text-danger">*</span></label>
 													<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation" value="<?php echo ucwords($record['occupation']); ?>"  />
 												</div>
 											</div>
@@ -273,6 +287,12 @@
 	<script src="<?php echo base_url(); ?>dist/assets/js/edit_record.js"></script> 
 	<script type="text/javascript">
 		(function ($) {
+
+			$("#birthdate").datepicker({
+				dateFormat: 'dd/mm/yy', 
+				endDate: '-18y'
+			});
+
 			$('input[name="contactnumber"]').inputmask("mask", {
 	            mask: "+63999 999 9999"
 	            // +63 (XXX) YYY ZZZZ

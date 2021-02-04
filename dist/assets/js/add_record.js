@@ -80,6 +80,13 @@ var AddRecord = function () {
                             }
                         }
                     },
+                    sector: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This field is required'
+                            }
+                        }
+                    },
                     occupation: {
                         validators: {
                             notEmpty: {

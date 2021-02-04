@@ -80,6 +80,13 @@ var EditRecord = function () {
                             }
                         }
                     },
+                    sector: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This field is required'
+                            }
+                        }
+                    },
                     occupation: {
                         validators: {
                             notEmpty: {
@@ -98,7 +105,7 @@ var EditRecord = function () {
 
          $('input').keypress(function (e) {
           if (e.which == 13) {
-            $('#save-btn').click();
+            $('#update-record-btn').click();
             return false;    //<---- Add this line
           }
         });

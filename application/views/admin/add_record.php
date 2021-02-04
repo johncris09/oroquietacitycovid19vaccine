@@ -165,8 +165,21 @@
 													<input type="text" class="form-control input-sm" name="age" placeholder="0" readonly="" disabled="" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Occupation<span class="text-danger">*</span></label>
-													<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation"  />
+													<label class="text-sm">Sector<span class="text-danger">*</span></label>
+													<select name="sector" class="form-control" >
+														<option value="">Select</option>
+														<?php
+														foreach ($this->config->item('sector') as $row) {
+															echo '
+																<option value="'.$row.'">'.$row.'</option>';
+														}
+														?>
+
+													</select>
+												</div>
+												<div class="col-lg-3 col-xl-3">
+													<label class="text-sm">Position<span class="text-danger">*</span></label>
+													<input type="text" class="form-control input-sm" placeholder="Position" name="occupation"  />
 												</div>
 											</div>
  
