@@ -63,14 +63,14 @@ class Record extends CI_Controller {
 			'covidpositivecontact' => $this->input->post('CovidPositiveContact'), 
 			'travelled' => $this->input->post('Travelled'), 
 			'mingled' => $this->input->post('Mingled'), 
-			'optionIllness_1' => implode (", ", $this->input->post('OptionIllness_1')),
+			'optionIllness_1' => !empty($_POST['OptionIllness_1']) ?  implode (", ", $this->input->post('OptionIllness_1'))  : '' ,
 			'dogbite' => $this->input->post('DogBite'), 
 			'vaccinelast4weeks' => $this->input->post('VaccineLast4Weeks'), 
 			'bloodtransfusion' => $this->input->post('BloodTransfusion'), 
 			'takedrugs' => $this->input->post('TakeDrugs'), 
 			'allergy' => $this->input->post('Allergy'), 
 			'vaccinereaction' => $this->input->post('VaccineReaction'), 
-			'optionIllness_2' => implode (", ", $this->input->post('OptionIllness_2')),
+			'optionIllness_2' => !empty($_POST['OptionIllness_2']) ?  implode (", ", $this->input->post('OptionIllness_2'))  : '' ,
 			'pregnant' => $this->input->post('Pregnant'), 
 			'breastfeed' => $this->input->post('Breastfeed'), 
 			'ClinicalStudy' => $this->input->post('ClinicalStudy'),
@@ -89,8 +89,8 @@ class Record extends CI_Controller {
 				'message'  => 'Data not inserted!',
 				// 'message' => $this->db->error()['message'],
 			);
-		} 
-		echo json_encode($data); 
+		}
+		echo json_encode( $data ); 
 	}
 
 	public function edit($id)
