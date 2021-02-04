@@ -162,5 +162,15 @@ class Dashboard extends CI_Controller {
         echo json_encode($data);
     }
 
+    public function gender_statistic()
+    {
+        $lst = ['male', 'female'];
+        foreach ($lst as $gender) {
+            $data['data'][] = (int)$this->record_model->gender_statistic($gender);
+        }
+
+        echo json_encode($data);
+    }
+
 
 }
