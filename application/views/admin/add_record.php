@@ -59,7 +59,7 @@
 
 
 											<!-- PERSONAL INFORMATION -->
-											<!-- <div class="d-flex flex-column bg-info mt-2 text-white font-weight-bolder mb-2">
+											<div class="d-flex flex-column bg-info mt-2 text-white font-weight-bolder mb-2">
 											    <div class="p-2">PERSONAL INFORMATION</div>
 											</div> 
 
@@ -158,7 +158,7 @@
 											<div class="form-group row">
 												<div class="col-lg-3 col-xl-3">
 													<label class="text-sm">Birthdate<span class="text-danger">*</span></label>
-													<input type="date" class="form-control input-sm"  name="birthdate"  />
+													<input type="text" id="birthdate" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
 												</div>
 												<div class="col-lg-1 col-xl-1">
 													<label class="text-sm">Age</label>
@@ -168,7 +168,7 @@
 													<label class="text-sm">Occupation<span class="text-danger">*</span></label>
 													<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation"  />
 												</div>
-											</div> -->
+											</div>
  
 											<hr>
 											<!-- MEDICAL HISTORY -->
@@ -262,6 +262,11 @@
 	<script src="<?php echo base_url(); ?>dist/assets/js/add_record.js"></script> 
 	<script type="text/javascript">
 		(function ($) {
+			$("#birthdate").datepicker({
+				dateFormat: 'dd/mm/yy', 
+				endDate: '-18y'
+			});
+
 			$('input[name="contactnumber"]').inputmask("mask", {
 	            mask: "+63999 999 9999"
 	            // +63 (XXX) YYY ZZZZ
