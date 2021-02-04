@@ -65,15 +65,15 @@
 
 											<div class="form-group row">
 												<div class="col-lg-3 col-xl-3">
-													<label>Lastname<span class="text-danger">*</span> </label>
+													<label>Last Name<span class="text-danger">*</span> </label>
 													<input type="text" name="lastname" class="form-control input-sm" placeholder="Last Name" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
-													<label>Firstname<span class="text-danger">*</span></label>
+													<label>First Name<span class="text-danger">*</span></label>
 													<input type="text" name="firstname" class="form-control input-sm" placeholder="First Name" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
-													<label>Middlename</label>
+													<label>Middle Name</label>
 													<input type="text" name="middlename" class="form-control input-sm" placeholder="Middle Name" />
 												</div>
 												<div class="col-lg-3 col-xl-3">
