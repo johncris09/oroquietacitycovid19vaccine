@@ -31,7 +31,60 @@
 						
 					<div class="d-flex flex-column-fluid">
 						<div class="container">
-							
+							<div class="row">
+								<div class="col" style="cursor: default !important;" >
+									<div class="card card-custom card-stretch gutter-b bg-warning" >
+										<div class="card-body p-0">
+											<div
+												class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
+												<span class="symbol symbol-50 symbol-light-danger mr-2">
+													<i class="fas fa-clipboard-list icon-5x text-white"></i>
+												</span>
+												<div class="d-flex flex-column text-right text-white">
+													<span
+														class="font-weight-bolder font-size-h1"><?php echo $number_of_record; ?></span>
+													<span class="font-weight-bold mt-2">Record</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col" style="cursor: default !important;" >
+									<div
+										class="card card-custom card-stretch gutter-b bg-primary">
+										<div class="card-body p-0">
+											<div
+												class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
+												<span class="symbol symbol-50 symbol-light-primary mr-2">
+													<i class="fas fa-users icon-5x text-white"></i>
+												</span>
+												<div class="d-flex flex-column text-right text-white">
+													<span
+														class="font-weight-bolder font-size-h1"><?php echo $number_of_user; ?></span>
+													<span class="font-weight-bold mt-2">Users</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col" style="cursor: default !important;" >
+									<div class="card card-custom card-stretch gutter-b bg-success">
+										<div class="card-body p-0">
+											<div
+												class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
+												<span class="symbol symbol-50 symbol-light-success mr-2">
+													<i class="fas fa-calendar-check icon-5x text-white"></i>
+												</span>
+												<div class="d-flex flex-column text-right text-white">
+													<span
+														class="font-weight-bolder font-size-h1"><?php echo $registered_today; ?></span>
+													<span class="font-weight-bold mt-2">Registered Today </span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> 
 							
 							<div class="row">
 								<div class="col">
