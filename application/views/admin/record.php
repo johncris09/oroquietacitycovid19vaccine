@@ -94,6 +94,7 @@
 												<tr>
 													<th></th>
 													<th>#</th>
+													<th>Date Registered</th>
 													<th>Last Name</th>
 													<th>First Name</th>
 													<th>Middle Name</th>
