@@ -151,4 +151,14 @@ class Record_model extends CI_Model
             ->get('record')
             ->result_array();
     }
+
+    public function gender_statistic($gender)
+    {
+         return $this->db
+            ->select('count(*) tot')
+            ->where('gender', $gender)
+            ->where('deletestatus', 0)  
+            ->get('record')
+            ->result_array()[0]['tot'];
+    }
 }
