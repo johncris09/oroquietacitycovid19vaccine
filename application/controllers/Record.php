@@ -54,7 +54,7 @@ class Record extends CI_Controller {
 			'purok' => $this->input->post('purok'), 
 			'street' => trim($this->input->post('street')),
 			'barangay' => trim($this->input->post('barangay')),
-			'birthdate' => date('Y-m-d', strtotime($this->input->post('birthdate'))),  // 01/27/2003
+			'birthdate' => date('Y-m-d', strtotime($this->input->post('birthdate'))),
 			'registeredvoter' => $this->input->post('registeredvoter'), 
 			'governmentissuedid' => $this->input->post('governmentissuedid'), 
 			'idnumber' => $this->input->post('idnumber'), 
@@ -113,7 +113,7 @@ class Record extends CI_Controller {
 			'purok' => $this->input->post('purok'), 
 			'street' => trim($this->input->post('street')),
 			'barangay' => trim($this->input->post('barangay')),
-			'birthdate' => $this->input->post('birthdate'), 
+			'birthdate' => date('Y-m-d', strtotime($this->input->post('birthdate'))),
 			'registeredvoter' => $this->input->post('registeredvoter'), 
 			'governmentissuedid' => $this->input->post('governmentissuedid'), 
 			'idnumber' => $this->input->post('idnumber'), 
