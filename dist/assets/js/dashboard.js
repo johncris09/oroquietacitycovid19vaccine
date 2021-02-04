@@ -143,8 +143,75 @@ var RecordChart = function () {
 }();
 
 
+var GenderStatistic = function () {
+    var _init = function () {
+        const apexChart = "#gender-statistic";
+        
+
+        $.ajax({
+                url   : BASE_URL + 'dashboard/gender_statistic',
+                method  : 'post',
+                dataType: "json",
+                beforeSend: function () {
+                    KTApp.block('#gender-statistic', {
+                        overlayColor: '#000000',
+                        state       : 'primary',
+                        message     : 'Processing...'
+                    });
+                },
+                complete: function () {
+                    KTApp.unblock('#gender-statistic');
+                },
+                success: function (data) {
+                    console.info(data)
+                    var options = {
+                        series: data.data,
+                        chart: {
+                            width: 400,
+                            type: 'pie',
+                        },
+                        labels: ['Male', 'Female'],
+                        responsive: [{
+                            breakpoint: 480,
+                            options: {
+                                chart: {
+                                    width: 200
+                                },
+                                legend: {
+                                    position: 'bottom'
+                                }
+                            }
+                        }],
+                        colors: [warning, danger]
+                    };
+
+                    var chart = new ApexCharts(document.querySelector(apexChart), options);
+                    chart.render();
+
+                },
+                error: function (xhr, status, error) {
+                    // error here...   
+                    console.info(xhr.responseText);
+                    
+                }
+            });
+
+        
+
+    };
+
+    return {
+        // Init
+        init: function () {
+            _init();
+        },
+    };
+}();
+
+
 
 // Class Initialization
 jQuery(document).ready(function () {
-    RecordChart.init();
+    // RecordChart.init();
+    GenderStatistic.init();
 });
