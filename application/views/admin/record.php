@@ -6,7 +6,10 @@
 		<style type="text/css" media="print">
 			@page {
 			    size: auto;   /* auto is the initial value */
-			    margin: 0;  /* this affects the margin in the printer settings */
+			    /*margin: 0; */
+			    margin: 10mm 5mm 5mm 5mm; 
+		        @include box-shadow(none);
+		        @include text-shadow(none);
 			}
 		</style>
 
@@ -75,7 +78,18 @@
 												</div>
 												<div class="col-lg-3 col-xl-3col-md-3  col-sm-3 ">
 													<label>Age</label>
-													<input type="number" class="form-control datatable-input" data-col-index="7">
+													<div class="input-daterange input-group">
+														<input type="text" class="form-control datatable-input"
+															name="start" autocomplete="off" id="min" placeholder="From" required=""  />
+														<div class="input-group-append">
+															<span class="input-group-text">
+																<i class="la la-ellipsis-h"></i>
+															</span>
+														</div>
+														<input type="text" class="form-control datatable-input"
+															name="end" autocomplete="off" id="max" placeholder="To"  required=""  />
+													</div>
+													<!-- <input type="number" class="form-control datatable-input" data-col-index="7"> -->
 												</div>
 											</div>
  
