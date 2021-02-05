@@ -3,6 +3,13 @@
 	<head>
 		<?php $this->view('template/meta-info.php'); ?>
 		<?php $this->view('template/css-link.php'); ?>
+		<style type="text/css" media="print">
+			@page {
+			    size: auto;   /* auto is the initial value */
+			    margin: 0;  /* this affects the margin in the printer settings */
+			}
+		</style>
+
 
 	</head>
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
@@ -50,25 +57,25 @@
 											<div class="form-group row">
 												<div class="col-xl-3 col-lg-3 col-md-3  col-sm-3 ">
 													<label>Purok </label>
-													<select required="" class="form-control datatable-input" data-col-index="8">
-														<option value="">Select</option>
-													</select>
-												</div>
-												<div class="col-lg-3 col-xl-3col-md-3  col-sm-3 ">
-													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="9">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-lg-3 col-xl-3col-md-3  col-sm-3 ">
-													<label>Barangay</label>
+													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="10">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-lg-3 col-xl-3col-md-3  col-sm-3 ">
+													<label>Barangay</label>
+													<select required="" class="form-control datatable-input" data-col-index="11">
+														<option value="">Select</option>
+													</select>
+												</div>
+												<div class="col-lg-3 col-xl-3col-md-3  col-sm-3 ">
 													<label>Age</label>
-													<input type="number" class="form-control datatable-input" data-col-index="6">
+													<input type="number" class="form-control datatable-input" data-col-index="7">
 												</div>
 											</div>
  
