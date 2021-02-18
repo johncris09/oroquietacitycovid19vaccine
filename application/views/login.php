@@ -52,7 +52,10 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"> <i class="fa fa-key text-primary"></i>	</span>
 											</div>
-											<input  class="form-control  h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
+											<input value="asasdfasdf" class="form-control  h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
+											<div class="input-group-prepend"  style="cursor: pointer;">
+												<span class="input-group-text" title="Show Password"> <i class="far fa-eye-slash show-password"></i>	</span>
+											</div>
 										</div>
 									</div>
 									<div class="pt-2">
@@ -80,7 +83,7 @@
 		<script src="<?php echo base_url(); ?>dist/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 		<script src="<?php echo base_url(); ?>dist/assets/js/scripts.bundle.js"></script> 
 
-		<script src="<?php echo base_url(); ?>dist/assets/js/login.js"></script> 
+		<script src="<?php echo base_url(); ?>dist/assets/js/login.js"></script>
 		 
 
 	</body>

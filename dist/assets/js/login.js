@@ -95,7 +95,35 @@ var Login = function () {
     };
 }(); 
 
+var ShowPassword = function () {
+    var _init = function () {  
+
+
+        $('.show-password').on('click', function (e) {
+            e.preventDefault();
+            $(this).toggleClass('fa-eye fa-eye-slash');
+            var input = $('input[name="password"]')
+            if(input.attr("type") === "password"){
+                input.attr("type", "text")
+                $(this).closest('span').attr('title', 'Hide Password')
+            }else{
+                input.attr("type", "password")
+                $(this).closest('span').attr('title', 'Show Password')
+            }
+
+        });
+    };
+
+    return {
+        // Init
+        init: function () {
+            _init();
+        },
+    };
+}();
+
 // Class Initialization
 jQuery(document).ready(function () {
     Login.init();
+    ShowPassword.init();
 });
