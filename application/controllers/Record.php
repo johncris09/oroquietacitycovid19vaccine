@@ -72,11 +72,14 @@ class Record extends CI_Controller {
 			'takedrugs' => $this->input->post('TakeDrugs'), 
 			'allergy' => $this->input->post('Allergy'), 
 			'vaccinereaction' => $this->input->post('VaccineReaction'), 
-			'optionIllness_2' => !empty($_POST['OptionIllness_2']) ?  implode (", ", $this->input->post('OptionIllness_2'))  : '' ,
+			'optionIllness_2' => !empty($_POST['OptionIllness_2']) ?  implode (", ", $this->input->post('OptionIllness_2'))  : ''  ,
+			'other_illness' => $this->input->post('other_illness'),
 			'pregnant' => $this->input->post('Pregnant'), 
 			'breastfeed' => $this->input->post('Breastfeed'), 
 			'ClinicalStudy' => $this->input->post('ClinicalStudy'),
 		); 
+
+		// $data['optionIllness_2'] = trim( $data['optionIllness_2'] . $_POST['other-illness'] );
 
 		$insert = $this->record_model->insert($data);
 		if($insert > 0){
@@ -92,6 +95,12 @@ class Record extends CI_Controller {
 				// 'message' => $this->db->error()['message'],
 			);
 		} 
+		$arr = [];
+		if( !empty( $_POST['other-illness']) ) {
+			array_push($arr, $_POST['other-illness']);
+			// echo 1;
+		}
+ 
 		echo json_encode( $data ); 
 	}
 
@@ -133,10 +142,12 @@ class Record extends CI_Controller {
 			'allergy' => $this->input->post('Allergy'), 
 			'vaccinereaction' => $this->input->post('VaccineReaction'), 
 			'optionIllness_2' => !empty($_POST['OptionIllness_2']) ?  implode (", ", $this->input->post('OptionIllness_2'))  : '' ,
+			'other_illness' => $this->input->post('other_illness'),
 			'pregnant' => $this->input->post('Pregnant'), 
 			'breastfeed' => $this->input->post('Breastfeed'), 
 			'ClinicalStudy' => $this->input->post('ClinicalStudy'),
-		); 
+		);
+		
 
 		$insert = $this->record_model->update($data);
 		if($insert > 0){

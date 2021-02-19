@@ -62,124 +62,117 @@
 											<div class="d-flex flex-column bg-info mt-2 text-white font-weight-bolder mb-2">
 											    <div class="p-2">PERSONAL INFORMATION</div>
 											</div> 
+											<div id="personal-information">
+												<div class="form-group row">
+													<div class="12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Last Name<span class="text-danger">*</span> </label>
+														<input type="text" name="lastname" class="form-control input-sm" placeholder="Last Name" />
+													</div>
+													<div class="12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>First Name<span class="text-danger">*</span></label>
+														<input type="text" name="firstname" class="form-control input-sm" placeholder="First Name" />
+													</div>
+													<div class="12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Middle Name</label>
+														<input type="text" name="middlename" class="form-control input-sm" placeholder="Middle Name" />
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Gender<span class="text-danger">*</span></label>
+														<div class="radio-inline">
+															<label class="radio radio-square">
+															<input type="radio" name="gender" value="Male"    />
+															<span></span>M</label>
+															<label class="radio radio-square">
+															<input type="radio" name="gender"  value="Female"    />
+															<span></span>F</label>
+														</div> 
+													</div>
+												</div>
+												<div class="form-group row">
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Purok<span class="text-danger">*</span></label>
+														<select name="purok" class="form-control" >
+															<option value="">Select</option>
+															<?php
+															foreach ($this->config->item('purok') as $row) {
+																echo '
+																	<option value="'.$row.'">'.$row.'</option>';
+															}
+															?>
 
-											<div class="form-group row">
-												<div class="col-lg-3 col-xl-3">
-													<label>Last Name<span class="text-danger">*</span> </label>
-													<input type="text" name="lastname" class="form-control input-sm" placeholder="Last Name" />
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label>First Name<span class="text-danger">*</span></label>
-													<input type="text" name="firstname" class="form-control input-sm" placeholder="First Name" />
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label>Middle Name</label>
-													<input type="text" name="middlename" class="form-control input-sm" placeholder="Middle Name" />
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label>Gender<span class="text-danger">*</span></label>
-													<div class="radio-inline">
-														<label class="radio radio-square">
-														<input type="radio" name="gender" value="Male"    />
-														<span></span>M</label>
-														<label class="radio radio-square">
-														<input type="radio" name="gender"  value="Female"    />
-														<span></span>F</label>
-													</div> 
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-lg-4 col-xl-4">
-													<label class="text-sm">Purok<span class="text-danger">*</span></label>
-													<select name="purok" class="form-control" >
-														<option value="">Select</option>
-														<?php
-														foreach ($this->config->item('purok') as $row) {
-															echo '
-																<option value="'.$row.'">'.$row.'</option>';
-														}
-														?>
+														</select>
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Street</label>
+														<input type="text" class="form-control input-sm" name="street" placeholder="Street" />
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Barangay<span class="text-danger">*</span></label>
+														<select name="barangay" class="form-control" >
+															<option value="">Select</option>
+															<?php
+															foreach ($this->config->item('barangay') as $row) {
+																echo '
+																	<option value="'.$row.'">'.$row.'</option>';
+															}
+															?>
 
-													</select>
+														</select>
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Contact #<span class="text-danger">*</span></label>
+														<input type="text" class="form-control input-sm" name="contactnumber" placeholder="Contac #" />
+													</div>
 												</div>
-												<div class="col-lg-4 col-xl-4">
-													<label class="text-sm">Street</label>
-													<input type="text" class="form-control input-sm" name="street" placeholder="Street" />
-												</div>
-												<div class="col-lg-4 col-xl-4">
-													<label class="text-sm">Barangay<span class="text-danger">*</span></label>
-													<select name="barangay" class="form-control" >
-														<option value="">Select</option>
-														<?php
-														foreach ($this->config->item('barangay') as $row) {
-															echo '
-																<option value="'.$row.'">'.$row.'</option>';
-														}
-														?>
 
-													</select>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-lg-3 col-xl-3">
-													<label>Are you a registered voter?<span class="text-danger">*</span></label>
-													<div class="radio-inline">
-														<label class="radio radio-square">
-														<input type="radio" name="registeredvoter" value="Yes"    />
-														<span></span>Yes</label>
-														<label class="radio radio-square">
-														<input type="radio" name="registeredvoter"  value="No"    />
-														<span></span>No</label>
-													</div> 
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Government ID<span class="text-danger">*</span></label>
-													<select name="governmentissuedid" class="form-control" >
-														<option value="">Select</option>
-														<?php
-														foreach ($this->config->item('government_id') as $row) {
-															echo '
-																<option value="'.$row.'">'.$row.'</option>';
-														}
-														?>
+												<div class="form-group row">
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Birthdate<span class="text-danger">*</span></label>
+														<input type="text" id="birthdate" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
+													</div>
 
-													</select>
+													<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+														<label class="text-sm">Age</label>
+														<input type="text" class="form-control input-sm" name="age" placeholder="0" readonly="" disabled="" />
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-4 col-xl-4">
+														<label class="text-sm">Occupation</label>
+														<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation"  />
+													</div>
+													<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+														<label class="text-sm">Position</label>
+														<input type="text" class="form-control input-sm" placeholder="Position" name="position"  />
+													</div>
 												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">ID Number<span class="text-danger">*</span></label>
-													<input type="text" class="form-control input-sm" name="idnumber" placeholder="ID Number" autocomplete="off" />
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Contact #<span class="text-danger">*</span></label>
-													<input type="text" class="form-control input-sm" name="contactnumber" placeholder="Contac #" />
-												</div>
-											</div>
+												<div class="form-group row"> 
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Are you a registered voter?<span class="text-danger">*</span></label>
+														<div class="radio-inline">
+															<label class="radio radio-square">
+															<input type="radio" name="registeredvoter" value="Yes"    />
+															<span></span>Yes</label>
+															<label class="radio radio-square">
+															<input type="radio" name="registeredvoter"  value="No"    />
+															<span></span>No</label>
+														</div> 
+													</div>
+													<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+														<label class="text-sm">Government ID<span class="text-danger">*</span></label>
+														<select name="governmentissuedid" class="form-control" >
+															<option value="">Select</option>
+															<?php
+															foreach ($this->config->item('government_id') as $row) {
+																echo '
+																	<option value="'.$row.'">'.$row.'</option>';
+															}
+															?>
 
-											<div class="form-group row">
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Birthdate<span class="text-danger">*</span></label>
-													<input type="text" id="birthdate" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
-												</div>
-												<div class="col-lg-1 col-xl-1">
-													<label class="text-sm">Age</label>
-													<input type="text" class="form-control input-sm" name="age" placeholder="0" readonly="" disabled="" />
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Sector<span class="text-danger">*</span></label>
-													<select name="sector" class="form-control" >
-														<option value="">Select</option>
-														<?php
-														foreach ($this->config->item('sector') as $row) {
-															echo '
-																<option value="'.$row.'">'.$row.'</option>';
-														}
-														?>
-
-													</select>
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Position<span class="text-danger">*</span></label>
-													<input type="text" class="form-control input-sm" placeholder="Position" name="occupation"  />
+														</select>
+													</div>
+													<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+														<label class="text-sm">ID Number<span class="text-danger">*</span></label>
+														<input type="text" class="form-control input-sm" name="idnumber" placeholder="ID Number" autocomplete="off" />
+													</div>
 												</div>
 											</div>
  
@@ -195,7 +188,7 @@
 													if($row['multiple_choice']){
 
 														echo '
-															<div class="d-flex p-2">Mayroon/Nagkaroon ka ba ng mga sumumsunod na karamdaman?</div>
+															<div class="d-flex p-2">'.$row['question'].'</div>
 															<div class="form-group row">';
 																foreach ($row['choices'] as $choice) {
 																	foreach ($choice as  $chk) {
@@ -210,8 +203,24 @@
 																	}
 																	 
 																}
+														if($row['optname'] == "OptionIllness_2[]"){
+															echo '
+																<div class="col-6 col-form-label ">
+																	<div class="checkbox-list">
+																		<label class="checkbox checkbox-square">
+																		<input type="checkbox" id="chck-illness" value="" name="OptionIllness_2[]" />
+																		<span></span>Ubang Sakit</label> 
+																		<input class="form-control float-right" type="text" name="other_illness" id="other-illness" />
+																	</div>
+																</div> 
+																 
+															';
+														}
 
-													echo '</div> ';
+
+													echo '
+
+														</div> ';
 
 													}else{
 														echo '
@@ -239,7 +248,7 @@
 																			
 																		}
 														echo '
-																			<input type="hidden"  name="'.$row['txtname'].'">
+																			<input type="hidden" value="0" name="'.$row['txtname'].'">
 																		</div>
 																	</div>
 																</div>
@@ -305,6 +314,16 @@
 				$('input[name="'+txtname+'"]').val(val)
 				// $($(this).attr('id')).val($(this).val())
 			});
+
+			$(document).on('click', '#chck-illness', function(){
+				console.info()
+				if($(this).prop("checked")){
+					$('#other-illness').focus()
+				}else{
+					$('#other-illness').focusout()
+					$('#other-illness').val('')
+				}
+			})
 		})(jQuery);
 	</script>
 

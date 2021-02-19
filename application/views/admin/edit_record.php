@@ -48,135 +48,127 @@
 											<div class="d-flex flex-column bg-info mt-2 text-white font-weight-bolder mb-2">
 											    <div class="p-2">PERSONAL INFORMATION</div>
 											</div>
-											<div class="form-group row">
-												<input type="hidden" name="id" value="<?php echo ucwords($record['id']); ?>" class="form-control input-sm"  />
-												<div class="col-lg-3 col-xl-3">
-													<label>Last Name<span class="text-danger">*</span> </label>
-													<input type="text" name="lastname" value="<?php echo ucwords($record['lastname']); ?>" class="form-control input-sm" placeholder="Last Name" />
+											<div id="personal-information">
+												<div class="form-group row">
+													<div class="12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Last Name<span class="text-danger">*</span> </label>
+														<input type="text" name="lastname" value="<?php echo ucwords($record['lastname']); ?>" class="form-control input-sm" placeholder="Last Name" />
+													</div>
+													<div class="12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>First Name<span class="text-danger">*</span></label>
+														<input type="text" name="firstname" value="<?php echo ucwords($record['firstname']); ?>" class="form-control input-sm" placeholder="First Name" />
+													</div>
+													<div class="12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Middle Name</label>
+														<input type="text" name="middlename" value="<?php echo ucwords($record['middlename']); ?>" class="form-control input-sm" placeholder="Middle Name" />
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Gender<span class="text-danger">*</span></label>
+														<div class="radio-inline">
+															<label class="radio radio-square">
+															<input type="radio" name="gender" <?php echo ucwords($record['gender']) == "Male"  ? "checked='checked'" : "" ?> value="Male"    />
+															<span></span>M</label>
+															<label class="radio radio-square">
+															<input type="radio" name="gender"  <?php echo ucwords($record['gender']) == "Female"  ? "checked='checked'" : "" ?>  value="Female"    />
+															<span></span>F</label>
+														</div>
+													</div>
 												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label>First Name<span class="text-danger">*</span></label>
-													<input type="text" name="firstname" value="<?php echo ucwords($record['firstname']); ?>" class="form-control input-sm" placeholder="First Name" />
+												<div class="form-group row">
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Purok<span class="text-danger">*</span></label>
+														<select name="purok" class="form-control" >
+															<option value="">Select</option>
+															<?php 
+																foreach ($this->config->item('purok') as $row) {
+																	$selected = ($row == $record['purok']) ? 'selected="selected"' : '' ; 
+																	echo '
+																		<option value="'.$row.'" '.$selected.' >'.$row.'</option>';
+																}
+															?>
+
+														</select>
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Street</label>
+														<input type="text" class="form-control input-sm" value="<?php echo ucwords($record['street']); ?>" name="street" placeholder="Street" />
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Barangay<span class="text-danger">*</span></label>
+														<select name="barangay" class="form-control" >
+															<option value="">Select</option>
+															<?php
+															foreach ($this->config->item('barangay') as $row) {
+																	$selected = ($row == $record['barangay']) ? 'selected="selected"' : '' ; 
+																echo '
+																	<option value="'.$row.'"  '.$selected.' >'.$row.'</option>';
+															}
+															?>
+
+														</select>
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Contact #<span class="text-danger">*</span></label>
+														<input type="text" class="form-control input-sm" name="contactnumber"  value="<?php echo ucwords($record['contactnumber']); ?>"  placeholder="Contac #" />
+													</div>
 												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label>Middle Name</label>
-													<input type="text" name="middlename"  value="<?php echo ucwords($record['middlename']); ?>" class="form-control input-sm" placeholder="Middle Name" />
+
+												<div class="form-group row">
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Birthdate<span class="text-danger">*</span></label> 
+														<input type="text" id="birthdate" value="<?php echo date('d/m/Y', strtotime( $record['birthdate'])); ?>" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
+													</div>
+
+													<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+														<?php
+															$birthDate = date('m/d/Y', strtotime($record['birthdate']));
+															$birthDate = explode("/", $birthDate);
+															$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+															    ? ((date("Y") - $birthDate[2]) - 1)
+															    : (date("Y") - $birthDate[2]));
+														?>
+														<label class="text-sm">Age</label>
+														<input type="text" class="form-control input-sm" name="age" value="<?php echo $age; ?>" placeholder="0" readonly="" disabled="" />
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-4 col-xl-4">
+														<label class="text-sm">Occupation</label>
+														<input type="text" class="form-control input-sm" value="<?php echo ucwords($record['occupation']); ?>" placeholder="Occupation" name="occupation"  />
+													</div>
+													<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+														<label class="text-sm">Position</label>
+														<input type="text" class="form-control input-sm" value="<?php echo ucwords($record['position']); ?>"  placeholder="Position" name="position"  />
+													</div>
 												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label>Gender<span class="text-danger">*</span></label>
-													<div class="radio-inline">
-														<label class="radio radio-square">
-														<input type="radio" name="gender" <?php echo ucwords($record['gender']) == "Male"  ? "checked='checked'" : "" ?> value="Male"    />
-														<span></span>M</label>
-														<label class="radio radio-square">
-														<input type="radio" name="gender"  <?php echo ucwords($record['gender']) == "Female"  ? "checked='checked'" : "" ?>  value="Female"    />
-														<span></span>F</label>
-													</div> 
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-lg-4 col-xl-4">
-													<label class="text-sm">Purok<span class="text-danger">*</span></label>
-													<select name="purok" class="form-control" >
-														<option value="">Select</option>
-														<?php 
-															foreach ($this->config->item('purok') as $row) {
-																$selected = ($row == $record['purok']) ? 'selected="selected"' : '' ; 
+												<div class="form-group row"> 
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label>Are you a registered voter?<span class="text-danger">*</span></label>
+														<div class="radio-inline">
+															<label class="radio radio-square">
+															<input type="radio" name="registeredvoter"  <?php echo ucwords($record['registeredvoter']) == "1"  ? "checked='checked'" : "" ?> value="Yes"    />
+															<span></span>Yes</label>
+															<label class="radio radio-square">
+															<input type="radio" name="registeredvoter"   <?php echo ucwords($record['registeredvoter']) == "0"  ? "checked='checked'" : "" ?>   value="No"    />
+															<span></span>No</label>
+														</div> 
+													</div>
+													<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+														<label class="text-sm">Government ID<span class="text-danger">*</span></label>
+														<select name="governmentissuedid" class="form-control" >
+															<option value="">Select</option>
+															<?php
+															foreach ($this->config->item('government_id') as $row) {
+																$selected = ($row == $record['governmentissuedid']) ? 'selected="selected"' : '' ; 
 																echo '
 																	<option value="'.$row.'" '.$selected.' >'.$row.'</option>';
 															}
-														?>
+															?>
 
-													</select>
-												</div>
-												<div class="col-lg-4 col-xl-4">
-													<label class="text-sm">Street</label>
-													<input type="text" class="form-control input-sm" value="<?php echo ucwords($record['street']); ?>" name="street" placeholder="Street" />
-												</div>
-												<div class="col-lg-4 col-xl-4">
-													<label class="text-sm">Barangay<span class="text-danger">*</span></label>
-													<select name="barangay" class="form-control" >
-														<option value="">Select</option>
-														<?php
-														foreach ($this->config->item('barangay') as $row) {
-																$selected = ($row == $record['barangay']) ? 'selected="selected"' : '' ; 
-															echo '
-																<option value="'.$row.'"  '.$selected.' >'.$row.'</option>';
-														}
-														?>
-
-													</select>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-lg-3 col-xl-3">
-													<label>Are you a registered voter?<span class="text-danger">*</span></label>
-													<div class="radio-inline">
-														<label class="radio radio-square">
-														<input type="radio" name="registeredvoter"  <?php echo ucwords($record['registeredvoter']) == "1"  ? "checked='checked'" : "" ?> value="Yes"    />
-														<span></span>Yes</label>
-														<label class="radio radio-square">
-														<input type="radio" name="registeredvoter"   <?php echo ucwords($record['registeredvoter']) == "0"  ? "checked='checked'" : "" ?>   value="No"    />
-														<span></span>No</label>
-													</div> 
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Government ID<span class="text-danger">*</span></label>
-													<select name="governmentissuedid" class="form-control" >
-														<option value="">Select</option>
-														<?php
-														foreach ($this->config->item('government_id') as $row) {
-															$selected = ($row == $record['governmentissuedid']) ? 'selected="selected"' : '' ; 
-															echo '
-																<option value="'.$row.'" '.$selected.' >'.$row.'</option>';
-														}
-														?>
-
-													</select>
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">ID Number<span class="text-danger">*</span></label>
-													<input type="text" class="form-control input-sm" name="idnumber"  value="<?php echo ucwords($record['idnumber']); ?>"  placeholder="ID Number" autocomplete="off" />
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Contact #<span class="text-danger">*</span></label>
-													<input type="text" class="form-control input-sm" name="contactnumber"  value="<?php echo ucwords($record['contactnumber']); ?>"  placeholder="Contac #" />
-												</div>
-											</div>
-
-											<div class="form-group row">
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Birthdate<span class="text-danger">*</span></label> 
-													<input type="text" id="birthdate" value="<?php echo date('d/m/Y', strtotime( $record['birthdate'])); ?>" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
-												</div>
-												<div class="col-lg-1 col-xl-1">
-													<?php
-														$birthDate = date('m/d/Y', strtotime($record['birthdate']));
-														$birthDate = explode("/", $birthDate);
-														$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-														    ? ((date("Y") - $birthDate[2]) - 1)
-														    : (date("Y") - $birthDate[2]));
-													?>
-													<label class="text-sm">Age</label>
-													<input type="text" class="form-control input-sm" name="age" value="<?php echo $age; ?>" placeholder="0" readonly="" disabled="" />
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Sector<span class="text-danger">*</span></label>
-													<select name="sector" class="form-control" >
-														<option value="">Select</option>
-														<?php
-														foreach ($this->config->item('sector') as $row) {
-															$selected = ($row == $record['sector']) ? 'selected="selected"' : '' ;
-															echo '
-																<option value="'.$row.'" '.$selected.' >'.$row.'</option>';
-														}
-														?>
-
-													</select>
-												</div>
-												<div class="col-lg-3 col-xl-3">
-													<label class="text-sm">Position<span class="text-danger">*</span></label>
-													<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation" value="<?php echo ucwords($record['occupation']); ?>"  />
+														</select>
+													</div>
+													<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+														<label class="text-sm">ID Number<span class="text-danger">*</span></label>
+														<input type="text" class="form-control input-sm" name="idnumber"  value="<?php echo ucwords($record['idnumber']); ?>"  placeholder="ID Number" autocomplete="off" />
+													</div>
 												</div>
 											</div>
  
@@ -191,7 +183,7 @@
 													if($row['multiple_choice']){
 
 														echo '
-															<div class="d-flex p-2">Mayroon/Nagkaroon ka ba ng mga sumumsunod na karamdaman?</div>
+															<div class="d-flex p-2">'.$row['question'].'</div>
 															<div class="form-group row">';
 
 																foreach ($row['choices'] as $choice) {
@@ -230,8 +222,29 @@
 																	}
 																	 
 																}
+														if($row['optname'] == "OptionIllness_2[]"){
+															if( !empty($record['other_illness']) || is_null( $record['other_illness'] ) ){
+																$checked = "checked='checked'";
+															}else{
+																$checked = "";
+															}
+															echo '
+																<div class="col-6 col-form-label ">
+																	<div class="checkbox-list">
+																		<label class="checkbox checkbox-square">
+																		<input type="checkbox" '.$checked.' id="chck-illness" value="" name="OptionIllness_2[]" />
+																		<span></span>Ubang Sakit</label> 
+																		<input class="form-control float-right" type="text" name="other_illness" value="'.$record['other_illness'].'" id="other-illness" />
+																	</div>
+																</div> 
+																 
+															';
+														}
 
-													echo '</div> ';
+
+													echo '
+
+														</div> ';
 
 													}else{
 														echo '
@@ -318,6 +331,16 @@
 				$('input[name="'+txtname+'"]').val(val)
 				// $($(this).attr('id')).val($(this).val())
 			});
+
+			$(document).on('click', '#chck-illness', function(){
+				console.info()
+				if($(this).prop("checked")){
+					$('#other-illness').focus()
+				}else{
+					$('#other-illness').focusout()
+					$('#other-illness').val('')
+				}
+			})
 		})(jQuery);
 	</script>
 
