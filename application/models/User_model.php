@@ -77,5 +77,14 @@ class User_model extends CI_Model
             ->get('user')
             ->num_rows();
     }
-    
+
+    public function auth_delete($data)
+    {
+        return $this->db
+            ->where('user_id', $data['user_id'])
+            ->where('password', $data['password'])
+            ->get('user')
+            ->num_rows();
+    }
+
 }
