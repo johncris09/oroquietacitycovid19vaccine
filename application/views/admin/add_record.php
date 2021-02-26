@@ -136,7 +136,7 @@
 														<input type="text" class="form-control input-sm" name="age" placeholder="0" readonly="" disabled="" />
 													</div>
 													<div class="col-12 col-sm-3 col-md-3 col-lg-4 col-xl-4">
-														<label class="text-sm">Occupation</label>
+														<label class="text-sm">Trabaho</label>
 														<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation"  />
 													</div>
 													<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
@@ -149,10 +149,10 @@
 														<label>Are you a registered voter?<span class="text-danger">*</span></label>
 														<div class="radio-inline">
 															<label class="radio radio-square">
-															<input type="radio" name="registeredvoter" value="Yes"    />
+															<input type="radio" name="registeredvoter" value="1"    />
 															<span></span>Yes</label>
 															<label class="radio radio-square">
-															<input type="radio" name="registeredvoter"  value="No"    />
+															<input type="radio" name="registeredvoter"  value="0"    />
 															<span></span>No</label>
 														</div> 
 													</div>
