@@ -52,7 +52,7 @@ class User extends CI_Controller {
 			'first_name' => trim($this->input->post('firstname')),
 			'middle_name' => trim($this->input->post('middlename')),
 			'username' => trim($this->input->post('username')),
-			'password' => trim($this->input->post('password')),
+			'password' => md5(trim($this->input->post('password'))),
 			'role_type' => trim($this->input->post('roletype')),
 		); 
 
@@ -93,8 +93,8 @@ class User extends CI_Controller {
 			'role_type' => trim($this->input->post('roletype')),
 		);
 
-		$insert = $this->user_model->update($data);
-		if($insert > 0){
+		$update = $this->user_model->update($data);
+		if($update > 0){
 			$data = array(
 				'response' => true,
 				'message'  => 'Data updated successfully!',
@@ -103,7 +103,7 @@ class User extends CI_Controller {
 		}else{ 
 			$data = array(
 				'response' => false,
-				'message'  => 'Data not inserted!',
+				'message'  => 'Data not updated!',
 				// 'message' => $this->db->error()['message'],
 			);
 		} 
@@ -124,6 +124,19 @@ class User extends CI_Controller {
 				'response' => false,
 			);
 		}
+
+		echo json_encode($data);
+	}
+
+	public function auth_delete()
+	{
+		$data = array(
+			'user_id' => $_SESSION['user_id'],
+			'username' => $_SESSION['username'],
+			'password' => md5($_POST['password'])
+		);
+
+		$data = $this->user_model->auth_delete($data);
 
 		echo json_encode($data);
 	}
