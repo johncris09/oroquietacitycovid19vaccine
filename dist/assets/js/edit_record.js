@@ -80,20 +80,6 @@ var EditRecord = function () {
                             }
                         }
                     },
-                    sector: {
-                        validators: {
-                            notEmpty: {
-                                message: 'This field is required'
-                            }
-                        }
-                    },
-                    occupation: {
-                        validators: {
-                            notEmpty: {
-                                message: 'This field is required'
-                            }
-                        }
-                    },
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
