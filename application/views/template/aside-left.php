@@ -2,7 +2,7 @@
 				<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
 					<div class="brand flex-column-auto" id="kt_brand">
 						<a href="<?php echo base_url(); ?>" class="brand-logo">
-							<img alt="Logo" src="<?php echo base_url(); ?>dist/assets/media/logos/logo-light.png" />
+							<img alt="Logo" src="<?php echo base_url(); ?>dist/assets/media/logos/logo-light.png" style="width: 200px" />
 						</a>
 
 						<button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -20,7 +20,7 @@
 					<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
 							<ul class="menu-nav">
-								<li class="menu-item menu-item-active" aria-haspopup="true">
+								<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "dashboard" ? "menu-item-active" : '' ; ?>" aria-haspopup="true">
 									<a href="<?php echo base_url(); ?>" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -34,7 +34,7 @@
 										<span class="menu-text">Dashboard</span>
 									</a>
 								</li>
-								<li class="menu-item " aria-haspopup="true">
+								<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "record" ? "menu-item-active" : '' ; ?>" aria-haspopup="true">
 									<a href="<?php echo base_url(); ?>record" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -49,105 +49,36 @@
 										<span class="menu-text">Record</span>
 									</a>
 								</li>
-								<li class="menu-item " aria-haspopup="true">
-									<a href="<?php echo base_url(); ?>user" class="menu-link">
-										<span class="svg-icon menu-icon">
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<polygon points="0 0 24 0 24 24 0 24"/>
-													<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-													<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
-												</g>
-											</svg>
-										</span>
-										<span class="menu-text">User</span>
-									</a>
-								</li>
-								<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="javascript:;" class="menu-link menu-toggle">
-										<span class="svg-icon menu-icon">
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-													<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-												</g>
-											</svg>
-										</span>
-										<span class="menu-text">Applications</span>
-										<i class="menu-arrow"></i>
-									</a>
-									<div class="menu-submenu">
-										<i class="menu-arrow"></i>
-										<ul class="menu-subnav">
-											<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-												<a href="javascript:;" class="menu-link menu-toggle">
-													<i class="menu-bullet menu-bullet-line">
-														<span></span>
-													</i>
-													<span class="menu-text">Users</span>
-													<span class="menu-label">
-														<span class="label label-rounded label-primary">6</span>
-													</span>
-													<i class="menu-arrow"></i>
-												</a>
-												<div class="menu-submenu">
-													<i class="menu-arrow"></i>
-													<ul class="menu-subnav">
-														<li class="menu-item" aria-haspopup="true">
-															<a href="custom/apps/user/list-default.html" class="menu-link">
-																<i class="menu-bullet menu-bullet-dot">
-																	<span></span>
-																</i>
-																<span class="menu-text">List - Default</span>
-															</a>
-														</li>
-														<li class="menu-item" aria-haspopup="true">
-															<a href="custom/apps/user/list-datatable.html" class="menu-link">
-																<i class="menu-bullet menu-bullet-dot">
-																	<span></span>
-																</i>
-																<span class="menu-text">List - Datatable</span>
-															</a>
-														</li>
-														<li class="menu-item" aria-haspopup="true">
-															<a href="custom/apps/user/list-columns-1.html" class="menu-link">
-																<i class="menu-bullet menu-bullet-dot">
-																	<span></span>
-																</i>
-																<span class="menu-text">List - Columns 1</span>
-															</a>
-														</li>
-														<li class="menu-item" aria-haspopup="true">
-															<a href="custom/apps/user/list-columns-2.html" class="menu-link">
-																<i class="menu-bullet menu-bullet-dot">
-																	<span></span>
-																</i>
-																<span class="menu-text">List - Columns 2</span>
-															</a>
-														</li>
-														<li class="menu-item" aria-haspopup="true">
-															<a href="custom/apps/user/add-user.html" class="menu-link">
-																<i class="menu-bullet menu-bullet-dot">
-																	<span></span>
-																</i>
-																<span class="menu-text">Add User</span>
-															</a>
-														</li>
-														<li class="menu-item" aria-haspopup="true">
-															<a href="custom/apps/user/edit-user.html" class="menu-link">
-																<i class="menu-bullet menu-bullet-dot">
-																	<span></span>
-																</i>
-																<span class="menu-text">Edit User</span>
-															</a>
-														</li>
-													</ul>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</li>
+								<?php
+									if($_SESSION['role_type'] == "Super Admin"){
+								?>
+									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "user" ? "menu-item-active" : '' ; ?>" aria-haspopup="true">
+										<a href="<?php echo base_url(); ?>user" class="menu-link">
+											<span class="svg-icon menu-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<polygon points="0 0 24 0 24 24 0 24"/>
+														<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+														<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+													</g>
+												</svg>
+											</span>
+											<span class="menu-text">User</span>
+										</a>
+									</li>
+									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "backup" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
+										<a href="<?php echo base_url(); ?>backup" class="menu-link">
+											<span class="svg-icon menu-icon">
+												<svg id="Layer_1" enable-background="new 0 0 512.004 512.004" height="512" viewBox="0 0 512.004 512.004" width="512" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m199.39 313.864c-105.971 0-191.878-26.84-191.878-59.949v115.481c26.932 25.039 102.661 43.076 191.878 43.076s164.946-18.037 191.878-43.076v-115.481c0 33.109-85.906 59.949-191.878 59.949z" fill="#80b4fb"/><path d="m110.709 307.087c-61.327-10.005-103.196-30.059-103.196-53.172v115.481c17.33 16.112 54.866 29.323 103.197 36.696v-99.005z" fill="#5490f9"/><path d="m199.39 115.584c-105.971 0-191.878-12.678-191.878-45.787v95.327c0 33.108 85.907 59.948 191.878 59.948s191.878-26.84 191.878-59.948v-95.327c0 33.109-85.906 45.787-191.878 45.787z" fill="#80b4fb"/><path d="m110.709 111.901c-61.327-5.838-103.196-18.992-103.196-42.104v95.327c0 23.112 41.869 43.166 103.197 53.171v-106.394z" fill="#5490f9"/><path d="m199.39 409.191c-105.971 0-191.878-26.84-191.878-59.949v93.149c0 33.109 85.907 59.948 191.878 59.948s191.878-26.839 191.878-59.948v-93.149c0 33.109-85.906 59.949-191.878 59.949z" fill="#9dc6fb"/><path d="m110.709 402.414c-61.327-10.005-103.196-30.059-103.196-53.172v93.149c0 23.112 41.869 43.166 103.197 53.171v-93.148z" fill="#80b4fb"/><path d="m199.39 222.894c-105.971 0-191.878-26.84-191.878-59.948v93.148c0 33.109 85.907 59.949 191.878 59.949s191.878-26.84 191.878-59.949v-93.148c0 33.108-85.906 59.948-191.878 59.948z" fill="#9dc6fb"/><path d="m110.709 216.117c-61.327-10.005-103.196-30.059-103.196-53.171v93.148c0 23.112 41.869 43.166 103.197 53.171v-93.148z" fill="#80b4fb"/><ellipse cx="199.39" cy="69.797" fill="#b1d7fb" rx="191.878" ry="59.948"/><path d="m95.384 69.797c0-22.795 20.532-43.346 53.414-57.838-81.421 6.936-141.285 30.201-141.285 57.838s59.864 50.902 141.285 57.838c-32.882-14.492-53.414-35.043-53.414-57.838z" fill="#9dc6fb"/><circle cx="391.281" cy="123.059" fill="#ffe181" r="113.227"/><path d="m331.721 123.059c0-53.287 36.814-97.969 86.393-110.019-8.603-2.091-17.587-3.208-26.834-3.208-62.533 0-113.227 50.693-113.227 113.227 0 62.533 50.693 113.227 113.227 113.227 9.246 0 18.231-1.117 26.834-3.208-49.579-12.05-86.393-56.732-86.393-110.019z" fill="#fec458"/><path d="m455.942 119.167-27.97-20.868c-1.988-1.483-1.558-4.576.759-5.46l34.912-13.332c2.317-.885 4.699 1.134 4.205 3.565l-6.941 34.199c-.46 2.262-3.116 3.276-4.965 1.896z" fill="#ff656f"/><path d="m325.53 125.985 27.97 20.868c1.988 1.483 1.558 4.576-.759 5.46l-34.912 13.332c-2.317.885-4.699-1.134-4.205-3.565l6.941-34.199c.46-2.262 3.116-3.276 4.965-1.896z" fill="#ff656f"/><g fill="#ff4756"><path d="m443.68 91.466c-1.337-.997-1.558-2.712-.869-4.004l-14.08 5.377c-2.317.885-2.747 3.977-.759 5.46l27.97 20.868c1.849 1.38 4.506.365 4.965-1.896l2.283-11.25z"/><path d="m330.249 156.33 4.728-23.297-9.447-7.049c-1.849-1.38-4.505-.365-4.965 1.896l-6.941 34.2c-.494 2.43 1.888 4.449 4.205 3.565l14.756-5.635c-1.541-.382-2.693-1.92-2.336-3.68z"/></g></g><g><path d="m475.192 84.548c1.669-8.208-6.391-15.053-14.23-12.065l-11.912 4.549c-36.007-45.184-107.67-33.223-127.242 20.884-1.409 3.895.606 8.194 4.502 9.604 3.892 1.409 8.194-.605 9.604-4.502 14.809-40.938 67.968-52.419 98.214-20.287l-8.076 3.084c-7.827 2.988-9.288 13.466-2.569 18.479l27.97 20.868c0 .001.001.001.001.001 6.266 4.672 15.246 1.227 16.8-6.415zm-20.275 24.484-16.121-12.028 20.122-7.684z"/><path d="m456.246 138.538c-3.895-1.405-8.194.608-9.602 4.506-15.058 41.686-69.511 52.466-99.192 19.297l7.957-3.039c7.824-2.988 9.29-13.466 2.569-18.478-.001 0-27.972-20.871-27.973-20.871-6.259-4.67-15.246-1.227-16.798 6.417l-6.94 34.197c-1.669 8.212 6.401 15.057 14.23 12.066l12.171-4.648c35.49 46.324 108.318 34.871 128.083-19.847 1.408-3.893-.609-8.192-4.505-9.6zm-133.704 17.26 4.001-19.713 16.121 12.028z"/><path d="m331.154 18.376c-120.892-34.672-331.154-11.066-331.154 51.388v372.613c0 43.812 102.729 67.451 199.388 67.451s199.388-23.64 199.388-67.451c0-16.035 0-94.465 0-108.854 0-4.143-3.357-7.5-7.5-7.5s-7.5 3.357-7.5 7.5v15.701c0 23.974-74.305 52.451-184.388 52.451-110.08 0-184.388-28.477-184.388-52.451v-66.162c64.9 53.697 303.901 53.676 368.775 0v15.461c0 4.143 3.357 7.5 7.5 7.5s7.5-3.357 7.5-7.5c0-10.906 0-43.486 0-54.99 18.418-1.145 36.384-6.488 52.368-15.633 3.595-2.057 4.842-6.639 2.785-10.234s-6.639-4.843-10.234-2.785c-70.12 40.117-157.136-10.832-158.13-90.493-.738-58.965 47.016-107.075 105.711-107.075 58.299 0 105.729 47.43 105.729 105.729 0 26.521-9.865 51.886-27.777 71.423-2.799 3.053-2.594 7.798.46 10.597 3.052 2.799 7.796 2.593 10.597-.46 20.455-22.312 31.721-51.276 31.721-81.56-.001-92.568-100.639-150.921-180.851-104.666zm52.621 357.851v66.15c0 23.974-74.305 52.451-184.388 52.451-110.079.001-184.387-28.477-184.387-52.451v-66.15c64.903 53.677 303.887 53.665 368.775 0zm-67.003-158.172c19.225 15.133 42.452 23.991 67.003 25.487v12.528c0 23.979-74.324 52.452-184.388 52.452-110.063.001-184.387-28.473-184.387-52.451v-66.149c47.391 39.194 198.344 52.611 301.772 28.133zm-13.511-12.389c-129.482 26.565-288.261-5.294-288.261-42.748v-66.151c44.868 37.122 170.047 46.849 255.956 36.197 2.2 27.248 13.491 52.69 32.305 72.702zm-32.606-87.801c-128.383 16.353-255.655-15.286-255.655-48.101 0-39.421 172.624-70.936 299.817-40.188-26.046 21.213-42.655 52.715-44.162 88.289z"/></g></g></svg>
+											</span>
+											<span class="menu-text">Back Up</span>
+										</a>
+									</li>
+
+								<?php
+									}
+
+								?>
 							</ul>
 						</div>
 					</div>
