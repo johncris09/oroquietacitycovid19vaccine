@@ -144,10 +144,10 @@
 														<label>Are you a registered voter?<span class="text-danger">*</span></label>
 														<div class="radio-inline">
 															<label class="radio radio-square">
-															<input type="radio" name="registeredvoter"  <?php echo ucwords($record['registeredvoter']) == "1"  ? "checked='checked'" : "" ?> value="Yes"    />
+															<input type="radio" name="registeredvoter"  <?php echo ucwords($record['registeredvoter']) == "1"  ? "checked='checked'" : "" ?> value="1"    />
 															<span></span>Yes</label>
 															<label class="radio radio-square">
-															<input type="radio" name="registeredvoter"   <?php echo ucwords($record['registeredvoter']) == "0"  ? "checked='checked'" : "" ?>   value="No"    />
+															<input type="radio" name="registeredvoter"   <?php echo ucwords($record['registeredvoter']) == "0"  ? "checked='checked'" : "" ?>   value="0"    />
 															<span></span>No</label>
 														</div> 
 													</div>
