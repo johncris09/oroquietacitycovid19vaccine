@@ -37,7 +37,7 @@ class Dashboard extends CI_Controller {
 
     public function record_chart()
     {
-        // $_POST['filter_by'] = 'this month';
+        // $_POST['filter_by'] = 'month';
         $data = [];
         if($_POST['filter_by'] == 'this month'){
             $start_date = date('Y-m-d', strtotime('first day of this month'));
@@ -175,7 +175,12 @@ class Dashboard extends CI_Controller {
 
     public function age_statistic()
     {
-        $lst = [' > 59', '< 60'];
+        $lst = [
+            ' timestampdiff(year, birthdate, curdate()) >= 18 and timestampdiff(year, birthdate, curdate()) <= 25', 
+            ' timestampdiff(year, birthdate, curdate()) >= 26 and timestampdiff(year, birthdate, curdate()) <= 35', 
+            ' timestampdiff(year, birthdate, curdate()) >= 36 and timestampdiff(year, birthdate, curdate()) <= 59', 
+            ' timestampdiff(year, birthdate, curdate()) > 60', 
+        ];
         foreach ($lst as $age) {
             $data['data'][] = (int)$this->record_model->age_statistic($age);
         }
