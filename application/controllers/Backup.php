@@ -11,6 +11,14 @@ class Backup extends CI_Controller {
             redirect('login');
         }
 	}
+
+	public function index()
+	{
+		$data['page_title'] = "Back up";
+		$data['db_name'] = $this->db->database;
+		$this->load->view('admin/backup', $data);
+	}
+
  
     
 }
