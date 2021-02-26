@@ -166,7 +166,7 @@ class Record_model extends CI_Model
     {
          return $this->db
             ->select('count(*) tot')
-            ->where('timestampdiff(year, birthdate, curdate()) '.$age)
+            ->where($age)
             ->where('deletestatus', 0)  
             ->get('record')
             ->result_array()[0]['tot'];
