@@ -148,5 +148,43 @@ class User extends CI_Controller {
 		$this->load->view('admin/change_password', $data);
 	}
 
+	public function update_password()
+	{
+		$data = array(
+			'user_id' => $_SESSION['user_id'],
+			'password' => md5($_POST['current_password'])
+		);
+		$check_password = $this->user_model->check_password($data);
+		if( $check_password ){
+			$data = array(
+				'user_id' => $_SESSION['user_id'],
+				'password' => md5($_POST['confirm_password']),
+			);
+
+			$update = $this->user_model->update($data);
+			if($update > 0){
+				$data = array(
+					'response' => true,
+					'message'  => 'Password Changed successfully!',
+				);
+	  
+			}else{ 
+				$data = array(
+					'response' => false,
+					'message'  => 'Password not canged!',
+					// 'message' => $this->db->error()['message'],
+				);
+			} 
+		}else{
+			$data = array(
+					'response' => false,
+					'message'  => 'Password not match!',
+					// 'message' => $this->db->error()['message'],
+				);
+			
+		}
+		// $data = $check_password;
+		echo json_encode($data);
+	}
 
 }
