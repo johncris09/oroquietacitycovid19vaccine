@@ -41,5 +41,12 @@ class Login extends CI_Controller {
 
         echo json_encode($data);
     }
-    
+
+    private function set_session($user_info)
+    {
+        $user_info = $this->user_model->get_user_info($user_info);
+        unset($user_info['password']);
+        $this->session->set_userdata($user_info);   
+    }
+
 }
