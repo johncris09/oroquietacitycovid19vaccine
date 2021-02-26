@@ -1,0 +1,804 @@
+.login.login-2 .login-forgot,.login.login-2 .login-signin,.login.login-2 .login-signup{
+    display:none
+}
+.login.login-2.login-signin-on .login-signup{
+    display:none
+}
+.login.login-2.login-signin-on .login-signin{
+    display:block
+}
+.login.login-2.login-signin-on .login-forgot{
+    display:none
+}
+.login.login-2.login-signup-on .login-signup{
+    display:block
+}
+.login.login-2.login-signup-on .login-signin{
+    display:none
+}
+.login.login-2.login-signup-on .login-forgot{
+    display:none
+}
+.login.login-2.login-forgot-on .login-signup{
+    display:none
+}
+.login.login-2.login-forgot-on .login-signin{
+    display:none
+}
+.login.login-2.login-forgot-on .login-forgot{
+    display:block
+}
+.login.login-2 .content .content-img{
+    min-height:450px
+}
+
+
+@media (min-width:992px){
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:600px
+    }
+    #logo{
+        width:100%;
+        max-width:600px
+    }
+    .login.login-2 .content .content-img{
+        min-height:600px!important
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width:450px
+    }
+}
+@media (min-width:992px) and (max-width:1399.98px){
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:600px
+    }
+
+    #logo{
+        width:100%;
+        max-width:600px
+    }
+}
+@media (max-width:991.98px){
+    .login.login-2 .content .content-img{
+        min-height:470px!important;
+        background-size:700px
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width:400px
+    }
+}
+@media (max-width:575.98px){
+    .login.login-2 .content .content-img{
+        min-height:280px!important;
+        background-size:400px
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width:100%
+    } 
+}
+@media (max-width:444px){
+
+    #logo{
+        width:100%;
+        max-width:400px;
+    }
+}
+
+
+@media (max-width:410px){
+
+    #logo{
+        width:100%;
+        max-width:380px;
+    }
+}
+
+
+
+@media (max-width:370px){
+
+    #logo{
+        width:100%;
+        max-width:360px;
+    }
+}
+
+@media (min-width:362px){
+
+    #logo{
+        width:100%;
+        max-width:350px;
+    }
+}
+
+@media (max-width:360px){
+
+    #logo{
+        width:100%;
+        max-width:300px;
+    }
+}
+
+@media (max-width:310px){
+
+    #logo{
+        width:100%;
+        max-width:270px;
+    }
+}
+
+@media (max-width:280px){
+
+    #logo{
+        width:100%;
+        max-width:240px;
+    }
+}
+
+@media (max-width:260px){
+
+    #logo{
+        width:100%;
+        max-width:220px;
+    }
+}
+@media (max-width:230px){
+
+    #logo{
+        width:100%;
+        max-width:200px;
+    }
+}
+@media (max-width:210px){
+
+    #logo{
+        width:100%;
+        max-width:180px;
+    }
+}
+@media (max-width:190px){
+
+    #logo{
+        width:100%;
+        max-width:160px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1129px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1200px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1130px) and (max-width:1320px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:560px;
+    }
+    #logo{
+        width:100%;
+        max-width:560px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1372px) and (max-width:1400px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:600px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+
+@media (min-width:1400px) and (max-width:1500px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:600px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+
+@media (min-width:1501px) and (max-width:1530px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:730px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+
+@media (min-width:1531px) and (max-width:1550px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:750px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1551px) and (max-width:1580px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:770px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1581px) and (max-width:1600px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:790px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1601px) and (max-width:1630px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:820px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1631px) and (max-width:1660px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:820px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1661px) and (max-width:1690px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:860px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1691px) and (max-width:1720px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:910px;
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1721px) and (max-width:1750px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:930px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1751px) and (max-width:1770px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:930px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1771px) and (max-width:1790px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:950px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width:1791px) and (max-width:1820px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:950px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+
+@media (min-width:1821px) and (max-width:1850px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1000px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+
+
+@media (min-width:1851px) and (max-width:1870px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1000px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:1871px) and (max-width:1890px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1080px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:1871px) and (max-width:1890px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1080px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:1891px) and (max-width:1910px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1080px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:1911px) and (max-width:1930px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1080px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:1931px) and (max-width:1950px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1100px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:1951px) and (max-width:1970px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1150px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:1971px) and (max-width:2000px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1150px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:2001px) and (max-width:2020px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1150px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:2021px) and (max-width:2050px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1150px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:2051px) and (max-width:2070px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1170px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+@media (min-width:2071px) and (max-width:2100px){
+
+    .login.login-2 .login-aside{
+        width:100%;
+        max-width:1200px; 
+    }
+    #logo{
+        width:100%;
+        max-width:600px;
+    }
+    .login.login-2 .content.content-img{
+        height:100%;
+        max-height:1000px !important;
+        width:100%;
+        max-width:1000px;
+    }
+    .login.login-2 .login-form{
+        width:100%;
+        max-width: 600px;
+    }
+}
+ 
+ 
