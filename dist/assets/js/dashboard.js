@@ -229,16 +229,15 @@ var AgeStatistic = function () {
                     KTApp.unblock('#age-statistic');
                 },
                 success: function (data) {
-                    console.info(data)
                     var options = {
                         series: data.data,
                         chart: {
-                            width: 455,
+                            width: 400,
                             type: 'pie',
                         },
-                        labels: ['Senior Citizen', 'Not Senior Citizen'],
+                        labels: ['18 - 25 yrs. old', '26 - 35 yrs. old', '36 - 59 yrs. old', '60 yrs. old Above'],
                         responsive: [{
-                            breakpoint: 480,
+                            breakpoint: 400,
                             options: {
                                 chart: {
                                     width: 200
@@ -248,7 +247,7 @@ var AgeStatistic = function () {
                                 }
                             }
                         }],
-                        colors: [primary, warning]
+                        colors: [primary, warning, danger, info]
                     };
 
                     var chart = new ApexCharts(document.querySelector(apexChart), options);
