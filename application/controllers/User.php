@@ -141,4 +141,12 @@ class User extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function change_password($id)
+	{
+    	$data['page_title'] = "Change Password";
+    	$data['user'] = $this->user_model->get_user($id);
+		$this->load->view('admin/change_password', $data);
+	}
+
+
 }
