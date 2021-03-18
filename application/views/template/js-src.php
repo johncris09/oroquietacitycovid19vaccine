@@ -13,4 +13,6 @@
 		<script src="<?php echo base_url(); ?>/dist/assets/plugins/global/jQuery.print.min.js"></script> 
 		<script src="<?php echo base_url(); ?>dist/assets/js/scripts.bundle.js"></script>
 
+		<!-- <script src="https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/plugins/custom/datatables/datatables.bundle.js"></script> -->
 		<script src="<?php echo base_url(); ?>dist/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<script src="<?php echo base_url(); ?>dist/assets/plugins/custom/typeahead.bundle.js"></script>
