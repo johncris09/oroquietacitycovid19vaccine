@@ -247,6 +247,31 @@ class Dashboard extends CI_Controller {
         echo json_encode($data);
     }
 
+    public function validated_gender_statistic()
+    {
+        $lst = ['male', 'female'];
+        foreach ($lst as $gender) {
+            $data['data'][] = (int)$this->validated_model->validated_gender_statistic($gender);
+        }
+
+        echo json_encode($data);
+    }
+
+    public function validated_age_statistic()
+    {
+        $lst = [
+            ' timestampdiff(year, birthdate, curdate()) >= 18 and timestampdiff(year, birthdate, curdate()) <= 25', 
+            ' timestampdiff(year, birthdate, curdate()) >= 26 and timestampdiff(year, birthdate, curdate()) <= 35', 
+            ' timestampdiff(year, birthdate, curdate()) >= 36 and timestampdiff(year, birthdate, curdate()) <= 59', 
+            ' timestampdiff(year, birthdate, curdate()) > 60', 
+        ];
+        foreach ($lst as $age) {
+            $data['data'][] = (int)$this->validated_model->validated_age_statistic($age);
+        }
+
+        echo json_encode($data);
+    }
+
 
 
 }
