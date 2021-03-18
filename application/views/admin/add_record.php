@@ -120,8 +120,8 @@
 														</select>
 													</div>
 													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-														<label class="text-sm">Contact #<span class="text-danger">*</span></label>
-														<input type="text" class="form-control input-sm" name="contactnumber" placeholder="Contac #" />
+														<label class="text-sm">Contact #</label>
+														<input type="text" class="form-control input-sm" name="contactnumber" placeholder="Contact #" />
 													</div>
 												</div>
 
@@ -135,9 +135,17 @@
 														<label class="text-sm">Age</label>
 														<input type="text" class="form-control input-sm" name="age" placeholder="0" readonly="" disabled="" />
 													</div>
-													<div class="col-12 col-sm-3 col-md-3 col-lg-4 col-xl-4">
-														<label class="text-sm">Trabaho</label>
-														<input type="text" class="form-control input-sm" placeholder="Occupation" name="occupation"  />
+													<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+														<label class="text-sm">Occupation<span class="text-danger">*</span></label>
+														<select name="occupation" class="form-control" >
+															<option value="">Select</option>
+															<?php
+															foreach ($this->config->item('occupation') as $row) {
+																echo '
+																	<option value="'.$row.'">'.$row.'</option>';
+															}
+															?>
+														</select>
 													</div>
 													<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
 														<label class="text-sm">Position</label>
@@ -156,8 +164,8 @@
 															<span></span>No</label>
 														</div> 
 													</div>
-													<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-														<label class="text-sm">Government ID<span class="text-danger">*</span></label>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Government ID </label>
 														<select name="governmentissuedid" class="form-control" >
 															<option value="">Select</option>
 															<?php
@@ -169,9 +177,13 @@
 
 														</select>
 													</div>
-													<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
-														<label class="text-sm">ID Number<span class="text-danger">*</span></label>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">ID Number</label>
 														<input type="text" class="form-control input-sm" name="idnumber" placeholder="ID Number" autocomplete="off" />
+													</div>
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+														<label class="text-sm">Date Registered<span class="text-danger">*</span></label>
+														<input type="text" id="date-registered" class="form-control input-sm"  name="date_registered"  autocomplete="off" />
 													</div>
 												</div>
 											</div>
@@ -289,10 +301,14 @@
 				endDate: '-18y'
 			});
 
-			$('input[name="contactnumber"]').inputmask("mask", {
-	            mask: "+63999 999 9999"
-	            // +63 (XXX) YYY ZZZZ
-	        })
+			$("#date-registered").datepicker({
+				dateFormat: 'dd/mm/yy',
+			});
+
+			// $('input[name="contactnumber"]').inputmask("mask", {
+	  //           mask: "+63999 999 9999"
+	  //           // +63 (XXX) YYY ZZZZ
+	  //       })
 
 	        $(document).on('change', 'input[name="birthdate"]', function() {
 	        	var bdate = new Date($(this).val());
