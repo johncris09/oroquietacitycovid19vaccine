@@ -51,5 +51,16 @@ class Validated_model extends CI_Model
         }else{
             return true;
         }
+    }
+
+    public function insert_validated($data)
+    {
+        // $this->db->db_debug = false;
+        $insert = $this->db->insert('record', $data);
+        if(!$insert && $this->db->error()['code'] == 1062){
+            return false;
+        }else{
+            return $this->db->insert_id();
+        }
     } 
 }
