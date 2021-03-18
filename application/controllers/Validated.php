@@ -50,5 +50,108 @@ class Validated extends CI_Controller {
 			$data['data'] = array();
 		} 
 		echo json_encode($data);
-	}  
+	} 
+
+	public function insert()
+	{
+
+		// insert into record
+		$data = array(
+			'lastname' => trim($this->input->post('lastname')),
+			'firstname' => trim($this->input->post('firstname')),
+			'middlename' => trim($this->input->post('middlename')),
+			'gender' => $this->input->post('gender'), 
+			'contactnumber' => trim($this->input->post('contactnumber')),
+			'purok' => $this->input->post('purok'), 
+			'street' => trim($this->input->post('street')),
+			'barangay' => trim($this->input->post('barangay')),
+			'birthdate' => date('Y-m-d', strtotime($this->input->post('birthdate'))),
+			'registeredvoter' => $this->input->post('registeredvoter'), 
+			'governmentissuedid' => $this->input->post('governmentissuedid'), 
+			'idnumber' => $this->input->post('idnumber'), 
+			'date_registered' => date( 'Y-m-d', strtotime($this->input->post('date_registered')) ), 
+			'position' => $this->input->post('position'),
+			'occupation' => $this->input->post('occupation'), 
+			'covidpositive' => $this->input->post('CovidPositive'), 
+			'covidpositivecontact' => $this->input->post('CovidPositiveContact'), 
+			'travelled' => $this->input->post('Travelled'), 
+			'mingled' => $this->input->post('Mingled'), 
+			'optionIllness_1' => !empty($_POST['OptionIllness_1']) ?  implode (", ", $this->input->post('OptionIllness_1'))  : '' ,
+			'dogbite' => $this->input->post('DogBite'), 
+			'vaccinelast4weeks' => $this->input->post('VaccineLast4Weeks'), 
+			'bloodtransfusion' => $this->input->post('BloodTransfusion'), 
+			'takedrugs' => $this->input->post('TakeDrugs'), 
+			'allergy' => $this->input->post('Allergy'), 
+			'vaccinereaction' => $this->input->post('VaccineReaction'), 
+			'optionIllness_2' => !empty($_POST['OptionIllness_2']) ?  implode (", ", $this->input->post('OptionIllness_2'))  : ''  ,
+			'other_illness' => $this->input->post('other_illness'),
+			'pregnant' => $this->input->post('Pregnant'), 
+			'breastfeed' => $this->input->post('Breastfeed'), 
+			'ClinicalStudy' => $this->input->post('ClinicalStudy'),
+			'encoded_by' => $this->session->userdata('user_id'),
+			'validated_by' => $this->session->userdata('user_id'),
+		); 
+
+
+		$record_id = $this->validated_model->insert_validated($data);
+
+		if($record_id){
+
+            $log_data = array(
+                'description' => 'added and validated a new record whose name is "' . $data['firstname']  . $data['middlename'] . $data['lastname'] . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+
+
+			$data = array(
+				'response' => true,
+				'message'  => 'Data inserted successfully!',
+			);
+
+			// update validated column
+			$this->validated_column($record_id);
+
+			// insert into validated
+			$this->insert_to_validated($record_id);
+  
+		}else{ 
+
+			$data = array(
+				'response' => false,
+				'message'  => 'This value is already in the list.',
+				// 'message' => $this->db->error()['message'],
+			);
+		} 
+		
+		// $arr = [];
+		// if( !empty( $_POST['other-illness']) ) {
+		// 	array_push($arr, $_POST['other-illness']);
+		// 	// echo 1;
+		// }
+ 
+		echo json_encode( $data );
+	}
+
+	public function validated_column($id)
+	{
+		$data = array(
+			'id' => $id,
+			'validated' => 'Yes',
+		);
+		$this->record_model->update($data);
+	}
+
+	public function insert_to_validated($id)
+	{
+		$data = array(
+			'record_id' => $id,
+			'timestamp' => date('Y-m-d H:i:s'),
+			'qr_code' => md5(date('Y-m-d H:i:s')),
+		);
+		$this->validated_model->insert($data);
+	} 
 }
