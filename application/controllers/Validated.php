@@ -248,5 +248,54 @@ class Validated extends CI_Controller {
     	$data['page_title'] = "View Record";
     	$data['record'] = $this->record_model->get_record($id);
 		$this->load->view('admin/view_record', $data);
-	} 
+	}
+
+	public function search($data)
+	{
+		$data = $this->record_model->search($data);
+		echo json_encode($data);
+	}
+
+	public function validate()
+	{
+		$data = array(
+			'id' => $this->input->post('id'),
+			'validated_by' => $this->input->post('id'),
+			'validated' => "Yes",
+		);
+
+		$insert_data = array(
+			'record_id' => $this->input->post('id'),
+			'timestamp' => date('Y-m-d H:i:s'),
+			'qr_code' => md5(date('Y-m-d H:i:s')),
+		);
+		$insert = $this->validated_model->insert($insert_data);
+
+
+		$update = $this->record_model->update($data);
+		if($update > 0){
+
+
+            $log_data = array(
+                'description' => 'validated a record whose id is "' . $data['id'] . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+			$data = array(
+				'response' => true,
+				'message'  => 'Data successfully validated !',
+			);
+  
+		}else{ 
+			$data = array(
+				'response' => false,
+				'message'  => 'Data not validated!',
+				// 'message' => $this->db->error()['message'],
+			);
+		} 
+		echo json_encode($data); 
+	}
 }
