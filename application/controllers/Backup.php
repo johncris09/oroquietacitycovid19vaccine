@@ -44,6 +44,16 @@ class Backup extends CI_Controller {
         $filename = date("Y-m-d h.i.s") . ' ' . $this->db->database . '.sql';
 
         if (write_file(FCPATH . '/database/' . $filename, $backup)) {
+
+
+            $log_data = array(
+                'description' => 'database backup',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
             $data = array(
                 'response' => true,
                 'message' => 'Database Exported.');
