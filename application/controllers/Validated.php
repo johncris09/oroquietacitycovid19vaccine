@@ -17,4 +17,10 @@ class Validated extends CI_Controller {
 		$data['page_title'] = "Validated";
 		$this->load->view('admin/validated', $data);
     }
+
+    public function add()
+    {
+    	$data['page_title'] = "Add Record";
+		$this->load->view('admin/add_validated', $data);
+    } 
 }
