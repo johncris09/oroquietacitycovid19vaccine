@@ -6,28 +6,28 @@ var User = function () {
 
         // client side proccessing
         var table = $('#user-table').DataTable({
-            responsive: true,
+            // responsive: true,
              dom:"<'row'<'col-sm-4 col-xs-4'l><'col-sm-4 col-xs-4 text-center'B><'col-sm-4 col-xs-4'f>>" +
                     "<'row'<'col-sm-12 col-xs-12'tr>>" +
                 "<'row'<'col-sm-5 col-xs-5'i><'col-sm-7 col-xs-7'p>>",
             // buttons: ["print", "excelHtml5", "pdfHtml5", "colvis"],
             buttons:   [
-                {
-                    extend: 'print',
-                    className: "btn btn-info btn-sm",
-                    text: '<i class="fas fa-print"></i>',
-                    title: 'Covid-19 Vaccine Pre Registration',
-                    titleAttr: 'Print',
-                    autoPrint: false,
-                    customize: function ( win ) {
-                    $(win.document.body)
-                        .css( 'font-size', '10pt' )
+                // {
+                //     extend: 'print',
+                //     className: "btn btn-info btn-sm",
+                //     text: '<i class="fas fa-print"></i>',
+                //     title: 'Covid-19 Vaccine Pre Registration',
+                //     titleAttr: 'Print',
+                //     autoPrint: false,
+                //     customize: function ( win ) {
+                //     $(win.document.body)
+                //         .css( 'font-size', '10pt' )
 
-                    $(win.document.body).find( 'table' )
-                        .addClass( 'compact' )
-                        .css( 'font-size', 'inherit' );
-                    }
-                },
+                //     $(win.document.body).find( 'table' )
+                //         .addClass( 'compact' )
+                //         .css( 'font-size', 'inherit' );
+                //     }
+                // },
                 {
                     extend: 'excelHtml5',
                     className: "btn btn-info btn-sm",
@@ -40,6 +40,13 @@ var User = function () {
                     className: "btn btn-info btn-sm",
                     text: '<i class="fas fa-file-pdf"></i>',
                     titleAttr: 'Pdf',
+                    title: 'User',
+                    download: 'open',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL',
+                    exportOptions: {
+                      columns: ':visible'
+                    }
                 },
                 {
                     extend: 'colvis',
@@ -72,10 +79,28 @@ var User = function () {
                         perpage: 50,
                     },
                 },
+                beforeSend: function () {
+                    $.blockUI({ 
+                        message: '<h1><img src="' + BASE_URL + 'dist/assets/media/img/loader.gif" /> Please wait ...</h1>', 
+                        css: { 
+                            border: '0px !emportant', 
+                            textAlign:      'center', 
+                        },
+                        showOverlay: false,
+                        centerX: true,
+                        centerY: true, 
+                    });
+                },
+                complete: function () {
+                    KTApp.unblock('body');
+                },
             },
             columns: [
                 {
                     data: 'user_id',
+                },
+                {
+                    data: 'Actions', responsivePriority: -1
                 },
                 {
                     data  : 'user_id',
@@ -102,7 +127,7 @@ var User = function () {
                     data: 'role_type',
                 },
                 {
-                    data: 'Actions', responsivePriority: -1
+                    data: 'onlinestatus',
                 },
                
             ],
@@ -130,7 +155,7 @@ var User = function () {
                     },
                 },
                 {
-                    targets  : -1,
+                    targets  : 1,
                     title    : 'Actions',
                     orderable: false,
                     render   : function(data, type, row, meta) { 
@@ -168,34 +193,27 @@ var User = function () {
                         return action;
                     },
                 },
+                {
+                  targets: -1,
+                  width: "75px",
+                  render: function (t, a, l, s) {
+                    var e = {
+                      0: { title: "Offline", state: "danger" },
+                      1: { title: "Online", state: "success" },
+                    };
+                    return void 0 === e[t]
+                      ? t
+                      : '<span class="label label-' +
+                          e[t].state +
+                          ' label-dot mr-2"></span><span class="font-weight-bold text-' +
+                          e[t].state +
+                          '">' +
+                          e[t].title +
+                          "</span>";
+                  },
+                },
             ],
-        });
-
-        $('#export_print').on('click', function(e) {
-            e.preventDefault();
-            table.button(0).trigger();
-        });
-
-        $('#export_copy').on('click', function(e) {
-            e.preventDefault();
-            table.button(1).trigger();
-        });
-
-        $('#export_excel').on('click', function(e) {
-            e.preventDefault();
-            table.button(2).trigger();
-        });
-
-        $('#export_csv').on('click', function(e) {
-            e.preventDefault();
-            table.button(3).trigger();
-        });
-
-        $('#export_pdf').on('click', function(e) {
-            e.preventDefault();
-            table.button(4).trigger();
-        });
- 
+        }); 
         table.on('change', '.group-checkable', function() {
             var set = $(this).closest('table').find('td:first-child .checkable');
             var checked = $(this).is(':checked'); 
@@ -258,16 +276,6 @@ var User = function () {
                         url: BASE_URL + 'user/delete/' + id,
                         method: "post",
                         dataType: "json",
-                        beforeSend: function () {
-                            KTApp.block('body', {
-                                overlayColor: '#000000',
-                                state: 'primary',
-                                message: 'Please wait ...'
-                            });
-                        },
-                        complete: function () {
-                            KTApp.unblock('body');
-                        },
                         success: function (data) {
                             console.info(data);
                             if(!data.response){
@@ -284,7 +292,7 @@ var User = function () {
                                 )
 
                                 table.ajax.reload()
-                                KTUtil.scrollTop() 
+                                // KTUtil.scrollTop() 
                             }  
                         },
                         error: function (xhr, status, error) {
