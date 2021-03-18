@@ -4,6 +4,22 @@
 <head>
 	<title><?php echo $page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		@media print {
+			html, body {
+				width: 210mm;
+				height: 297mm;
+			}
+
+			@page{
+			    size: 8.5in 13in ;
+			    size: landscape;
+			}
+			
+
+		}
+		
+	</style>
 	<style type="text/css"> 
 		input[type="radio"], input[type="checkbox"]{
 		   appearance: none;
@@ -694,7 +710,7 @@
 					<div style="position:absolute;top:1114.139;left:413.981;">
 						<nobr> <span style="font-size:15.889;">,</span> </nobr>
 					</div>
-					<div style="position:absolute;top:1113.374;left:197.617;">
+					<div style="position:absolute;top:1113.374;left:120;">
 						<nobr> <span style="font-size:15.889;"><?php echo ucwords($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span> </nobr>
 					</div>
 					<div style="position:absolute;top:1113.374;left:440;">
@@ -749,7 +765,7 @@
 						<nobr> <span style="font-size:15.889;"><?php echo ucwords($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span>  </nobr>
 					</div>
 					<div style="position:absolute;top:1399.755;left:650;">
-						<nobr><span style="font-size:19.130;"><?php echo date('m/d/Y', strtotime($record['timestamp'])) ; ?></span> </nobr>
+						<nobr><span style="font-size:19.130;"><?php echo date('m/d/Y', strtotime($record['date_registered'])) ; ?></span> </nobr>
 					</div>
 					<div style="position:absolute;top:1423.141;left:206.225;">
 						<nobr> <span style="font-size:12.826;">Pirma ibabaw sa Kumpletong Ngalan</span> </nobr>
