@@ -11,3 +11,5 @@
 		<link href="<?php echo base_url(); ?>dist/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url(); ?>dist/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url(); ?>dist/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+
+		<link href="<?php echo base_url(); ?>dist/assets/css/pages/typeahead.css" rel="stylesheet" type="text/css" />
