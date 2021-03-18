@@ -42,15 +42,16 @@
 														<path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
 													</g>
 												</svg>
-											</span>New Record</a>
+											</span>New User</a>
 										</div>
 									</div>
 									<div class="card-body">
 										<!-- <button>Print me</button> -->
-										<table class="table table-striped table-sm table-responsive table-bordered table-hover table-checkable dt-responsive nowrap"  id="user-table">
+										<table class="table table-striped table-sm table-bordered table-hover table-checkable nowrap"  id="user-table">
 											<thead>
 												<tr>
 													<th></th>
+													<th>Action</th>
 													<th>#</th>
 													<th>Date Registered</th>
 													<th>Last Name</th>
@@ -58,7 +59,7 @@
 													<th>Middle Name</th>
 													<th>Username</th>
 													<th>Role Type</th>
-													<th>Action</th>
+													<th>Status</th>
 												</tr>
 											</thead>
 										</table> 
