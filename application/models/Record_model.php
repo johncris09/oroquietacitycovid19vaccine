@@ -12,24 +12,36 @@ class Record_model extends CI_Model
 
     public function record()
     {
-         // $this->db->cache_on();
         return $this->db
             ->where('deletestatus', 0)
-            ->order_by('timestamp','DESC')
-        	->get('record')
-        	->result_array();
+            ->where('validated', 'no')
+            ->order_by('date_registered','DESC')
+        	->get('record');
+        	// ->result_array();
     }
 
 
+
+    public function validated()
+    {
+        return $this->db
+            ->where('deletestatus', 0)
+            ->where('validated', 'yes')
+            ->order_by('date_registered','DESC')
+            ->get('record')
+            ->result_array();
+    }
+    
     public function insert($data)
-    { 
-        $insert = $this->db->insert('record', $data); 
+    {
+        $this->db->db_debug = false;
+        $insert = $this->db->insert('record', $data);
         if(!$insert && $this->db->error()['code'] == 1062){
-            return 0;
+            return false;
         }else{
-            return $insert;
+            return true;
         }
-    } 
+    }
 
     public function get_record($id)
     {
@@ -60,6 +72,7 @@ class Record_model extends CI_Model
     {
         return $this->db
             ->where('deletestatus', 0)
+            ->where('validated ', "no")
             ->get('record')
             ->num_rows();
     }
@@ -70,9 +83,9 @@ class Record_model extends CI_Model
     {
         return $this->db
             ->where('deletestatus', 0)
-            ->where('year(timestamp)', date('Y'))
-            ->where('month(timestamp)', date('m'))
-            ->where('day(timestamp)', date('d'))
+            ->where('year(date_registered)', date('Y'))
+            ->where('month(date_registered)', date('m'))
+            ->where('day(date_registered)', date('d'))
             ->get('record')
             ->num_rows();
     }
@@ -80,11 +93,11 @@ class Record_model extends CI_Model
     public function record_chart()
     {
         return $this->db
-            ->select('count(*) tot, timestamp')
+            ->select('count(*) tot, date_registered')
             ->where('deletestatus', 0)
-            ->where('timestamp <= CURRENT_DATE() ')
-            ->group_by('day(timestamp)')
-            ->order_by('timestamp asc')
+            ->where('date_registered <= CURRENT_DATE() ')
+            ->group_by('day(date_registered)')
+            ->order_by('date_registered asc')
             ->get('record')
             ->result_array();
 
@@ -94,11 +107,12 @@ class Record_model extends CI_Model
     public function record_this_week($date)
     {
         return $this->db
-            ->select('count(*) tot, timestamp')
-            ->where('date(timestamp) =', $date)
-            // ->where('date(timestamp) <=', $end_date)
-            ->group_by('day(timestamp)')
-            ->order_by('timestamp', 'asc')   
+            ->select('count(*) tot, date_registered')
+            ->where('date(date_registered) =', $date)
+            ->where('deletestatus', 0)
+            // ->where('date(date_registered) <=', $end_date)
+            ->group_by('day(date_registered)')
+            ->order_by('date_registered', 'asc')   
             ->get('record')
             ->result_array();
     }
@@ -106,11 +120,12 @@ class Record_model extends CI_Model
      public function record_this_month($date)
     {
         return $this->db
-            ->select('count(*) tot, timestamp')
-            ->where('date(timestamp) =', $date)
-            // ->where('date(timestamp) <=', $end_date)
-            ->group_by('day(timestamp)')
-            ->order_by('timestamp', 'asc')   
+            ->select('count(*) tot, date_registered')
+            ->where('date(date_registered) =', $date)
+            ->where('deletestatus', 0)
+            // ->where('date(date_registered) <=', $end_date)
+            ->group_by('day(date_registered)')
+            ->order_by('date_registered', 'asc')   
             ->get('record')
             ->result_array();
     }
@@ -119,11 +134,12 @@ class Record_model extends CI_Model
     public function record_by_month($date)
     {
         return $this->db
-            ->select('count(*) tot, timestamp')
-            ->where('year(timestamp) =', date('Y'))
-            ->where('month(timestamp) =', date('m', strtotime($date)))
-            ->group_by('month(timestamp)')
-            ->order_by('timestamp', 'asc')   
+            ->select('count(*) tot, date_registered')
+            ->where('deletestatus', 0)
+            ->where('year(date_registered) =', date('Y'))
+            ->where('month(date_registered) =', date('m', strtotime($date)))
+            ->group_by('month(date_registered)')
+            ->order_by('date_registered', 'asc')   
             ->get('record')
             ->result_array();
     }
@@ -132,10 +148,11 @@ class Record_model extends CI_Model
     public function record_by_year($end_year)
     {
         return $this->db
-            ->select('count(*) tot, timestamp')
-            ->where('year(timestamp) <=', $end_year)
-            ->group_by('year(timestamp)')
-            ->order_by('timestamp', 'asc')   
+            ->select('count(*) tot, date_registered')
+            ->where('deletestatus', 0)
+            ->where('year(date_registered) <=', $end_year)
+            ->group_by('year(date_registered)')
+            ->order_by('date_registered', 'asc')   
             ->get('record')
             ->result_array();
     }
@@ -143,11 +160,11 @@ class Record_model extends CI_Model
     public function record_by_date_range($start_date, $end_date)
     {
         return $this->db
-            ->select('count(*) tot, timestamp')
-            ->where('date(timestamp) >=', $start_date)
-            ->where('date(timestamp) <=', $end_date)
-            ->group_by('day(timestamp)')
-            ->order_by('timestamp', 'asc')   
+            ->select('count(*) tot, date_registered')
+            ->where('date(date_registered) >=', $start_date)
+            ->where('date(date_registered) <=', $end_date)
+            ->group_by('day(date_registered)')
+            ->order_by('date_registered', 'asc')   
             ->get('record')
             ->result_array();
     }
@@ -157,7 +174,8 @@ class Record_model extends CI_Model
          return $this->db
             ->select('count(*) tot')
             ->where('gender', $gender)
-            ->where('deletestatus', 0)  
+            ->where('record.validated', 'no')
+            ->where('deletestatus', 0)
             ->get('record')
             ->result_array()[0]['tot'];
     }
@@ -167,6 +185,7 @@ class Record_model extends CI_Model
          return $this->db
             ->select('count(*) tot')
             ->where($age)
+            ->where('record.validated', 'no')
             ->where('deletestatus', 0)  
             ->get('record')
             ->result_array()[0]['tot'];
