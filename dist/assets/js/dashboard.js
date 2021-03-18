@@ -65,14 +65,18 @@ var RecordChart = function () {
                     KTApp.unblock('#record-chart');
                 },
                 success: function (data) {
-                    console.info(data)
+                    // console.info(data.pre_registered)
                     $('#range').html(data.range);
                     var options = {
                         series: [
                             {
-                                name: 'Record',
-                                data: data.data
-                            }
+                                name: 'Pre Registered',
+                                data: data.pre_registered
+                            },
+                            {
+                                name: 'Validated',
+                                data: data.validated
+                            },
                         ],
                         chart: {
                             type  : 'bar',
@@ -163,14 +167,14 @@ var GenderStatistic = function () {
                     KTApp.unblock('#gender-statistic');
                 },
                 success: function (data) {
-                    console.info(data)
+                    // console.info(data)
                     var options = {
                         series: data.data,
                         chart: {
                             width: 400,
                             type: 'pie',
                         },
-                        labels: ['Male', 'Female'],
+                        labels: ['Male - ' + data.data[0], 'Female - ' + data.data[1] ],
                         responsive: [{
                             breakpoint: 480,
                             options: {
@@ -229,13 +233,157 @@ var AgeStatistic = function () {
                     KTApp.unblock('#age-statistic');
                 },
                 success: function (data) {
+                    // console.info(data)
                     var options = {
                         series: data.data,
                         chart: {
                             width: 400,
                             type: 'pie',
                         },
-                        labels: ['18 - 25 yrs. old', '26 - 35 yrs. old', '36 - 59 yrs. old', '60 yrs. old Above'],
+                        labels: [
+                            '18 - 25 yrs. old (' + data.data[0] + ')', 
+                            '26 - 35 yrs. old (' + data.data[1] + ')', 
+                            '36 - 59 yrs. old (' + data.data[2] + ')', 
+                            '60 yrs. old Above(' + data.data[3] + ')', 
+                        ],
+                        responsive: [{
+                            breakpoint: 400,
+                            options: {
+                                chart: {
+                                    width: 200
+                                },
+                                legend: {
+                                    position: 'bottom'
+                                }
+                            }
+                        }],
+                        colors: [primary, warning, danger, info]
+                    };
+
+                    var chart = new ApexCharts(document.querySelector(apexChart), options);
+                    chart.render();
+
+                },
+                error: function (xhr, status, error) {
+                    // error here...   
+                    console.info(xhr.responseText);
+                    
+                }
+            });
+
+        
+
+    };
+
+    return {
+        // Init
+        init: function () {
+            _init();
+        },
+    };
+}();
+
+
+
+var ValidatedGenderStatistic = function () {
+    var _init = function () {
+        const apexChart = "#validated-gender-statistic";
+        
+
+        $.ajax({
+                url   : BASE_URL + 'dashboard/validated_gender_statistic',
+                method  : 'post',
+                dataType: "json",
+                beforeSend: function () {
+                    KTApp.block('#validated-gender-statistic', {
+                        overlayColor: '#000000',
+                        state       : 'primary',
+                        message     : 'Processing...'
+                    });
+                },
+                complete: function () {
+                    KTApp.unblock('#validated-gender-statistic');
+                },
+                success: function (data) {
+                    // console.info(data)
+                    var options = {
+                        series: data.data,
+                        chart: {
+                            width: 400,
+                            type: 'pie',
+                        },
+                        labels: ['Male - ' + data.data[0], 'Female - ' + data.data[1] ],
+                        responsive: [{
+                            breakpoint: 480,
+                            options: {
+                                chart: {
+                                    width: 200
+                                },
+                                legend: {
+                                    position: 'bottom'
+                                }
+                            }
+                        }],
+                        colors: [success, info]
+                    };
+
+                    var chart = new ApexCharts(document.querySelector(apexChart), options);
+                    chart.render();
+
+                },
+                error: function (xhr, status, error) {
+                    // error here...   
+                    console.info(xhr.responseText);
+                    
+                }
+            });
+
+        
+
+    };
+
+    return {
+        // Init
+        init: function () {
+            _init();
+        },
+    };
+}();
+
+
+var ValidatedAgeStatistic = function () {
+    var _init = function () {
+        const apexChart = "#validated-age-statistic";
+        
+
+        $.ajax({
+                url   : BASE_URL + 'dashboard/validated_age_statistic',
+                method  : 'post',
+                dataType: "json",
+                beforeSend: function () {
+                    KTApp.block('#validated-age-statistic', {
+                        overlayColor: '#000000',
+                        state       : 'primary',
+                        message     : 'Processing...'
+                    });
+                },
+                complete: function () {
+                    KTApp.unblock('#validated-age-statistic');
+                },
+                success: function (data) {
+                    // console.info(data)
+                    var options = {
+                        series: data.data,
+                        chart: {
+                            width: 400,
+                            type: 'pie',
+                        },
+                        labels: [
+                            '18 - 25 yrs. old (' + data.data[0] + ')', 
+                            '26 - 35 yrs. old (' + data.data[1] + ')', 
+                            '36 - 59 yrs. old (' + data.data[2] + ')', 
+                            '60 yrs. old Above(' + data.data[3] + ')', 
+                        ],
                         responsive: [{
                             breakpoint: 400,
                             options: {
@@ -280,5 +428,7 @@ jQuery(document).ready(function () {
     RecordChart.init();
     GenderStatistic.init();
     AgeStatistic.init();
+    ValidatedGenderStatistic.init();
+    ValidatedAgeStatistic.init();
 
 });
