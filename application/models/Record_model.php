@@ -190,4 +190,18 @@ class Record_model extends CI_Model
             ->get('record')
             ->result_array()[0]['tot'];
     }
+
+    public function search($data)
+    {
+        return $this->db
+            ->query('SELECT * FROM validated, record WHERE (firstname LIKE "%'.$data.'%" or lastname LIKE  "%'.$data.'%" or middlename LIKE  "%'.$data.'%") and validated = "yes" and deletestatus = 0 and validated.record_id = record.id ')
+            ->result_array();
+            // ->like('lastname', $data)
+            // ->or_like('firstname', $data)
+            // ->or_like('middlename', $data)
+            // ->where('validated', 'yes')
+            // ->where('deletestatus', 0)
+            // ->get_compiled_select('record');
+            // ->result_array();
+    } 
 }
