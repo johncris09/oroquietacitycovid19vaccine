@@ -62,5 +62,30 @@ class Validated_model extends CI_Model
         }else{
             return $this->db->insert_id();
         }
+    }
+
+
+    public function get_record($id)
+    {
+        return $this->db
+            ->where('id', $id)
+            ->get('record')
+            ->result_array()[0];
+    }
+    
+    public function update($data)
+    { 
+        return $this->db->where('id', $data['id'])
+            ->update('record', $data); 
+    } 
+
+    public function delete($id)
+    { 
+        $this->db->where('record_id', $id); 
+        if(!$this->db->delete('validated')){
+            return false;
+        }else{
+            return true;
+        }
     } 
 }
