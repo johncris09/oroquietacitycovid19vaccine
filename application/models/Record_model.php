@@ -203,5 +203,15 @@ class Record_model extends CI_Model
             // ->where('deletestatus', 0)
             // ->get_compiled_select('record');
             // ->result_array();
-    } 
+    }
+
+    public function card_release($id)
+    {
+
+         return $this->db
+            ->where('validated.record_id', $id)
+            ->where('validated.record_id = record.id')  
+            ->get('validated, record')
+            ->result_array()[0];
+    }
 }
