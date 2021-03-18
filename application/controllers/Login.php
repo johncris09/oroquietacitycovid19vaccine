@@ -25,12 +25,29 @@ class Login extends CI_Controller {
             'password' => md5($this->input->post('password')),
         );
         
-        $login = $this->user_model->login($user_info); 
+        $login = $this->user_model->login($user_info);
 
         if ($login > 0) {     
 
             // set session 
-            $this->set_session($user_info); 
+            $this->set_session($user_info);
+
+            $log_data = array(
+                'description' => 'logged in',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+            
+            // update online status
+            $online_status = array(
+                'user_id' => $_SESSION['user_id'],
+                'onlinestatus' => 1, 
+            );
+            $this->user_model->update( $online_status );
+
 
             $data["response"] = true;
 
@@ -47,6 +64,6 @@ class Login extends CI_Controller {
         $user_info = $this->user_model->get_user_info($user_info);
         unset($user_info['password']);
         $this->session->set_userdata($user_info);   
-    }
-
+    } 
+    
 }
