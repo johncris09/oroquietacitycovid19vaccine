@@ -76,8 +76,15 @@
 											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Password<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
-													<input class="form-control input-sm" type="password" name="password" placeholder="Password" autocomplete="off" />
+													<div class="input-group">
+														<input type="password" class="form-control" name="password" placeholder="Password"/>
+														<div class="input-group-append"  style="cursor: pointer;">
+															<span class="input-group-text"> <i class="far fa-eye show-password"></i> </span>
+														</div>
+													</div>
+													<!-- <input class="form-control input-sm" type="password" name="password" placeholder="Password" autocomplete="off" /> -->
 												</div>
+
 											</div>
 											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Role Type<span class="text-danger">*</span> </label>
@@ -118,8 +125,21 @@
 	<?php $this->view('template/js-src.php'); ?>
 
 	<script src="<?php echo base_url(); ?>dist/assets/js/add_user.js"></script> 
-	<script type="text/javascript">
-	</script>
 
-	</body>
+	<script type="text/javascript">
+
+		$('.show-password').on('click', function (e) {
+            e.preventDefault(); 
+            $(this).toggleClass('fa-eye fa-eye-slash'); 
+            var input = $(this).closest('div.input-group').find('input') 
+            if(input.attr("type") === "password"){ 
+                input.attr("type", "text")
+                $(this).closest('span').attr('title', 'Hide Password')
+            }else{ 
+                input.attr("type", "password")
+                $(this).closest('span').attr('title', 'Show Password')
+            } 
+
+        }); 
+	</script>
 </html>
