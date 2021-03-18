@@ -57,33 +57,65 @@
 									</div>
 									<div class="card-body"> 
 										<form class="mb-15">
+											<div class="form-group row justify-content-center">
+												<div class="col-6 col-sm-6  col-md-6  col-lg-6 col-xl-6">
+													<label><strong>Date Range</strong></label>
+													<div class="input-daterange input-group" id="date-range">
+														<input type="text" class="form-control datatable-input"
+															name="date-range-start" autocomplete="off" placeholder="From" required="" />
+														<div class="input-group-append">
+															<span class="input-group-text">
+																<i class="la la-ellipsis-h"></i>
+															</span>
+														</div>
+														<input type="text" class="form-control datatable-input"
+															name="date-range-end" autocomplete="off"  placeholder="To"  required="" />
+														 
+													</div>
+												</div>
+												
+											</div>
 											<div class="form-group row">
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 													<label>Purok </label>
-													<select required="" class="form-control datatable-input" data-col-index="9">
-														<option value="">Select</option>
-													</select>
-												</div>
-												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="10">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Barangay</label>
+													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="11">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Occupation</label>
+													<label>Barangay</label>
 													<select required="" class="form-control datatable-input" data-col-index="12">
 														<option value="">Select</option>
 													</select>
 												</div>
+												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+													<label>Occupation</label>
+													<select required="" class="form-control datatable-input" data-col-index="13">
+														<option value="">Select</option>
+													</select>
+												</div>
+												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+													<label>Age</label>
+													<div class="input-group">
+														<input type="text" class="form-control datatable-input"
+															name="start" autocomplete="off" id="min" placeholder="From" required=""  />
+														<div class="input-group-append">
+															<span class="input-group-text">
+																<i class="la la-ellipsis-h"></i>
+															</span>
+														</div>
+														<input type="text" class="form-control datatable-input"
+															name="end" autocomplete="off" id="max" placeholder="To"  required=""  />
+													</div> 
+												</div>
 											</div>
-											<div class="form-group row">
+											<!-- <div class="form-group row">
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 													<label>Age</label>
 													<div class="input-daterange input-group">
@@ -96,10 +128,9 @@
 														</div>
 														<input type="text" class="form-control datatable-input"
 															name="end" autocomplete="off" id="max" placeholder="To"  required=""  />
-													</div>
-													<!-- <input type="number" class="form-control datatable-input" data-col-index="7"> -->
+													</div> 
 												</div>
-											</div>
+											</div> -->
  
 											<div class="row mt-8">
 												<div class="col-lg-12">
@@ -122,6 +153,7 @@
 											<thead>
 												<tr>
 													<th></th>
+													<th>Action</th>
 													<th>#</th>
 													<th>Date Registered</th>
 													<th>Last Name</th>
@@ -134,7 +166,7 @@
 													<th>Street</th>
 													<th>Barangay</th>
 													<th>Occupation</th>
-													<th>Action</th>
+													<th>Position</th>
 												</tr>
 											</thead>
 										</table> 
@@ -157,7 +189,7 @@
 										<div class="modal-body">
 												<label for="">Enter Password</label>
 											<div class="input-group">
-												<input type="password" name="password" class="form-control" placeholder="Enter Password" />
+												<input type="password" name="password" class="form-control" autocomplete="off" placeholder="Enter Password" />
 												<div class="input-group-append" style="cursor: pointer;" title="Show Password">
 													<span class="input-group-text" id="Show Password">
 														<i class="far fa-eye-slash show-password"></i>
