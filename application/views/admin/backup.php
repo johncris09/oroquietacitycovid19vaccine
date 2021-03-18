@@ -55,7 +55,7 @@
 	
 	<?php $this->view('template/quick-panel.php'); ?>
 	<?php $this->view('template/js-src.php'); ?> 
-	<script src="http://localhost/pos/dist/assets/js/crud/backup.js"></script> 
+	<script src="<?php echo base_url(); ?>dist/assets/js/backup.js"></script> 
 
 	</body>
 </html>
