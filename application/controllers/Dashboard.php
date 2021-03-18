@@ -16,15 +16,21 @@ class Dashboard extends CI_Controller {
 	{
 		$data['page_title'] = "Dashboard";
         $data['number_of_user'] = $this->user_model->number_of_user();
-        $data['number_of_record'] = $this->record_model->number_of_record();
+        $data['number_of_pre_registered'] = $this->record_model->number_of_record();
         $data['registered_today'] = $this->record_model->registered_today();
+        $data['number_of_vaccinated'] = $this->vaccinated_model->number_of_vaccinated();
+        $data['number_of_validated'] = $this->validated_model->number_of_validated();
+        $data['number_of_online_user'] = $this->user_model->number_of_online_user();
 		$this->load->view('admin/dashboard', $data);
+
     }
 
     public function signout()
     { 
         
         $all_sessions = $this->session->all_userdata();
+
+
 
         // unset all sessions
         foreach ($all_sessions as $key => $val) {
@@ -37,7 +43,7 @@ class Dashboard extends CI_Controller {
 
     public function record_chart()
     {
-        // $_POST['filter_by'] = 'month';
+        // $_POST['filter_by'] = 'week';
         $data = [];
         if($_POST['filter_by'] == 'this month'){
             $start_date = date('Y-m-d', strtotime('first day of this month'));
@@ -54,14 +60,24 @@ class Dashboard extends CI_Controller {
                 // }
                 $record = $this->record_model->record_this_month($date); 
                 if(!empty($record)){
-                    $data['data'][]         = $record[0]['tot'];
-                    $data['categories'][]   = date('d', strtotime($date));
+                    $data['pre_registered'][]       = $record[0]['tot'];
+                    $data['categories'][]           = date('d', strtotime($date));
                 }else{
-                    $data['data'][]         = 0;
-                    $data['categories'][]   = date('d', strtotime($date));
+                    $data['pre_registered'][]       = 0;
+                    $data['categories'][]           = date('d', strtotime($date));
+                }
+
+
+                $validated = $this->validated_model->validated_this_month($date); 
+                if(!empty($validated)){
+                    $data['validated'][]        = $validated[0]['tot'];
+                }else{
+                    $data['validated'][]        = 0;
                 }
                 $start_date = date ("Y-m-d", strtotime("+1 days", strtotime($date)));
             }
+
+
 
             $start_date = date('Y-m-d', strtotime('first day of this month'));
             $from           = date('M. d, Y', strtotime($start_date));
@@ -80,11 +96,19 @@ class Dashboard extends CI_Controller {
                 $date   = $dt->format("Y-m-d");
                 $record = $this->record_model->record_this_week($date);
                 if(!empty($record)){
-                    $data['data'][]         = $record[0]['tot'];
+                    $data['pre_registered'][]         = $record[0]['tot'];
                     $data['categories'][]   = date('D', strtotime($date));
                 }else{
-                    $data['data'][]         = 0;
+                    $data['pre_registered'][]         = 0;
                     $data['categories'][]   = date('D', strtotime($date));
+                }
+
+
+                $validated = $this->validated_model->validated_this_week($date);
+                if(!empty($validated)){
+                    $data['validated'][]         = $validated[0]['tot'];
+                }else{
+                    $data['validated'][]         = 0;
                 }
                 
             }
@@ -100,23 +124,41 @@ class Dashboard extends CI_Controller {
                 if( date('m', strtotime('this month')) == $i ){
                     $record = $this->record_model->record_by_month($date);
                     if(!empty($record)){
-                        $data['data'][]         = $record[0]['tot'];
-                        $data['categories'][]   = date('M', strtotime($date));
+                        $data['pre_registered'][]       = $record[0]['tot'];
+                        $data['categories'][]           = date('M', strtotime($date));
                     }else{
-                        $data['data'][]         = 0;
-                        $data['categories'][]   = date('M', strtotime($date));
+                        $data['pre_registered'][]       = 0;
+                        $data['categories'][]           = date('M', strtotime($date));
                     }
+
+
+                    $validated = $this->validated_model->validated_by_month($date);
+                    if(!empty($validated)){
+                        $data['validated'][]       = $validated[0]['tot'];
+                    }else{
+                        $data['validated'][]       = 0;
+                    }
+
                     break;
 
                 }else{
                     $record = $this->record_model->record_by_month($date);
                     if(!empty($record)){
-                        $data['data'][]         = $record[0]['tot'];
+                        $data['pre_registered'][]         = $record[0]['tot'];
                         $data['categories'][]   = date('M', strtotime($date));
                     }else{
-                        $data['data'][]         = 0;
+                        $data['pre_registered'][]         = 0;
                         $data['categories'][]   = date('M', strtotime($date));
                     }
+
+
+                    $validated = $this->validated_model->validated_by_month($date);
+                    if(!empty($validated)){
+                        $data['validated'][]       = $validated[0]['tot']; 
+                    }else{
+                        $data['validated'][]       = 0;
+                    }
+
                     continue;
                 }
                 
@@ -132,13 +174,17 @@ class Dashboard extends CI_Controller {
 
             $record = $this->record_model->record_by_year($end_year);
             foreach($record as $row){
-                $data['data'][]     = $row['tot'];
-                $data['categories'][] = date('Y', strtotime($row['timestamp']));
+                $data['pre_registered'][]     = $row['tot'];
+                $data['categories'][] = date('Y', strtotime($row['date_registered']));
             }
 
-             $to = date('Y', strtotime($end_year));
+            $validated = $this->validated_model->validated_by_year($end_year);
+            foreach($validated as $row){
+                $data['validated'][]     = $row['tot'];
+            }
+
+            $to = date('Y', strtotime($end_year));
             $data['range'] = $data['categories'][0] . ' - ' . $to;
-            // $data['range'] = $end_year;
 
         }else{
 
@@ -149,12 +195,11 @@ class Dashboard extends CI_Controller {
             $data['record'] = $record;
             foreach($record as $row){
                 $data['data'][]     = $row['tot'];
-                $data['categories'][] = date('m/d/y', strtotime($row['timestamp']));
+                $data['categories'][] = date('m/d/y', strtotime($row['date_registered']));
             }
 
-
-                  $from    = date('M. d, Y', strtotime($start_date));
-                  $to      = date('M. d, Y', strtotime($end_date));
+            $from    = date('M. d, Y', strtotime($start_date));
+            $to      = date('M. d, Y', strtotime($end_date));
             $data['range'] = $from . ' - ' . $to;
 
         }
@@ -187,6 +232,7 @@ class Dashboard extends CI_Controller {
 
         echo json_encode($data);
     }
+
 
 
 }
