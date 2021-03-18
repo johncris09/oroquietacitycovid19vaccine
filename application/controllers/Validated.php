@@ -298,4 +298,43 @@ class Validated extends CI_Controller {
 		} 
 		echo json_encode($data); 
 	}
+
+	public function cancel_validation()
+	{
+		$id = $_POST['id'];
+		
+		$delete = $this->validated_model->delete($id);
+
+		// update record column validated to NO
+		$data = array(
+			'id' => $id,
+			'validated' => 'No',
+		);
+
+		$update = $this->record_model->update($data);
+
+		if($update > 0){
+
+            $log_data = array(
+                'description' => 'cancel a validation whose id is "' . $id . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+			$data = array(
+				'response' => true,
+				'message'  => 'Validation cancelled successfully!',
+			);
+  
+		}else{ 
+			$data = array(
+				'response' => false,
+				'message'  => 'Operation Error!',
+				// 'message' => $this->db->error()['message'],
+			);
+		} 
+		echo json_encode($data); 
+	}
 }
