@@ -37,7 +37,6 @@ class User extends CI_Controller {
 			$row['lastname'] = ucwords($row['last_name']);
 			$row['middlename'] = ucwords($row['middle_name']);
 			$row['extension'] = ucwords($row['extension']);
-			$row['username'] = ucwords($row['username']);
 			$row['Actions']  = null;
 			$data['data'][] = $row; 
 
@@ -58,6 +57,16 @@ class User extends CI_Controller {
 
 		$insert = $this->user_model->insert($data);
 		if($insert > 0){
+
+            $log_data = array(
+                'description' => 'added a new user whose username is "' . $data['username']  . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+
 			$data = array(
 				'response' => true,
 				'message'  => 'Data inserted successfully!',
@@ -66,7 +75,7 @@ class User extends CI_Controller {
 		}else{ 
 			$data = array(
 				'response' => false,
-				'message'  => 'Data not inserted!',
+				'message'  => 'Username already exists.',
 				// 'message' => $this->db->error()['message'],
 			);
 		} 
@@ -95,6 +104,17 @@ class User extends CI_Controller {
 
 		$update = $this->user_model->update($data);
 		if($update > 0){
+
+
+            $log_data = array(
+                'description' => 'updated a user whose username is "' . $data['username']  . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+
 			$data = array(
 				'response' => true,
 				'message'  => 'Data updated successfully!',
@@ -115,6 +135,16 @@ class User extends CI_Controller {
 		$delete = $this->user_model->delete($id);
 
 		if($delete){
+
+            $log_data = array(
+                'description' => 'deleted user whose user id is "' . $id . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+
 			$data = array(
 				'response' => true,
 				'message'  => 'Data deleted successfully!',
@@ -163,6 +193,15 @@ class User extends CI_Controller {
 
 			$update = $this->user_model->update($data);
 			if($update > 0){
+
+	            $log_data = array(
+                	'description' => 'change password of  the user whose user id is "' . $data['user_id'] . '"',
+	                'user_id' => $_SESSION['user_id'],
+	            );
+
+	            $this->log_model->insert( $log_data );
+
+
 				$data = array(
 					'response' => true,
 					'message'  => 'Password Changed successfully!',
