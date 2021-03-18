@@ -87,5 +87,84 @@ class Validated_model extends CI_Model
         }else{
             return true;
         }
-    } 
+    }
+
+
+
+     public function validated_this_month($date)
+    {
+        return $this->db
+            ->select('count(*) tot, timestamp')
+            ->where('date(timestamp) =', $date)
+            // ->where('date(timestamp) <=', $end_date)
+            ->group_by('day(timestamp)')
+            ->order_by('timestamp', 'asc')   
+            ->get('validated')
+            ->result_array();
+    }
+
+
+    
+    public function validated_this_week($date)
+    {
+        return $this->db
+            ->select('count(*) tot, timestamp')
+            ->where('date(timestamp) =', $date)
+            // ->where('date(timestamp) <=', $end_date)
+            ->group_by('day(timestamp)')
+            ->order_by('timestamp', 'asc')   
+            ->get('validated')
+            ->result_array();
+    }
+
+
+
+    public function validated_by_month($date)
+    {
+        return $this->db
+            ->select('count(*) tot, timestamp')
+            ->where('year(timestamp) =', date('Y'))
+            ->where('month(timestamp) =', date('m', strtotime($date)))
+            ->group_by('month(timestamp)')
+            ->order_by('timestamp', 'asc')   
+            ->get('validated')
+            ->result_array();
+    }
+
+    public function validated_by_year($end_year)
+    {
+        return $this->db
+            ->select('count(*) tot, timestamp')
+            ->where('year(timestamp) <=', $end_year)
+            ->group_by('year(timestamp)')
+            ->order_by('timestamp', 'asc')   
+            ->get('validated')
+            ->result_array();
+    }
+
+
+    public function validated_gender_statistic($gender)
+    {
+         return $this->db
+            ->select('count(*) tot')
+            ->where('gender', $gender)
+            ->where('record.validated', 'yes')
+            ->where('deletestatus', 0)
+            ->get('record')
+            ->result_array()[0]['tot'];
+    }
+
+
+    
+    public function validated_age_statistic($age)
+    {
+         return $this->db
+            ->select('count(*) tot')
+            ->where($age)
+            ->where('record.validated', 'yes')
+            ->where('deletestatus', 0)  
+            ->get('record')
+            ->result_array()[0]['tot'];
+    }
+ 
 }
