@@ -16,7 +16,7 @@
 
 	</head>
 
-	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading"> 
 
 		<noscript>
 			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -52,7 +52,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"> <i class="fa fa-key text-primary"></i>	</span>
 											</div>
-											<input value="asasdfasdf" class="form-control  h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
+											<input class="form-control  h-auto py-7 px-6" type="password" name="password" autocomplete="off" />
 											<div class="input-group-prepend"  style="cursor: pointer;">
 												<span class="input-group-text" title="Show Password"> <i class="far fa-eye-slash show-password"></i>	</span>
 											</div>
