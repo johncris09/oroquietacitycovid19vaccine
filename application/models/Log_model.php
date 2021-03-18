@@ -30,6 +30,17 @@ class Log_model extends CI_Model
         }else{
             return true;
         }
-    } 
+    }
+ 
+
+    public function encoder_log()
+    {
+        return $this->db
+            ->where('description like "%added a new record%"')
+            ->where('log.user_id = user.user_id')
+            ->order_by('unix_timestamp(`date`)','DESC')
+            ->get('log, user');
+    }
+
 
 }
