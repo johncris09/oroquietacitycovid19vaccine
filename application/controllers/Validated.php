@@ -153,5 +153,12 @@ class Validated extends CI_Controller {
 			'qr_code' => md5(date('Y-m-d H:i:s')),
 		);
 		$this->validated_model->insert($data);
+	}
+
+	public function edit($id)
+	{
+    	$data['page_title'] = "Edit Record";
+    	$data['validated'] = $this->record_model->get_record($id);
+		$this->load->view('admin/edit_validated', $data);
 	} 
 }
