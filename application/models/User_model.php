@@ -34,13 +34,15 @@ class User_model extends CI_Model
             ->result_array();
     }
 
+   
     public function insert($data)
-    { 
-        $insert = $this->db->insert('user', $data); 
+    {
+        $this->db->db_debug = false;
+        $insert = $this->db->insert('user', $data);
         if(!$insert && $this->db->error()['code'] == 1062){
-            return 0;
+            return false;
         }else{
-            return $insert;
+            return true;
         }
     }
 
@@ -77,6 +79,16 @@ class User_model extends CI_Model
             ->get('user')
             ->num_rows();
     }
+
+    public function number_of_online_user()
+    {
+        return $this->db
+            ->where('deletestatus', 0)
+            ->where('onlinestatus', 1)
+            ->get('user')
+            ->num_rows();
+    }
+
 
     public function auth_delete($data)
     {
