@@ -31,6 +31,20 @@ class Dashboard extends CI_Controller {
         $all_sessions = $this->session->all_userdata();
 
 
+        $log_data = array(
+            'description' => 'logout',
+            'user_id' => $_SESSION['user_id'],
+            'date' => date('Y-m-d H:i:s'),
+        );
+
+        $this->log_model->insert( $log_data );
+
+        // update online status
+        $online_status = array(
+            'user_id' => $_SESSION['user_id'],
+            'onlinestatus' => 0, 
+        );
+        $this->user_model->update( $online_status );
 
         // unset all sessions
         foreach ($all_sessions as $key => $val) {
