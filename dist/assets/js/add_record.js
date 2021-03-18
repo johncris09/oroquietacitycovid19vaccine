@@ -38,27 +38,27 @@ var AddRecord = function () {
                             }
                         }
                     },
-                    governmentissuedid: {
-                        validators: {
-                            notEmpty: {
-                                message: 'This field is required'
-                            }
-                        }
-                    },
-                    idnumber: {
-                        validators: {
-                            notEmpty: {
-                                message: 'This field is required'
-                            }
-                        }
-                    },
-                    contactnumber: {
-                        validators: {
-                            notEmpty: {
-                                message: 'This field is required'
-                            }
-                        }
-                    },
+                    // governmentissuedid: {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'This field is required'
+                    //         }
+                    //     }
+                    // },
+                    // idnumber: {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'This field is required'
+                    //         }
+                    //     }
+                    // },
+                    // contactnumber: {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'This field is required'
+                    //         }
+                    //     }
+                    // },
                     purok: {
                         validators: {
                             notEmpty: {
@@ -80,6 +80,21 @@ var AddRecord = function () {
                             }
                         }
                     },
+                    occupation: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This field is required'
+                            }
+                        }
+                    },
+                    date_registered: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This field is required'
+                            }
+                        }
+                    },
+                    
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -108,16 +123,6 @@ var AddRecord = function () {
                         method: $("#add-record-form").attr('method'),
                         data: $("#add-record-form").serialize(),
                         dataType: "json",
-                        beforeSend: function () {
-                            KTApp.block('body', {
-                                overlayColor: '#000000',
-                                state: 'primary',
-                                message: 'Please wait ...'
-                            });
-                        },
-                        complete: function () {
-                            KTApp.unblock('body');
-                        },
                         success: function (data) {
                             console.info(data);
                             if(!data.response){
