@@ -276,6 +276,21 @@ var User = function () {
                         url: BASE_URL + 'user/delete/' + id,
                         method: "post",
                         dataType: "json",
+                        beforeSend: function () {
+                            $.blockUI({ 
+                                message: '<h1><img src="' + BASE_URL + 'dist/assets/media/img/loader.gif" /> Please wait ...</h1>', 
+                                css: { 
+                                    border: '0px !emportant', 
+                                    textAlign:      'center', 
+                                },
+                                showOverlay: false,
+                                centerX: true,
+                                centerY: true, 
+                            });
+                        },
+                        complete: function () {
+                            KTApp.unblock('body');
+                        },
                         success: function (data) {
                             console.info(data);
                             if(!data.response){
