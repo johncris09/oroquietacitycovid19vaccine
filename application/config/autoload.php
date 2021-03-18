@@ -8,4 +8,6 @@ $autoload['drivers'] = array();
 $autoload['helper'] = array('url', 'file', 'directory');
 $autoload['config'] = array('custom_config');	## my custom configuration file
 $autoload['language'] = array();
-$autoload['model'] = array('login_model', 'record_model', 'user_model');
+$autoload['model'] = array(
+	'login_model', 'record_model', 'user_model',
+	'vaccinated_model', 'validated_model', 'log_model');
