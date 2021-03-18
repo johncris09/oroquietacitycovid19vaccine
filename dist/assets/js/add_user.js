@@ -74,10 +74,15 @@ var AddUser = function () {
                         data: $("#add-user-form").serialize(),
                         dataType: "json",
                         beforeSend: function () {
-                            KTApp.block('body', {
-                                overlayColor: '#000000',
-                                state: 'primary',
-                                message: 'Please wait ...'
+                            $.blockUI({ 
+                                message: '<h1><img src="' + BASE_URL + 'dist/assets/media/img/loader.gif" /> Please wait ...</h1>', 
+                                css: { 
+                                    border: '0px !emportant', 
+                                    textAlign:      'center', 
+                                },
+                                showOverlay: false,
+                                centerX: true,
+                                centerY: true, 
                             });
                         },
                         complete: function () {
