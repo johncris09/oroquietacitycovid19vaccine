@@ -31,4 +31,13 @@ class Validated_model extends CI_Model
             ->get('record, validated');
             // ->result_array();
     }
+
+    public function number_of_validated()
+    {
+        return $this->db
+            ->where('validated', "yes")
+            ->where('deletestatus', 0)
+            ->get('record')
+            ->num_rows();
+    }
 }
