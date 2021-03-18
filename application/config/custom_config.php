@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-$config['role_type']   = ["Super Admin", "Sub Admin", "User", "Member"];
+$config['role_type']   = ["Super Admin", "Sub Admin", "User"];
 $config['sector']   = ["Public", "Private"];
 $config['purok']   = [
 	"P-1",
@@ -74,19 +74,27 @@ $config['barangay']   = [
     "Villaflor" 
 ];
 $config['government_id']   = [
-	"Social Security System (SSS)",
-	"Government Service Insurance System (GSIS)",
 	"Driver’s License",
-	"Professional Regulatory Commission (PRC)",
-	"Voter's ID",
-	"Senior Citizen ID",
-	"Philippine Postal ID",
-	"Passport ID",
-	"Solo Parent",
-	"PWD ID",
-	"Philhealth ID",
-	"TIN Card",
+	"Government Service Insurance System (GSIS)",
+	"LGU ID",
 	"Pag-IBIG ID",
+	"Passport ID",
+	"Philhealth ID",
+	"Philippine Postal ID",
+	"Professional Regulatory Commission (PRC)",
+	"PWD ID",
+	"Senior Citizen ID",
+	"Social Security System (SSS)",
+	"Solo Parent",
+	"TIN Card",
+	"Voter's ID",
+];
+
+
+$config['occupation']   = [
+	"Government Employee",
+	"Private Employee",
+	"Other",
 ];
 
 
@@ -139,7 +147,7 @@ $config['medical_history']   = array(
 	),
 	array(
 		"multiple_choice" => false,
-		"question" => "Sa niaging katorse(14) ka adlaw, gikan ba ka sa laign nasud?",
+		"question" => "Sa niaging katorse(14) ka adlaw, gikan ba ka sa laing nasud?",
 		"txtname" => "Travelled",
 		"optname" => "OptionTravelled",
 		"choices" => array(
@@ -202,8 +210,8 @@ $config['medical_history']   = array(
 					"value" => "Ubo",
 				),
 				array(
-					"text" => "Pagkalawa sa panimhot ug pang tilaw",
-					"value" => "Pagkalawa sa panimhot ug pang tilaw",
+					"text" => "Pagkawala sa panimhot ug pang tilaw",
+					"value" => "Pagkawala sa panimhot ug pang tilaw",
 				),
 				array(
 					"text" => "Sip-on",
@@ -295,7 +303,7 @@ $config['medical_history']   = array(
 	),
 	array(
 		"multiple_choice" => false,
-		"question" => "Ga inom ba kag Prednisone/Striods o antiviral drugs?",
+		"question" => "Ga inom ba kag Prednisone/Steriods o antiviral drugs?",
 		"txtname" => "TakeDrugs",
 		"optname" => "OptionTakeDrugs",
 		"choices" => array(
