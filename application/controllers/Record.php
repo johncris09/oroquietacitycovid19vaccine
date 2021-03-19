@@ -20,7 +20,7 @@ class Record extends CI_Controller {
 
     public function add()
     {
-    	$data['page_title'] = "Add Record";
+    	$data['page_title'] = "Add Pre Registered";
 		$this->load->view('admin/add_record', $data);
     }
 
