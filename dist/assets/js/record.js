@@ -21,7 +21,7 @@ $.fn.dataTable.ext.search.push(
     function (settings, data, dataIndex) {
         var min       = $('input[name="date-range-start"]').datepicker('getDate');
         var max       = $('input[name="date-range-end"]').datepicker('getDate');
-        var startDate = new Date(data[2]);
+        var startDate = new Date(data[3]);
         // console.info(startDate);
         if (min == null && max == null) return true;
         if (min == null && startDate <= max) return true;
@@ -43,6 +43,16 @@ $('#date-range').datepicker({
     },
     dateFormat: 'yyyy/mm/dd',
 });
+
+
+function sentencecase(str) {
+  var i, j, str, lowers, uppers;
+  str = str.toString().replace(/([^\W_]+[^\s-]*) */g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  }); 
+
+  return str;
+}
 
 // Class definition
 var Record = function () {
@@ -158,8 +168,8 @@ var Record = function () {
                         doc.pageMargins = [10,30,10,20]; 
                         doc.content[0].margin = [100,70,100,0];
 
-     // doc.defaultStyle.alignment = 'center';
-     // doc.styles.tableHeader.alignment = 'center';
+                         // doc.defaultStyle.alignment = 'center';
+                         // doc.styles.tableHeader.alignment = 'center';
                         doc.content.splice( 1, 0, {
                             margin: [ 0, -120, 0, 40 ],
                             alignment: 'center',
@@ -253,15 +263,24 @@ var Record = function () {
                 },
                 {
                     data: 'dateregistered',
+                }, 
+                {
+                    data  : 'lastname',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
                 },
                 {
-                    data: 'lastname',
+                    data  : 'firstname',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
                 },
                 {
-                    data: 'firstname',
-                },
-                {
-                    data: 'middlename',
+                    data  : 'middlename',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
                 },
                 {
                     data: 'birthdate',
@@ -276,7 +295,10 @@ var Record = function () {
                     data: 'purok',
                 },
                 {
-                    data: 'street',
+                    data  : 'street',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
                 },
                 {
                     data: 'barangay',
@@ -285,7 +307,10 @@ var Record = function () {
                     data: 'occupation',
                 },
                 {
-                    data: 'position',
+                    data  : 'position',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
                 },
                
             ],
