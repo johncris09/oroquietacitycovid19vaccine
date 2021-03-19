@@ -26,7 +26,11 @@
 
 								<div class="d-flex align-items-center">
 									<a href="<?php echo base_url(); ?>record/add" title="New Record" class="btn btn-outline-primary btn-sm font-weight-bold font-size-base mr-1"  >
-										<i class="fas fa-plus-circle"></i>	New Record
+										<i class="fas fa-plus-circle"></i>	New Pre Registered
+									</a> 
+
+									<a href="<?php echo base_url(); ?>validated/add" title="New Validated" class="btn btn-outline-primary btn-sm font-weight-bold font-size-base mr-1"  >
+										<i class="fas fa-plus-circle"></i>	New Validated
 									</a> 
 								</div>
 								<?php
@@ -61,7 +65,7 @@
 										</div>
 									</div>
 									<div class="col" style="cursor: default !important;" >
-										<div class="card card-custom card-stretch gutter-b bg-danger" >
+										<div class="card card-custom card-stretch gutter-b bg-success" >
 											<div class="card-body p-0">
 												<div
 													class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
@@ -135,7 +139,7 @@
 										</div>
 									</div>
 									<div class="col" style="cursor: default !important;" >
-										<div class="card card-custom card-stretch gutter-b bg-success">
+										<div class="card card-custom card-stretch gutter-b bg-danger">
 											<div class="card-body p-0">
 												<div
 													class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
@@ -177,7 +181,7 @@
 										</div>
 									</div>
 									<div class="col" style="cursor: default !important;" >
-										<div class="card card-custom card-stretch gutter-b bg-danger" >
+										<div class="card card-custom card-stretch gutter-b bg-success" >
 											<div class="card-body p-0">
 												<div
 													class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
@@ -211,7 +215,7 @@
 										</div>
 									</div>  
 									<div class="col" style="cursor: default !important;" >
-										<div class="card card-custom card-stretch gutter-b bg-success">
+										<div class="card card-custom card-stretch gutter-b bg-danger">
 											<div class="card-body p-0">
 												<div
 													class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
@@ -253,7 +257,7 @@
 										</div>
 									</div>
 									<div class="col" style="cursor: default !important;" >
-										<div class="card card-custom card-stretch gutter-b bg-danger" >
+										<div class="card card-custom card-stretch gutter-b bg-success" >
 											<div class="card-body p-0">
 												<div
 													class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
@@ -270,7 +274,24 @@
 										</div>
 									</div>
 									<div class="col" style="cursor: default !important;" >
-										<div class="card card-custom card-stretch gutter-b bg-success">
+										<div class="card card-custom card-stretch gutter-b bg-info" >
+											<div class="card-body p-0">
+												<div
+													class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
+													<span class="symbol symbol-50 symbol-light-danger mr-2">
+														<i class="fas fa-syringe icon-4x text-white"></i>
+													</span>
+													<div class="d-flex flex-column text-right text-white">
+														<span
+															class="font-weight-bolder font-size-h1"><?php echo $number_of_vaccinated; ?></span>
+														<span class="font-weight-bold mt-2">Vaccinated</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="col" style="cursor: default !important;" >
+										<div class="card card-custom card-stretch gutter-b bg-danger">
 											<div class="card-body p-0">
 												<div
 													class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
@@ -299,7 +320,7 @@
 										<div class="card-header">
 											<div class="card-title">
 												<h3 class="card-label">
-													Pre Registered Chart
+													Chart
 												</h3>
 											</div>
 
@@ -375,7 +396,28 @@
 									</div>
 								</div>
 
+							</div>
+
+
+
+							<div class="row">
+								<div class="col">
+									<div class="card card-custom gutter-b">
+										<div class="card-header">
+											<div class="card-title">
+												<h3 class="card-label">
+													Barangay Chart
+												</h3>
+											</div> 
+										</div>
+										<div class="card-body">
+											<div id="barangay-chart"></div>
+										</div>
+									</div>
+								</div>
+
 							</div> 
+
 
 							<div class="card card-custom gutter-b">
 								<div class="card-header card-header-tabs-line">
@@ -387,7 +429,9 @@
 											<li class="nav-item">
 												<a class="nav-link active" data-toggle="tab" href="#pre_registered_statistic">
 													<span class="nav-icon">
-														<i class="flaticon2-chat-1"></i>
+														<span class="svg-icon svg-icon-1x	">
+															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g xmlns="http://www.w3.org/2000/svg"><path d="m446.604 124.392-119.996-119.997c-2.846-2.847-6.735-4.395-10.608-4.395h-210c-24.813 0-45 20.187-45 45v422c0 24.813 20.187 45 45 45h300c24.813 0 45-20.187 45-45v-332c0-4.116-1.743-7.957-4.396-10.608zm-115.604-73.179 68.787 68.787h-53.787c-8.271 0-15-6.729-15-15zm75 430.787h-300c-8.271 0-15-6.729-15-15v-422c0-8.271 6.729-15 15-15h195v75c0 24.813 20.187 45 45 45h75v317c0 8.271-6.729 15-15 15z" fill="#000000" data-original="#000000" style="" class=""/><path d="m346 242h-150c-8.284 0-15 6.716-15 15s6.716 15 15 15h150c8.284 0 15-6.716 15-15s-6.716-15-15-15z" fill="#000000" data-original="#000000" style="" class=""/><path d="m346 302h-150c-8.284 0-15 6.716-15 15s6.716 15 15 15h150c8.284 0 15-6.716 15-15s-6.716-15-15-15z" fill="#000000" data-original="#000000" style="" class=""/><path d="m346 362h-150c-8.284 0-15 6.716-15 15s6.716 15 15 15h150c8.284 0 15-6.716 15-15s-6.716-15-15-15z" fill="#000000" data-original="#000000" style="" class=""/><circle cx="136" cy="257" r="15" fill="#000000" data-original="#000000" style="" class=""/><circle cx="136" cy="317" r="15" fill="#000000" data-original="#000000" style="" class=""/><circle cx="136" cy="377" r="15" fill="#000000" data-original="#000000" style="" class=""/></g></g></svg>
+														</span>
 													</span>
 													<span class="nav-text">Pre Registered</span>
 												</a>
@@ -395,7 +439,45 @@
 											<li class="nav-item">
 												<a class="nav-link" data-toggle="tab" href="#validated_statistic">
 													<span class="nav-icon">
-														<i class="flaticon2-drop"></i>
+														<span class="svg-icon svg-icon-1x	">
+															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																	<g>
+																		<path d="M406.008,330.99h-75.004v-15.001c0-18.747-11.527-34.847-27.862-41.602c5.68-34.083,14.793-66.006,44.132-117.464    c8.982-15.755,13.73-33.717,13.73-51.945c0-58.077-47.153-105.413-106.006-104.975C202.756,0.392,161.71,38.51,152.952,84.444    c-5.419,28.42,0.505,56.93,16.685,80.278c22.19,32.025,32.881,71.63,39.22,109.665c-16.335,6.755-27.862,22.855-27.862,41.602    v15.001h-75.004c-41.357,0-75.004,33.647-75.004,75.004v31.002c0,8.284,6.716,15.001,15.001,15.001h15.001v15.001    c0,24.814,20.188,45.002,45.002,45.002h300.016c24.814,0,45.003-20.188,45.003-45.002v-15.001h15.001    c8.284,0,15.001-6.716,15.001-15.001v-31.002C481.012,364.637,447.365,330.99,406.008,330.99z M194.298,147.636    c-11.557-16.679-15.774-37.125-11.875-57.572c6.11-32.042,35.521-60.53,74.576-60.099c41.12,0.454,74.004,34.139,74.004,75.013    c0,13.026-3.386,25.849-9.792,37.085c-31.333,54.955-41.385,89.729-47.919,128.924h-34.588    C231.48,227.617,219.612,184.169,194.298,147.636z M301.002,315.989v15.001h-90.005v-15.001c0-8.271,6.729-15.001,15.001-15.001    h60.003C294.273,300.989,301.002,307.718,301.002,315.989z M421.009,466.998c0,8.271-6.729,15.001-15.001,15.001H105.992    c-8.271,0-15.001-6.729-15.001-15.001v-15.001h330.018V466.998z M451.011,421.995c-17.298,0-358.287,0-390.021,0v-16.001    c0-24.814,20.188-45.002,45.002-45.002c7.34,0,265.422,0,300.016,0c24.814,0,45.003,20.188,45.003,45.002V421.995z" fill="#000000" data-original="#000000" style=""/>
+																	</g>
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																<g xmlns="http://www.w3.org/2000/svg">
+																</g>
+																</g></svg>
+														</span>
 													</span>
 													<span class="nav-text">Validated</span>
 												</a>
@@ -455,6 +537,8 @@
 	<?php $this->view('template/js-src.php'); ?>
 
 	<script src="<?php echo base_url(); ?>dist/assets/js/dashboard.js"></script> 
+
+
 	<script type="text/javascript">
 		$('#date-range').datepicker({
 			todayHighlight: true,
