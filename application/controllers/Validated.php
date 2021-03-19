@@ -38,10 +38,10 @@ class Validated extends CI_Controller {
 				    ? ((date("Y") - $birthDate[2]) - 1)
 				    : (date("Y") - $birthDate[2]));
 				$row['age'] = $age;
-				$row['lastname'] = ucwords($row['lastname']);
-				$row['firstname'] = ucwords($row['firstname']);
-				$row['middlename'] = ucwords($row['middlename']);
-				$row['street'] = ucwords($row['street']);
+				$row['last_name'] = ucfirst($row['lastname']);
+				$row['firstname'] = ucfirst($row['firstname']);
+				$row['middlename'] = ucfirst($row['middlename']);
+				$row['street'] = ucfirst($row['street']);
 				$row['Actions']  = null;
 				$data['data'][] = $row; 
 
