@@ -8,8 +8,6 @@ $config['role_type']   = ["Super Admin", "Sub Admin", "User"];
 $config['sector']   = ["Public", "Private"];
 $config['purok']   = [
 	"P-1",
-	"P-1A",
-	"P-1B",
 	"P-2",
 	"P-3",
 	"P-4",
@@ -41,7 +39,6 @@ $config['barangay']   = [
     "Dullan Sur",
     "Lamac Lower",
     "Lamac Upper",
-    "Layawan",
     "Langcangan Lower",
     "Langcangan Proper",
     "Langcangan Upper",
