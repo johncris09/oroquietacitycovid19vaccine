@@ -375,55 +375,72 @@
 									</div>
 								</div>
 
-							</div>
+							</div> 
+
 							<div class="card card-custom gutter-b">
-								<div class="card-header">
+								<div class="card-header card-header-tabs-line">
 									<div class="card-title">
-										<h3 class="card-label">Pre Registered Statistic</h3>
+										<h3 class="card-label">Statistic</h3>
+									</div>
+									<div class="card-toolbar">
+										<ul class="nav nav-tabs nav-bold nav-tabs-line">
+											<li class="nav-item">
+												<a class="nav-link active" data-toggle="tab" href="#pre_registered_statistic">
+													<span class="nav-icon">
+														<i class="flaticon2-chat-1"></i>
+													</span>
+													<span class="nav-text">Pre Registered</span>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" data-toggle="tab" href="#validated_statistic">
+													<span class="nav-icon">
+														<i class="flaticon2-drop"></i>
+													</span>
+													<span class="nav-text">Validated</span>
+												</a>
+											</li>
+										</ul>
 									</div>
 								</div>
 								<div class="card-body">
-									<div class="row">
-										<div class="col-6">
-											<div class="text-center">
-												Gender Statistic
+									<div class="tab-content">
+										<div class="tab-pane fade show active" id="pre_registered_statistic" role="tabpanel" aria-labelledby="pre_registered_statistic">
+											<div class="row">
+												<div class="col-6">
+													<div class="text-center">
+														Gender Statistic
+													</div>
+													<div id="gender-statistic" class="d-flex justify-content-center"></div>
+												</div>
+												<div class="col-6">
+													<div class="text-center">
+														Age Statistic
+													</div>
+													<div id="age-statistic" class="d-flex justify-content-center"></div>
+													
+												</div>
 											</div>
-											<div id="gender-statistic" class="d-flex justify-content-center"></div>
+											.
 										</div>
-										<div class="col-6">
-											<div class="text-center">
-												Age Statistic
+										<div class="tab-pane fade" id="validated_statistic" role="tabpanel" aria-labelledby="validated_statistic">
+											<div class="row">
+												<div class="col-6">
+													<div class="text-center">
+														Gender Statistic
+													</div>
+													<div id="validated-gender-statistic" class="d-flex justify-content-center"></div>
+												</div>
+												<div class="col-6">
+													<div class="text-center">
+														Age Statistic
+													</div>
+													<div id="validated-age-statistic" class="d-flex justify-content-center"></div>
+													
+												</div>
 											</div>
-											<div id="age-statistic" class="d-flex justify-content-center"></div>
-											
-										</div>
+										</div> 
 									</div>
-										
-								</div>
-							</div>  
-							<div class="card card-custom gutter-b">
-								<div class="card-header">
-									<div class="card-title">
-										<h3 class="card-label">Validated Statistic</h3>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-6">
-											<div class="text-center">
-												Gender Statistic
-											</div>
-											<div id="validated-gender-statistic" class="d-flex justify-content-center"></div>
-										</div>
-										<div class="col-6">
-											<div class="text-center">
-												Age Statistic
-											</div>
-											<div id="validated-age-statistic" class="d-flex justify-content-center"></div>
-											
-										</div>
-									</div>
-										
 								</div>
 							</div>  
 						</div>
