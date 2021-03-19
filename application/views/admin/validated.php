@@ -78,25 +78,25 @@
 											<div class="form-group row">
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 													<label>Purok </label>
-													<select required="" class="form-control datatable-input" data-col-index="10">
-														<option value="">Select</option>
-													</select>
-												</div>
-												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="11">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Barangay</label>
+													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="12">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Occupation</label>
+													<label>Barangay</label>
 													<select required="" class="form-control datatable-input" data-col-index="13">
+														<option value="">Select</option>
+													</select>
+												</div>
+												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+													<label>Occupation</label>
+													<select required="" class="form-control datatable-input" data-col-index="14">
 														<option value="">Select</option>
 													</select>
 												</div>
