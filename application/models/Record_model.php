@@ -191,6 +191,20 @@ class Record_model extends CI_Model
             ->result_array()[0]['tot'];
     }
 
+    // Barangay Chart
+     public function barangay_record_for_pre_registered($barangay)
+    {
+        return $this->db
+            ->select('count(*) tot, date_registered')
+            ->where('barangay', $barangay)
+            ->where('validated', "no" )
+            ->where('deletestatus', 0)
+            ->group_by('barangay')   
+            ->get('record')
+            ->result_array();
+    }
+    
+
     public function search($data)
     {
         return $this->db
