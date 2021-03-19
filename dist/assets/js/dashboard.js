@@ -7,7 +7,7 @@ const danger  = '#F64E60';
 var options, chart;
 
 // Class definition
-var RecordChart = function () {
+var Chart = function () {
     var _init = function () {
 
         const apexChart = "#record-chart"; 
@@ -146,6 +146,131 @@ var RecordChart = function () {
     };
 }();
 
+
+var BarangayChart = function () {
+    var _init = function () {
+
+        const apexChart = "#barangay-chart"; 
+
+        // $(document).on('click', '.filter-by', function(e){
+        //     e.preventDefault();
+        //     // console.info(1)
+        //     $('#barangay-chart').html('')
+        //     barangay_chart($(this).data('fileterBy')); 
+        // })
+
+        // $(document).on('submit', 'form#record-date-range-form', function(e){
+        //     e.preventDefault();
+        //     $('#barangay-chart').html('')
+
+        //     var data_range = $(this).serializeArray();
+        //     var arr        = [];
+        //     $(data_range).each(function () {
+        //         arr.push(this.value)
+        //     })
+            
+        //     barangay_chart(arr);  
+        // })
+
+        // $(document).on('click', '#reset', function(e){
+
+        //     $('#record-chart').html('')
+        //     var data_range = $('form#record-date-range-form input');
+        //     $(data_range).each(function () {
+        //         $(this).val('')
+        //     })
+
+        //     barangay_chart();
+        // })
+
+        
+
+
+        function barangay_chart(){
+            $.ajax({
+                url   : BASE_URL + 'dashboard/barangay_chart',
+                method  : 'post',
+                dataType: "json",
+                beforeSend: function () {
+                    KTApp.block('#record-chart', {
+                        overlayColor: '#000000',
+                        state       : 'primary',
+                        message     : 'Processing...'
+                    });
+                },
+                complete: function () {
+                    KTApp.unblock('#record-chart');
+                },
+                success: function (data) {
+                    // console.info(data.pre_registered)
+                    $('#range').html(data.range);
+                    var options = {
+                          series: [{
+                          name: 'Pre Registered',
+                          data: data.pre_registered
+                        }, {
+                          name: 'Validated',
+                          data: data.validated
+                        }],
+                          chart: {
+                          type: 'bar',
+                          height: 2000
+                        },
+                        plotOptions: {
+                          bar: {
+                            horizontal: true,
+                            columnWidth: '55%',
+                            endingShape: 'rounded',
+                            dataLabels: {
+                              position: 'top',
+                            },
+                          }
+                        },
+                        dataLabels: {
+                          enabled: true,
+                          offsetX: -6,
+                          style: {
+                            fontSize: '10px',
+                            colors: ['black']
+                          }
+                        },
+                        stroke: {
+                          show: true,
+                          width: 1,
+                          colors: ['#fff']
+                        },
+                        tooltip: {
+                          shared: true,
+                          intersect: false
+                        },
+                        xaxis: {
+                          categories: data.categories
+                        },
+                        colors: [warning, success ,primary]
+                    };
+
+                    var chart = new ApexCharts(document.querySelector(apexChart), options);
+                    chart.render();
+                },
+                error: function (xhr, status, error) {
+                    // error here...   
+                    console.info(xhr.responseText);
+                }
+            });
+        }
+
+        barangay_chart();
+        
+
+    };
+
+    return {
+        // Init
+        init: function () {
+            _init();
+        },
+    };
+}();
 
 var GenderStatistic = function () {
     var _init = function () {
@@ -425,7 +550,8 @@ var ValidatedAgeStatistic = function () {
 
 // Class Initialization
 jQuery(document).ready(function () {
-    RecordChart.init();
+    Chart.init();
+    BarangayChart.init();
     GenderStatistic.init();
     AgeStatistic.init();
     ValidatedGenderStatistic.init();
