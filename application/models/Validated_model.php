@@ -143,6 +143,21 @@ class Validated_model extends CI_Model
     }
 
 
+
+    // Barangay Chart
+     public function barangay_record_for_validated($barangay)
+    {
+        return $this->db
+            ->select('count(*) tot, date_registered')
+            ->where('barangay', $barangay)
+            ->where('validated', "yes" )
+            ->where('deletestatus', 0)
+            ->group_by('barangay')   
+            ->get('record')
+            ->result_array();
+    }
+
+
     public function validated_gender_statistic($gender)
     {
          return $this->db
