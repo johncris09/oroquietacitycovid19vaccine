@@ -267,4 +267,12 @@ class Record_model extends CI_Model
             ->get('record');
             // ->result_array();
     }
+
+
+    public function delete_completely($id)
+    {
+        return $this->db
+            ->where('id', $id)
+            ->delete('record');
+    }
 }
