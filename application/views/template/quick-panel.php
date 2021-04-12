@@ -20,7 +20,7 @@
 				</div>
 				<div class="separator separator-dashed mt-8 mb-5"></div>
 				<div class="navi mt-2">
-					<a href="<?php echo base_url(); ?>dashboard/signout" class="btn btn-block btn-light-danger font-weight-bolder py-2 px-5">Sign Out</a>
+					<a href="<?php echo base_url(); ?>dashboard/signout" class="btn btn-block btn-light-danger font-weight-bolder py-2 px-5"> <i class="fas fa-sign-in-alt"></i> Sign Out</a>
 				</div>
 			</div>
 
