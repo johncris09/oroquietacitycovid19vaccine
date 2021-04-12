@@ -234,6 +234,36 @@ class Record extends CI_Controller {
 		echo json_encode($data);
 	}
 
+
+
+	public function delete_completely($id)
+	{
+		$delete = $this->record_model->delete_completely($id);
+
+		if($delete){
+
+            $log_data = array(
+                'description' => 'record completely deleted whose id is "' . $id . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+
+			$data = array(
+				'response' => true,
+				'message'  => 'Data deleted successfully!',
+			);
+		}else{
+			$data = array(
+				'response' => false,
+			);
+		}
+
+		echo json_encode($data);
+	}
+
 	public function view($id)
 	{
     	$data['page_title'] = "View Record";
