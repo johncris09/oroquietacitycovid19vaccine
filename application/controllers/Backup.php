@@ -14,9 +14,13 @@ class Backup extends CI_Controller {
 
 	public function index()
 	{
-		$data['page_title'] = "Back up";
-		$data['db_name'] = $this->db->database;
-		$this->load->view('admin/backup', $data);
+        if( strtolower( $_SESSION['role_type'] )  == "super admin"  ){
+            $data['page_title'] = "Back up";
+            $data['db_name'] = $this->db->database;
+            $this->load->view('admin/backup', $data);
+        }else{
+            show_404();
+        }
 	}
 
 
@@ -65,6 +69,7 @@ class Backup extends CI_Controller {
 
         echo json_encode($data);
     }
+
  
     
 }
