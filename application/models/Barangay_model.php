@@ -16,5 +16,16 @@ class Barangay_model extends CI_Model
 where assign_barangay.barangay)')
             ->get('barangay')
             ->result_array();
+    }  
+
+    public function get_barangay($vaccination_site)
+    {
+        return $this->db
+            ->select('barangay.barangay')
+            ->where('assign_barangay.vaccination_site', $vaccination_site)
+            ->where('assign_barangay.barangay = barangay.barangay_id')
+            ->get('assign_barangay, barangay') 
+            ->result_array();
+
     }
 }
