@@ -272,5 +272,37 @@ class User extends CI_Controller {
 	}
 
 
+	public function restore_user($id)
+	{
+		$data = array(
+			"user_id" => $id,
+			"deletestatus " => 0,
+		);
+
+		$update = $this->user_model->update($data);
+		if($update > 0){
+
+            $log_data = array(
+                'description' => 'restore a user whose user id is ' . $id,
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+			$data = array(
+				'response' => true,
+				'message'  => 'Data restored successfully!',
+			);
+  
+		}else{ 
+			$data = array(
+				'response' => false,
+				'message'  => 'Data not restore!',
+			);
+		} 
+		// $data = $data;
+		echo json_encode($data); 
+	}
 
 }
