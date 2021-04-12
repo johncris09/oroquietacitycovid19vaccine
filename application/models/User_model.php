@@ -107,5 +107,15 @@ class User_model extends CI_Model
             ->get('user')
             ->num_rows();
     }
+
+    public function get_deleted_user()
+    {
+        return $this->db
+            ->where('deletestatus', 1)
+            ->order_by('dateregistered','DESC')
+            ->get('user');
+    }
+
+
     
 }
