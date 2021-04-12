@@ -114,7 +114,7 @@
 												<div class="form-group row">
 													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 														<label class="text-sm">Birthdate<span class="text-danger">*</span></label>
-														<input type="text" id="birthdate" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
+														<input type="text" placeholder="mm/dd/yyyy" id="birthdate" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
 													</div>
 
 													<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -134,7 +134,7 @@
 															?>
 														</select>
 													</div>
-													<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 														<label class="text-sm">Position</label>
 														<input type="text" class="form-control input-sm" placeholder="Position" name="position"  />
 													</div>
@@ -191,7 +191,7 @@
 
 														echo '
 															<div class="d-flex p-2">'.$row['question'].'</div>
-															<div class="form-group row">';
+															<div class="form-group row ">';
 																foreach ($row['choices'] as $choice) {
 																	foreach ($choice as  $chk) {
 																		echo '
@@ -226,7 +226,7 @@
 
 													}else{
 														echo '
-															<div class="row justify-content-between">
+															<div class="row justify-content-between border">
 																<div class="col-7 align-self-start">
 																	<div class="p-2">'.$row['question'].'</div>
 																</div>
@@ -304,7 +304,7 @@
 	        	var bdate = new Date($(this).val());
 	        	var today = new Date();
 	        	var age = Math.floor((today-bdate) / (365.25 * 24 * 60 * 60 * 1000));
-	        	console.info(age)
+	        	// console.info(age)
 	        	// if(age){
 	        	if(age != NaN){
 	        		$('input[name="age"]').val(age)
@@ -322,7 +322,7 @@
 			});
 
 			$(document).on('click', '#chck-illness', function(){
-				console.info()
+				
 				if($(this).prop("checked")){
 					$('#other-illness').focus()
 				}else{
