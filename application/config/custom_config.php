@@ -2,10 +2,139 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 
+$config['urban'] = [
+	'Canubay',
+    "Lamac Lower",
+    "Lamac Upper",
+	'Langcangan Lower',
+	'Langcangan Upper',
+	'Langcangan Proper',
+	'Layawan',
+	'Loboc Lower',
+	'Loboc Upper',
+	'Mobod',
+	'Pines',
+    "Poblacion 1",
+    "Poblacion 2",
+	'San Vicente Alto',
+	'San Vicente Bajo',
+	'Talic',
+	'Talairon',
+	'Taboc Sur',
+	'Taboc Norte',
+	'Villaflor',
+];
 
+$config['rural'] = [
+	"Apil",
+    "Binuangan",
+    "Bolibol",
+    "Buenavista",
+    "Bunga",
+    "Buntawan",
+    "Burgos",
+    "Ciriaco Pastrano",
+    "Clarin Settlement",
+    "Dolipos Alto",
+    "Dolipos Bajo",
+    "Dulapo",
+    "Dullan Norte",
+    "Dullan Sur",
+    "Malindang",
+    "Mialen",
+    "Paypayan",
+    "Rizal Lower",
+    "Rizal Upper",
+    "Sebucal",
+    "Senote",
+    "Tipan",
+    "Toliyok",
+    "Tuyabang Alto",
+    "Tuyabang Bajo",
+    "Tuyabang Proper",
+    "Victoria",
+];
 
-$config['role_type']   = ["Super Admin", "Sub Admin", "User"];
-$config['sector']   = ["Public", "Private"];
+$config['vaccination_site']   = [
+	[
+		"text" => "Oroquieta City Central Elementary School (OCCES)",
+		"value" => "OCCESS"
+	],
+	[
+		"text" => "Misamis Occidental National High School (MONHS)",
+		"value" => "MONHS"
+	],
+	[
+		"text" => "Talairon National High School (TNHS)",
+		"value" => "TNHS"
+	],
+];
+
+$config['tnhs'] = [
+	"Apil",
+    "Buenavista",
+    "Buntawan",
+    "Bolibol",
+    "Dolipos Alto",
+    "Dolipos Bajo",
+    "Dullan Norte",
+    "Dullan Sur",
+    "Malindang",
+	'Pines',
+	'San Vicente Alto',
+	'San Vicente Bajo',
+	'Talic',
+	'Talairon',
+
+];
+$config['monhs'] = [
+	'Canubay',
+    "Lamac Lower",
+    "Lamac Upper",
+	'Langcangan Lower',
+	'Langcangan Upper',
+	'Langcangan Proper',
+	'Layawan',
+	'Loboc Lower',
+	'Loboc Upper',
+	'Mobod',
+	'Poblaction 1',
+	'Poblaction 2',
+    "Sebucal",
+	'Taboc Sur',
+	'Taboc Norte',
+	'Villaflor',
+
+];
+$config['occess'] = [
+    "Bunga",
+    "Burgos",
+    "Binuangan",
+    "Ciriaco Pastrano",
+    "Clarin Settlement",
+    "Dulapo",
+    "Mialen",
+    "Paypayan",
+    "Rizal Lower",
+    "Rizal Upper",
+    "Senote",
+    "Tipan",
+    "Toliyok",
+    "Tuyabang Alto",
+    "Tuyabang Bajo",
+    "Tuyabang Proper",
+    "Victoria",
+
+];
+
+$config['role_type']   = [
+	"Super Admin", 
+	"Sub Admin", 
+	"User"];
+$config['sector']   = [
+	"Public", 
+	"Private"
+];
 $config['purok']   = [
 	"P-1",
 	"P-2",
@@ -50,8 +179,8 @@ $config['barangay']   = [
     "Mobod",
     "Paypayan",
     "Pines",
-    "Poblacion I",
-    "Poblacion II",
+    "Poblacion 1",
+    "Poblacion 2",
     "Rizal Lower",
     "Rizal Upper",
     "San Vicente Alto",
@@ -70,6 +199,7 @@ $config['barangay']   = [
     "Victoria",
     "Villaflor" 
 ];
+
 $config['government_id']   = [
 	"Driver’s License",
 	"Government Service Insurance System (GSIS)",
@@ -85,6 +215,7 @@ $config['government_id']   = [
 	"Solo Parent",
 	"TIN Card",
 	"Voter's ID",
+	"Others"
 ];
 
 
