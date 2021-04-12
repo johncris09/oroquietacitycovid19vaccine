@@ -1,33 +1,26 @@
 "use strict";
 
+function sentencecase(str) {
+  var i, j, str, lowers, uppers;
+  str = str.toString().replace(/([^\W_]+[^\s-]*) */g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  }); 
+
+  return str;
+}
+
 // Class definition
 var User = function () {
     var _init = function () {
 
         // client side proccessing
         var table = $('#user-table').DataTable({
-            // responsive: true,
+             "scrollY": 450,
+             "scrollX": true,
              dom:"<'row'<'col-sm-4 col-xs-4'l><'col-sm-4 col-xs-4 text-center'B><'col-sm-4 col-xs-4'f>>" +
                     "<'row'<'col-sm-12 col-xs-12'tr>>" +
                 "<'row'<'col-sm-5 col-xs-5'i><'col-sm-7 col-xs-7'p>>",
-            // buttons: ["print", "excelHtml5", "pdfHtml5", "colvis"],
             buttons:   [
-                // {
-                //     extend: 'print',
-                //     className: "btn btn-info btn-sm",
-                //     text: '<i class="fas fa-print"></i>',
-                //     title: 'Covid-19 Vaccine Pre Registration',
-                //     titleAttr: 'Print',
-                //     autoPrint: false,
-                //     customize: function ( win ) {
-                //     $(win.document.body)
-                //         .css( 'font-size', '10pt' )
-
-                //     $(win.document.body).find( 'table' )
-                //         .addClass( 'compact' )
-                //         .css( 'font-size', 'inherit' );
-                //     }
-                // },
                 {
                     extend: 'excelHtml5',
                     className: "btn btn-info btn-sm",
@@ -55,22 +48,8 @@ var User = function () {
                     titleAttr: 'Column Visibility',
                     columns: ':not(:first-child)'
                 },
-                // {
-                //   extend: 'colvis',
-                //   className: "btn-sm",
-                //   text: 'Colonne'
-                // }, 
-            ], 
-            // scrollY: '50vh',
-            // scrollX: true,
-            // scrollCollapse: true,
-            // buttons: [
-            //     'print',
-            //     'copyHtml5',
-            //     'excelHtml5',
-            //     'csvHtml5',
-            //     'pdfHtml5',
-            // ],
+            ],
+            deferRender: true,
             ajax: {
                 url: BASE_URL + 'user/get_user',
                 type: 'POST',
@@ -110,15 +89,24 @@ var User = function () {
                 },
                 {
                     data: 'dateregistered',
-                },
+                }, 
                 {
-                    data: 'lastname',
-                },
+                    data  : 'lastname',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
+                }, 
                 {
-                    data: 'firstname',
-                },
+                    data  : 'firstname',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
+                }, 
                 {
-                    data: 'middlename',
+                    data  : 'middlename',
+                    render: function(data, type, row, meta){
+                        return sentencecase(data)
+                    }
                 },
                 {
                     data: 'username',
@@ -158,38 +146,41 @@ var User = function () {
                     targets  : 1,
                     title    : 'Actions',
                     orderable: false,
-                    render   : function(data, type, row, meta) { 
+                    render   : function(data, type, row, meta) {
+
                         var action = '';
-                     
-                       action =  '\
-                            <div class = "dropdown dropdown-inline">\
-                                <a href = "javascript:;" class = "btn btn-sm btn-clean btn-icon" data-toggle = "dropdown">\
-                                    <i class = "fa fa-cog text-primary"></i>\
-                                </a>\
-                                <div class = "dropdown-menu dropdown-menu-sm dropdown-menu-right">\
-                                    <ul class = "nav nav-hoverable flex-column">\
-                                        <li class = "nav-item">\
-                                            <a href="'+BASE_URL+'user/edit/'+row.user_id+'" class = "nav-link">\
-                                                <i class = "nav-icon fas fa-pencil-alt text-warning"></i>\
-                                                <span class = "nav-text text-warning">Edit Details</span>\
-                                            </a>\
-                                        </li>\
-                                        <li class = "nav-item">\
-                                            <a href  = "javascript:;" data-user-id="'+row.user_id+'" class="nav-link delete-user">\
-                                                <i class = "nav-icon la la-trash text-danger"></i>\
-                                                <span class = "nav-text text-danger">Delete</span>\
-                                            </a>\
-                                        </li>\
-                                        <li class = "nav-item">\
-                                            <a href="'+BASE_URL+'user/change_password/'+row.user_id+'" class = "nav-link">\
-                                                <i class = "nav-icon fas fa-user-shield text-info"></i>\
-                                                <span class = "nav-text text-info">Change Password</span>\
-                                            </a>\
-                                        </li>\
-                                    </ul>\
+                        if(row.role_type == "User" || row.role_type == "Sub Admin" || row.user_id == USER_ID ){
+
+                           action =  '\
+                                <div class = "dropdown dropdown-inline">\
+                                    <a href = "javascript:;" class = "btn btn-sm btn-clean btn-icon" data-toggle = "dropdown">\
+                                        <i class = "fa fa-cog text-primary"></i>\
+                                    </a>\
+                                    <div class = "dropdown-menu dropdown-menu-sm dropdown-menu-right">\
+                                        <ul class = "nav nav-hoverable flex-column">\
+                                            <li class = "nav-item">\
+                                                <a href="'+BASE_URL+'user/edit/'+row.user_id+'" class = "nav-link">\
+                                                    <i class = "nav-icon fas fa-pencil-alt text-warning"></i>\
+                                                    <span class = "nav-text text-warning">Edit Details</span>\
+                                                </a>\
+                                            </li>\
+                                            <li class = "nav-item">\
+                                                <a href  = "javascript:;" data-user-id="'+row.user_id+'" class="nav-link delete-user">\
+                                                    <i class = "nav-icon la la-trash text-danger"></i>\
+                                                    <span class = "nav-text text-danger">Delete</span>\
+                                                </a>\
+                                            </li>\
+                                            <li class = "nav-item">\
+                                                <a href="'+BASE_URL+'user/change_password/'+row.user_id+'" class = "nav-link">\
+                                                    <i class = "nav-icon fas fa-user-shield text-info"></i>\
+                                                    <span class = "nav-text text-info">Change Password</span>\
+                                                </a>\
+                                            </li>\
+                                        </ul>\
+                                    </div>\
                                 </div>\
-                            </div>\
-                        '; 
+                            ';
+                        } 
                         return action;
                     },
                 },
@@ -259,11 +250,12 @@ var User = function () {
             table.table().draw();
         });
 
-
+        var id = 0;
         $(document).on('click', '.delete-user', function(e){
             e.preventDefault();
-            var id = $(this).data('userId')
+            id = $(this).data('userId')
 
+            ERROR_ALERT_SOUND.play()
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won\"t be able to revert this!",
@@ -272,53 +264,96 @@ var User = function () {
                 confirmButtonText: "Yes, delete it!"
             }).then(function(result) {
                 if (result.value) {
-                    $.ajax({
-                        url: BASE_URL + 'user/delete/' + id,
-                        method: "post",
-                        dataType: "json",
-                        beforeSend: function () {
-                            $.blockUI({ 
-                                message: '<h1><img src="' + BASE_URL + 'dist/assets/media/img/loader.gif" /> Please wait ...</h1>', 
-                                css: { 
-                                    border: '0px !emportant', 
-                                    textAlign:      'center', 
-                                },
-                                showOverlay: false,
-                                centerX: true,
-                                centerY: true, 
-                            });
-                        },
-                        complete: function () {
-                            KTApp.unblock('body');
-                        },
-                        success: function (data) {
-                            console.info(data);
-                            if(!data.response){
-                                Swal.fire({
-                                    title: data.message,
-                                    icon: "error",
-                                    showCancelButton: true, 
-                                })
-                            }else{
-                                Swal.fire(
-                                    "Deleted!",
-                                    "Your file has been deleted.",
-                                    "success"
-                                )
+                    
+                    $('#auth-delete-modal').modal('show')
 
-                                table.ajax.reload()
-                                // KTUtil.scrollTop() 
-                            }  
-                        },
-                        error: function (xhr, status, error) {
-                            console.info(this.data);
-                            // console.info(xhr.responseText);
-                        }
-                    });
+                   
                 }
             });
 
         })
+
+        function auth_delete()
+        {
+
+            $.ajax({
+                url: BASE_URL + 'user/delete/' + id,
+                method: "post",
+                dataType: "json",
+                beforeSend: function () {
+                    $.blockUI({ 
+                        message: '<h1><img src="' + BASE_URL + 'dist/assets/media/img/loader.gif" /> Please wait ...</h1>', 
+                        css: { 
+                            border: '0px !emportant', 
+                            textAlign:      'center', 
+                        },
+                        showOverlay: false,
+                        centerX: true,
+                        centerY: true, 
+                    });
+                },
+                complete: function () {
+                    KTApp.unblock('body');
+                },
+                success: function (data) {
+                    // console.info(data);
+                    if(!data.response){
+                        ERROR_ALERT_SOUND.play()
+                        Swal.fire({
+                            title: data.message,
+                            icon: "error",
+                            showCancelButton: true, 
+                        })
+                    }else{
+                        SUCCESS_ALERT_SOUND.play()
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: "Your file has been deleted.",
+                            icon: "success",
+                            showCancelButton: true, 
+                            confirmButtonText: "Ok"
+                        }).then(function(result) {
+                            table.ajax.reload()
+                        });
+
+                        table.ajax.reload()
+                        // KTUtil.scrollTop() 
+                    }  
+                },
+                error: function (xhr, status, error) {
+                    console.info(this.data);
+                    // console.info(xhr.responseText);
+                }
+            });
+        }
+
+        $(document).on('submit', 'form#auth-delete-form', function(e){
+            e.preventDefault();
+
+            $.ajax({
+                url: $("form#auth-delete-form").attr('action'),
+                method: $("form#auth-delete-form").attr('method'),
+                data: $("form#auth-delete-form").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    // console.info(data)
+                    if( data ){
+                        auth_delete()
+                        $('#auth-delete-modal').modal('hide')
+                        $("#auth-delete-form")[0].reset()
+                    }else{
+                        ERROR_ALERT_SOUND.play()
+                        Swal.fire("Error!", "Wrong Password!", "error");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.info(this.data);
+                    // console.info(xhr.responseText);
+                }
+            });
+
+        });
+        
     };
 
     return {
