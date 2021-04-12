@@ -87,6 +87,19 @@
 
 											</div>
 											<div class="form-group row">
+												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Confirm Password<span class="text-danger">*</span> </label>
+												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
+													<div class="input-group">
+														<input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"/>
+														<div class="input-group-append"  style="cursor: pointer;">
+															<span class="input-group-text"> <i class="far fa-eye show-password"></i> </span>
+														</div>
+													</div>
+													<!-- <input class="form-control input-sm" type="password" name="password" placeholder="Password" autocomplete="off" /> -->
+												</div>
+
+											</div>
+											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Role Type<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-8">
 													<select name="roletype" class="form-control" >
