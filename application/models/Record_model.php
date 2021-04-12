@@ -52,9 +52,15 @@ class Record_model extends CI_Model
     }
     
     public function update($data)
-    { 
-        return $this->db->where('id', $data['id'])
+    {  
+        $this->db->db_debug = false;
+        $update = $this->db->where('id', $data['id'])
             ->update('record', $data); 
+        if(!$update && $this->db->error()['code'] == 1062){
+            return false;
+        }else{
+            return true;
+        }
     } 
 
     public function delete($id)
@@ -180,6 +186,7 @@ class Record_model extends CI_Model
             ->result_array()[0]['tot'];
     }
 
+
     public function age_statistic($age)
     {
          return $this->db
@@ -228,4 +235,28 @@ class Record_model extends CI_Model
             ->get('validated, record')
             ->result_array()[0];
     }
+
+    public function get_record_schedule( $barangay )
+    {
+        // generate record schedule
+        // SELECT * FROM `record` 
+        // where record.validated = "yes"
+        // and record.deletestatus = 0
+        // and barangay in (select barangay.barangay from assign_barangay, barangay
+        // where assign_barangay.barangay = barangay.barangay_id
+        // and assign_barangay.vaccination_site = 1)
+        // and record.id not in (SELECT vaccination_schedule.record_id FROM `vaccination_schedule`)
+        // limit 500
+        return $this->db 
+            ->where("record.validated", "yes")  
+            ->where("record.deletestatus", 0)  
+            ->where_in("barangay.barangay", $barangay)
+            ->where('record.id not in (SELECT vaccination_schedule.record_id FROM `vaccination_schedule`) ')
+            ->where('barangay.barangay = record.barangay ')
+            ->order_by('barangay.barangay,record.purok, record.lastname asc')
+            ->limit('500')
+            ->get("record, barangay")
+            ->result_array();
+    }
+
 }
