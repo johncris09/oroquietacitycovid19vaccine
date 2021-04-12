@@ -43,19 +43,28 @@
 											<h3 class="card-label"><?php echo $page_title; ?></h3>
 										</div>
 										<div class="card-toolbar">
-											<a href="<?php echo base_url(); ?>validated/add"  class="btn btn-primary font-weight-bolder">
-											<span class="svg-icon svg-icon-md"> 
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<rect x="0" y="0" width="24" height="24" />
-														<circle fill="#000000" cx="9" cy="15" r="6" />
-														<path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-													</g>
-												</svg>
-											</span>New Validated</a>
+											<?php
+												if( strtolower( $_SESSION['role_type'] )  == "super admin" || strtolower( $_SESSION['role_type'] )  == "sub admin" ){
+											?>
+												<a href="<?php echo base_url(); ?>validated/add"  class="btn btn-primary font-weight-bolder">
+												<span class="svg-icon svg-icon-md"> 
+													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+														<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+															<rect x="0" y="0" width="24" height="24" />
+															<circle fill="#000000" cx="9" cy="15" r="6" />
+															<path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
+														</g>
+													</svg>
+												</span>New Validated</a>
+
+											<?php
+
+												}
+											?>
+												
 										</div>
 									</div>
-									<div class="card-body"> 
+									<div class="card-body">
 										<form class="mb-15">
 											<div class="form-group row justify-content-center">
 												<div class="col-6 col-sm-6  col-md-6  col-lg-6 col-xl-6">
@@ -78,26 +87,34 @@
 											<div class="form-group row">
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 													<label>Purok </label>
-													<select required="" class="form-control datatable-input" data-col-index="11">
-														<option value="">Select</option>
-													</select>
-												</div>
-												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="12">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Barangay</label>
+													<label>Street </label>
 													<select required="" class="form-control datatable-input" data-col-index="13">
 														<option value="">Select</option>
 													</select>
 												</div>
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-													<label>Occupation</label>
+													<label>Barangay</label>
 													<select required="" class="form-control datatable-input" data-col-index="14">
 														<option value="">Select</option>
+													</select>
+												</div>
+												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+													<label>Occupation</label>
+													<select required="" class="form-control datatable-input" data-col-index="15">
+														<option value="">Select</option>
+													</select>
+												</div>
+												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+													<label>Gender</label>
+													<select required="" class="form-control datatable-input" id="gender" >
+														<option value="">Select</option>
+														<option value="Male">Male</option>
+														<option value="Female">Female</option>
 													</select>
 												</div>
 												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
@@ -163,6 +180,7 @@
 													<th>Birthdate</th>
 													<th>Age</th>
 													<th>Gender</th>
+													<th>Contact #</th>
 													<th>Purok</th>
 													<th>Street</th>
 													<th>Barangay</th>
