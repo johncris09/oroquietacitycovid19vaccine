@@ -55,7 +55,7 @@ class Validated_model extends CI_Model
 
     public function insert_validated($data)
     {
-        // $this->db->db_debug = false;
+        $this->db->db_debug = false;
         $insert = $this->db->insert('record', $data);
         if(!$insert && $this->db->error()['code'] == 1062){
             return false;
@@ -75,8 +75,14 @@ class Validated_model extends CI_Model
     
     public function update($data)
     { 
-        return $this->db->where('id', $data['id'])
+        $this->db->db_debug = false;
+        $update = $this->db->where('id', $data['id'])
             ->update('record', $data); 
+        if(!$update && $this->db->error()['code'] == 1062){
+            return false;
+        }else{
+            return true;
+        }
     } 
 
     public function delete($id)
