@@ -50,10 +50,31 @@ function sentencecase(str) {
   var i, j, str, lowers, uppers;
   str = str.toString().replace(/([^\W_]+[^\s-]*) */g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  }); 
+  });
+  uppers = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI'];
+  for (i = 0, j = uppers.length; i < j; i++)
+    str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), 
+      uppers[i].toUpperCase());
 
   return str;
 }
+
+function forLoop(str) {
+  let upper = true;
+  let newStr = "";
+  for (let i = 0, l = str.length; i < l; i++) {
+    // console.info(str)
+    if (str[i] == " ") {
+      upper = true;
+        newStr += " ";
+      continue;
+    }
+    newStr += upper ? str[i].toUpperCase() : str[i].toLowerCase();
+    upper = false;
+  }
+  return newStr;
+}
+
 
 
 // Class definition
@@ -65,84 +86,10 @@ var Validated = function () {
              "scrollY": 450,
              "scrollX": true,
 			// responsive: true, 
-			 dom:"<'row'<'col-sm-4 col-xs-4'l><'col-sm-4 col-xs-4 text-center'B><'col-sm-4 col-xs-4'f>>" +
+            dom:"<'row'<'col-sm-4 col-xs-4'l><'col-sm-4 col-xs-4 text-center'B><'col-sm-4 col-xs-4'f>>" +
                     "<'row'<'col-sm-12 col-xs-12'tr>>" +
                 "<'row'<'col-sm-5 col-xs-5'i><'col-sm-7 col-xs-7'p>>",
-			// buttons: ["print", "excelHtml5", "pdfHtml5", "colvis"],
             buttons:   [
-                // {
-                //     extend: 'print',
-                //     className: "btn btn-info btn-sm",
-                //     text: '<i class="fas fa-print"></i>',
-                //     title: 'Covid-19 Vaccine Pre Registration',
-                //     repeatingHead: {
-                //         logo: 'https://www.google.co.in/logos/doodles/2018/world-cup-2018-day-22-5384495837478912-s.png',
-                //         logoPosition: 'right',
-                //         logoStyle: '',
-                //         title: '<h3>Sample Heading</h3>'
-                //     },
-                //     titleAttr: 'Print',
-                //     autoPrint: false,
-                //     exportOptions: {
-                //       columns: ':visible'
-                //     },
-                //     customize: function ( win ) {
-                //         $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-                //         $(win.document.body)
-                //             .css( 'font-size', '9pt' )
-
-                //         $(win.document.body).find( 'table' )
-                //             .addClass( 'compact' )
-                //             .css( 'font-size', 'inherit' );
-
-                //         var last = null;
-                //         var current = null;
-                //         var bod = []; 
-                //         var css = '@page { size: landscape;margin: 0; border: none; }',
-                //             head = win.document.head || win.document.getElementsByTagName('head')[0],
-                //             style = win.document.createElement('style');
-         
-                //         style.type = 'text/css';
-                //         style.media = 'print';
-         
-                //         if (style.styleSheet)
-                //         {
-                //           style.styleSheet.cssText = css;
-                //         }
-                //         else
-                //         {
-                //           style.appendChild(win.document.createTextNode(css));
-                //         }
-         
-                //         head.appendChild(style);
-                //     }
-                //     // customize: function(win)
-                //     // {
-                //     //     $(win.document.body).find( 'table' ).find('td:last-child, th:last-child').remove();
-         
-                //     //     var last = null;
-                //     //     var current = null;
-                //     //     var bod = [];
-         
-                //     //     var css = '@page { size: landscape; }',
-                //     //         head = win.document.head || win.document.getElementsByTagName('head')[0],
-                //     //         style = win.document.createElement('style');
-         
-                //     //     style.type = 'text/css';
-                //     //     style.media = 'print';
-         
-                //     //     if (style.styleSheet)
-                //     //     {
-                //     //       style.styleSheet.cssText = css;
-                //     //     }
-                //     //     else
-                //     //     {
-                //     //       style.appendChild(win.document.createTextNode(css));
-                //     //     }
-         
-                //     //     head.appendChild(style);
-                //     // }
-                // },
                 {
                     extend: 'excelHtml5',
                     className: "btn btn-info btn-sm",
@@ -169,9 +116,6 @@ var Validated = function () {
                         console.info(doc.content[0])
                         doc.pageMargins = [10,30,10,20]; 
                         doc.content[0].margin = [100,70,100,0];
-
-                         // doc.defaultStyle.alignment = 'center';
-                         // doc.styles.tableHeader.alignment = 'center';
                         doc.content.splice( 1, 0, {
                             margin: [ 0, -120, 0, 40 ],
                             alignment: 'center',
@@ -179,29 +123,6 @@ var Validated = function () {
                         } );
 
                     }
-                    // customize: function(doc) {
-                    //     // doc.content[1].table.headerRows = 0
-                        
-                    // }
-                    // customize: function(doc) {
-
-                    //     //ensure doc.images exists
-                    //     doc.images = doc.images || {};
-                    //     console.info(doc)
-
-                    //     //build dictionary
-                    //     doc.images['myGlyph'] = getBase64Image(myGlyph);
-                    //     //..add more images[xyz]=anotherDataUrl here
-
-                    //     //when the content is <img src="myglyph.png">
-                    //     //remove the text node and insert an image node
-                    //     for (var i=1;i<doc.content[1].table.body.length;i++) {
-                    //         if (doc.content[1].table.body[i][0].text == '<img src="'+BASE_URL+'dist/assets/media/img/city-logo.png">') {
-                    //             delete doc.content[1].table.body[i][0].text;
-                    //             doc.content[1].table.body[i][0].image = 'myGlyph';
-                    //         }
-                    //     }
-                    // },
                 },
                 {
                     extend: 'colvis',
@@ -210,22 +131,8 @@ var Validated = function () {
                     titleAttr: 'Column Visibility',
                     columns: ':not(:first-child)'
                 },
-                // {
-                //   extend: 'colvis',
-                //   className: "btn-sm",
-                //   text: 'Colonne'
-                // }, 
-            ], 
-            // scrollY: '50vh',
-            // scrollX: true,
-            // scrollCollapse: true,
-            // buttons: [
-            //     'print',
-            //     'copyHtml5',
-            //     'excelHtml5',
-            //     'csvHtml5',
-            //     'pdfHtml5',
-            // ],
+            ],
+            deferRender:    true,
             ajax: {
                 url: BASE_URL + 'validated/get_validated',
                 type: 'POST',
@@ -257,19 +164,19 @@ var Validated = function () {
                 {
                     data  : 'lastname',
                     render: function(data, type, row, meta){
-                        return sentencecase(data)
+                        return forLoop(data)
                     }
                 }, 
                 {
                     data  : 'firstname',
                     render: function(data, type, row, meta){
-                        return sentencecase(data)
+                        return forLoop(data)
                     }
                 }, 
                 {
                     data  : 'middlename',
                     render: function(data, type, row, meta){
-                        return sentencecase(data)
+                        return forLoop(data)
                     }
                 },
                 {
@@ -282,12 +189,15 @@ var Validated = function () {
                     data: 'gender',
                 },
                 {
+                    data: 'contactnumber',
+                },
+                {
                     data: 'purok',
                 }, 
                 {
                     data  : 'street',
                     render: function(data, type, row, meta){
-                        return sentencecase(data)
+                        return forLoop(data)
                     }
                 },
                 {
@@ -299,7 +209,7 @@ var Validated = function () {
                 {
                     data  : 'position',
                     render: function(data, type, row, meta){
-                        return sentencecase(data)
+                        return forLoop(data)
                     }
                 },
                
@@ -505,11 +415,20 @@ var Validated = function () {
             table.draw();
         });
 
+
+        // Search by gender
+        $('select#gender').change(function () {
+            table.column( 10).search( this.value, 1, true, false).draw();
+            // table.column( 10 ).search('', false, false).draw();
+        });
+
         // cancel validation
         var id;
         $(document).on('click', '.cancel-validation', function(e){
             e.preventDefault();
             id = $(this).data('id')
+            
+            ERROR_ALERT_SOUND.play()
             Swal.fire({
                 title: "Cancel Validation",
                 text: "Do you wish to continue?",
@@ -539,14 +458,16 @@ var Validated = function () {
                             KTApp.unblock('body');
                         },
                         success: function (data) {
-                            console.info(data)
+                            // console.info(data)
                             if(!data.response){
+                                ERROR_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "error",
                                     showCancelButton: true, 
                                 })
                             }else{
+                                SUCCESS_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "success",
