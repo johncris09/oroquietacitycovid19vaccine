@@ -38,27 +38,6 @@ var AddValidated = function () {
                             }
                         }
                     },
-                    // governmentissuedid: {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: 'This field is required'
-                    //         }
-                    //     }
-                    // },
-                    // idnumber: {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: 'This field is required'
-                    //         }
-                    //     }
-                    // },
-                    // contactnumber: {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: 'This field is required'
-                    //         }
-                    //     }
-                    // },
                     purok: {
                         validators: {
                             notEmpty: {
@@ -134,14 +113,16 @@ var AddValidated = function () {
                             KTApp.unblock('body');
                         },
                         success: function (data) {
-                            console.info(data);
+                            // console.info(data);
                             if(!data.response){
+                                ERROR_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "error",
                                     showCancelButton: true, 
                                 })
                             }else{
+                                SUCCESS_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "success",
@@ -154,11 +135,24 @@ var AddValidated = function () {
                             }  
                         },
                         error: function (xhr, status, error) {
+                            // console.info([xhr, status, error])
                             console.info(xhr.responseText);
                         }
                     });
                 } else {
                     KTUtil.scrollTop();
+                }
+            });
+            
+            // call keep alive
+            $.ajax({
+                url: BASE_URL + 'dashboard/keep_alive',
+                method: "post",
+                success: function (data) {
+                    console.info(data);
+                },
+                error: function (xhr, status, error) {
+                    console.info(xhr.responseText);
                 }
             });
 
