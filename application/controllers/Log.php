@@ -14,9 +14,13 @@ class Log extends CI_Controller {
     
 	public function index()
 	{
-		$data['page_title'] = "Task Log";
-		$this->load->view('admin/log', $data);
-		// echo date('h:i:s a');
+		if( strtolower( $_SESSION['role_type'] )  == "super admin"  ){
+			$data['page_title'] = "Task Log";
+			$this->load->view('admin/log', $data);
+    	}else{
+    		show_404();
+    	}
+			
     } 
 	
 	public function get_log()
