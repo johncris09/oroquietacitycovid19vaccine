@@ -14,15 +14,23 @@ class User extends CI_Controller {
     
 	public function index()
 	{
-		$data['page_title'] = "User";
-		$this->load->view('admin/user', $data);
+		if( strtolower( $_SESSION['role_type'] )  == "super admin" ){
+	    	$data['page_title'] = "User";
+			$this->load->view('admin/user', $data);
+    	}else{
+    		show_404();
+    	}
     }
 
 
     public function add()
     {
-    	$data['page_title'] = "Add User";
-		$this->load->view('admin/add_user', $data);
+    	if( strtolower( $_SESSION['role_type'] )  == "super admin" ){
+	    	$data['page_title'] = "Add User";
+			$this->load->view('admin/add_user', $data);
+    	}else{
+    		show_404();
+    	}	
     }
     
 
@@ -59,7 +67,7 @@ class User extends CI_Controller {
 		if($insert > 0){
 
             $log_data = array(
-                'description' => 'added a new user whose username is "' . $data['username']  . '"',
+                'description' => 'added a new user whose username is "' . strtolower( $data['username'] )  . '"',
                 'user_id' => $_SESSION['user_id'],
                 'date' => date('Y-m-d H:i:s'),
             );
@@ -84,10 +92,14 @@ class User extends CI_Controller {
 
 	public function edit($id)
 	{
-    	$data['page_title'] = "Edit User";
-    	$data['user'] = $this->user_model->get_user($id);
-		$this->load->view('admin/edit_user', $data);
-	}
+		if( strtolower( $_SESSION['role_type'] )  == "super admin"    ){
+			$data['page_title'] = "Edit User";
+	    	$data['user'] = $this->user_model->get_user($id);
+			$this->load->view('admin/edit_user', $data);
+    	}else{
+    		show_404();
+    	}
+    }
 
 
 
@@ -107,7 +119,7 @@ class User extends CI_Controller {
 
 
             $log_data = array(
-                'description' => 'updated a user whose username is "' . $data['username']  . '"',
+                'description' => 'updated a user whose username is "' . strtolower( $data['username'] ) . '"',
                 'user_id' => $_SESSION['user_id'],
                 'date' => date('Y-m-d H:i:s'),
             );
@@ -158,6 +170,9 @@ class User extends CI_Controller {
 		echo json_encode($data);
 	}
 
+ 
+
+
 	public function auth_delete()
 	{
 		$data = array(
@@ -178,16 +193,16 @@ class User extends CI_Controller {
 		$this->load->view('admin/change_password', $data);
 	}
 
-	public function update_password()
+	public function update_password( $id )
 	{
 		$data = array(
-			'user_id' => $_SESSION['user_id'],
+			'user_id' => $id,
 			'password' => md5($_POST['current_password'])
 		);
 		$check_password = $this->user_model->check_password($data);
 		if( $check_password ){
 			$data = array(
-				'user_id' => $_SESSION['user_id'],
+				'user_id' => $id,
 				'password' => md5($_POST['confirm_password']),
 			);
 
@@ -222,8 +237,11 @@ class User extends CI_Controller {
 				);
 			
 		}
-		// $data = $check_password;
+
 		echo json_encode($data);
+		
 	}
+
+ 
 
 }
