@@ -309,6 +309,23 @@ class Dashboard extends CI_Controller {
         echo json_encode($data);
     }
 
+    public function keep_alive()
+    {
+        $_SESSION['last_action'] = time();
+    }
+
+    public function detect_online_user()
+    {
+        // $data = $_SESSION['last_action'];
+        $data = [];
+        if ( $_SESSION['last_action'] < time() - 6000 ) {
+            $data['response'] = true;
+        }else{
+            $data['response'] = false;
+        }
+        echo json_encode( $data );
+    }
+
 
 
 }
