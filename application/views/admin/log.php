@@ -63,10 +63,19 @@
 
 												</div>
 												
+											</div>
+
+											<div class="form-group row justify-content-center">
+												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+													<label>User </label>
+													<select required="" class="form-control datatable-input" data-col-index="3">
+														<option value="">Select</option>
+													</select>
+												</div>
 											</div> 
  
 											<div class="row justify-content-center mt-8">
-												<div class="col-6">
+												<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 													<button class="btn btn-primary btn-primary--icon" id="kt_search">
 														<span>
 															<i class="la la-search"></i>
