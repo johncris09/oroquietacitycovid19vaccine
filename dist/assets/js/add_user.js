@@ -35,6 +35,23 @@ var AddUser = function () {
                         validators: {
                             notEmpty: {
                                 message: 'Password is required'
+                            },
+                            stringLength: {
+                                min: 8,
+                                message: 'Password must be at least 8 characters'
+                            },
+                        }
+                    },
+                    confirm_password: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Confirm Password is required'
+                            },
+                            identical: {
+                                compare: function() {
+                                    return $('input[name="password"]').val()
+                                },
+                                message: 'The password and confirm password are not the same'
                             }
                         }
                     },
@@ -49,10 +66,15 @@ var AddUser = function () {
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
                     submitButton: new FormValidation.plugins.SubmitButton(),
-                    bootstrap: new FormValidation.plugins.Bootstrap()
+                    bootstrap: new FormValidation.plugins.Bootstrap(),
                 }
             }
         ); 
+
+        KTUtil.getById("add-user-form").querySelector('[name="password"]').addEventListener('input', function() {
+            validation.revalidateField('confirm_password');
+        });
+
 
          $('input').keypress(function (e) {
           if (e.which == 13) {
@@ -89,14 +111,16 @@ var AddUser = function () {
                             KTApp.unblock('body');
                         },
                         success: function (data) {
-                            console.info(data);
+                            // console.info(data);
                             if(!data.response){
+                                ERROR_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "error",
                                     showCancelButton: true, 
                                 })
                             }else{
+                                SUCCESS_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "success",
