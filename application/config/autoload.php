@@ -10,4 +10,6 @@ $autoload['config'] = array('custom_config');	## my custom configuration file
 $autoload['language'] = array();
 $autoload['model'] = array(
 	'login_model', 'record_model', 'user_model',
-	'vaccinated_model', 'validated_model', 'log_model');
+	'vaccinated_model', 'validated_model', 'log_model',
+	'vaccination_site_model', 'barangay_model',
+	'schedule_model', 'vaccination_schedule_model');
