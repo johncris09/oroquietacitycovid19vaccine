@@ -27,13 +27,8 @@
 								<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "dashboard" ? "menu-item-active" : '' ; ?>" aria-haspopup="true">
 									<a href="<?php echo base_url(); ?>" class="menu-link">
 										<span class="svg-icon menu-icon">
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<polygon points="0 0 24 0 24 24 0 24" />
-													<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" fill="#000000" fill-rule="nonzero" />
-													<path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" fill="#000000" opacity="0.3" />
-												</g>
-											</svg>
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path xmlns="http://www.w3.org/2000/svg" d="m76 240c12.101562 0 23.054688-4.855469 31.148438-12.652344l44.402343 22.199219c-.222656 1.808594-.550781 3.585937-.550781 5.453125 0 24.8125 20.1875 45 45 45s45-20.1875 45-45c0-6.925781-1.703125-13.410156-4.511719-19.277344l60.234375-60.234375c5.867188 2.808594 12.351563 4.511719 19.277344 4.511719 24.8125 0 45-20.1875 45-45 0-4.671875-.917969-9.089844-2.246094-13.328125l52.335938-39.242187c7.140625 4.769531 15.699218 7.570312 24.910156 7.570312 24.8125 0 45-20.1875 45-45s-20.1875-45-45-45-45 20.1875-45 45c0 4.671875.917969 9.089844 2.246094 13.328125l-52.335938 39.242187c-7.140625-4.769531-15.699218-7.570312-24.910156-7.570312-24.8125 0-45 20.1875-45 45 0 6.925781 1.703125 13.410156 4.511719 19.277344l-60.234375 60.234375c-5.867188-2.808594-12.351563-4.511719-19.277344-4.511719-12.101562 0-23.054688 4.855469-31.148438 12.652344l-44.402343-22.199219c.222656-1.808594.550781-3.585937.550781-5.453125 0-24.8125-20.1875-45-45-45s-45 20.1875-45 45 20.1875 45 45 45zm0 0" fill="#494b74" data-original="#000000" style="" class=""/><path xmlns="http://www.w3.org/2000/svg" d="m497 482h-16v-317c0-8.289062-6.710938-15-15-15h-60c-8.289062 0-15 6.710938-15 15v317h-30v-227c0-8.289062-6.710938-15-15-15h-60c-8.289062 0-15 6.710938-15 15v227h-30v-107c0-8.289062-6.710938-15-15-15h-60c-8.289062 0-15 6.710938-15 15v107h-30v-167c0-8.289062-6.710938-15-15-15h-60c-8.289062 0-15 6.710938-15 15v167h-16c-8.289062 0-15 6.710938-15 15s6.710938 15 15 15h482c8.289062 0 15-6.710938 15-15s-6.710938-15-15-15zm0 0" fill="#494b74" data-original="#000000" style="" class=""/></g></svg>
+
 										</span>
 										<span class="menu-text">Dashboard</span>
 									</a>
@@ -149,9 +144,128 @@
 											<span class="menu-text">User</span>
 										</a>
 									</li>
+
+
+									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "schedule" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
+										<a href="<?php echo base_url(); ?>schedule" class="menu-link">
+											<span class="svg-icon menu-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g>
+													<g xmlns="http://www.w3.org/2000/svg">
+														<g>
+															<g>
+																<circle cx="386" cy="210" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+																<path d="M432,40h-26V20c0-11.046-8.954-20-20-20c-11.046,0-20,8.954-20,20v20h-91V20c0-11.046-8.954-20-20-20     c-11.046,0-20,8.954-20,20v20h-90V20c0-11.046-8.954-20-20-20s-20,8.954-20,20v20H80C35.888,40,0,75.888,0,120v312     c0,44.112,35.888,80,80,80h153c11.046,0,20-8.954,20-20c0-11.046-8.954-20-20-20H80c-22.056,0-40-17.944-40-40V120     c0-22.056,17.944-40,40-40h25v20c0,11.046,8.954,20,20,20s20-8.954,20-20V80h90v20c0,11.046,8.954,20,20,20s20-8.954,20-20V80h91     v20c0,11.046,8.954,20,20,20c11.046,0,20-8.954,20-20V80h26c22.056,0,40,17.944,40,40v114c0,11.046,8.954,20,20,20     c11.046,0,20-8.954,20-20V120C512,75.888,476.112,40,432,40z" fill="#494b74" data-original="#000000" style="" class=""/>
+																<path d="M391,270c-66.72,0-121,54.28-121,121s54.28,121,121,121s121-54.28,121-121S457.72,270,391,270z M391,472     c-44.663,0-81-36.336-81-81s36.337-81,81-81c44.663,0,81,36.336,81,81S435.663,472,391,472z" fill="#494b74" data-original="#000000" style="" class=""/>
+																<path d="M420,371h-9v-21c0-11.046-8.954-20-20-20c-11.046,0-20,8.954-20,20v41c0,11.046,8.954,20,20,20h29     c11.046,0,20-8.954,20-20C440,379.954,431.046,371,420,371z" fill="#494b74" data-original="#000000" style="" class=""/>
+																<circle cx="299" cy="210" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+																<circle cx="212" cy="297" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+																<circle cx="125" cy="210" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+																<circle cx="125" cy="297" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+																<circle cx="125" cy="384" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+																<circle cx="212" cy="384" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+																<circle cx="212" cy="210" r="20" fill="#494b74" data-original="#000000" style="" class=""/>
+															</g>
+														</g>
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													</g></svg>
+											</span>
+											<span class="menu-text">Schedule</span>
+										</a>
+									</li>
+
+									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "vaccination_site" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
+										<a href="<?php echo base_url(); ?>vaccination_site" class="menu-link">
+											<span class="svg-icon menu-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g>
+													<g xmlns="http://www.w3.org/2000/svg">
+														<g>
+															<path d="M256,103.278c-39.429,0-71.505,32.077-71.505,71.505c0,39.429,32.077,71.505,71.505,71.505    c39.428,0,71.505-32.077,71.505-71.505C327.505,135.355,295.429,103.278,256,103.278z" fill="#494b74" data-original="#000000" style="" class=""/>
+														</g>
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+														<g>
+															<path d="M256,0C158.107,0,78.465,79.642,78.465,177.535c0,40.042,28.089,106.034,83.486,196.143    c40.502,65.88,81.577,121.48,81.987,122.033L256,512l12.062-16.289c0.41-0.553,41.485-56.153,81.987-122.033    c55.397-90.109,83.486-156.101,83.486-196.143C433.535,79.642,353.893,0,256,0z M256,276.306    c-55.98,0-101.522-45.543-101.522-101.522c0-55.98,45.543-101.522,101.522-101.522s101.522,45.543,101.522,101.522    C357.522,230.763,311.98,276.306,256,276.306z" fill="#494b74" data-original="#000000" style="" class=""/>
+														</g>
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													<g xmlns="http://www.w3.org/2000/svg">
+													</g>
+													</g></svg>
+
+											</span>
+											<span class="menu-text">Vaccination Site</span>
+										</a>
+									</li>
 									<li class="menu-section">
 										<h4 class="menu-text">Extras</h4>
 										<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+									</li>
+
+									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "recycle_bin" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
+										<a href="<?php echo base_url(); ?>recycle_bin" class="menu-link">
+											<span class="svg-icon menu-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path xmlns="http://www.w3.org/2000/svg" d="m156.371094 30.90625h85.570312v14.398438h30.902344v-16.414063c.003906-15.929687-12.949219-28.890625-28.871094-28.890625h-89.632812c-15.921875 0-28.875 12.960938-28.875 28.890625v16.414063h30.90625zm0 0" fill="#494b74" data-original="#000000" style="" class=""/><path xmlns="http://www.w3.org/2000/svg" d="m344.210938 167.75h-290.109376c-7.949218 0-14.207031 6.78125-13.566406 14.707031l24.253906 299.90625c1.351563 16.742188 15.316407 29.636719 32.09375 29.636719h204.542969c16.777344 0 30.742188-12.894531 32.09375-29.640625l24.253907-299.902344c.644531-7.925781-5.613282-14.707031-13.5625-14.707031zm-219.863282 312.261719c-.324218.019531-.648437.03125-.96875.03125-8.101562 0-14.902344-6.308594-15.40625-14.503907l-15.199218-246.207031c-.523438-8.519531 5.957031-15.851562 14.472656-16.375 8.488281-.515625 15.851562 5.949219 16.375 14.472657l15.195312 246.207031c.527344 8.519531-5.953125 15.847656-14.46875 16.375zm90.433594-15.421875c0 8.53125-6.917969 15.449218-15.453125 15.449218s-15.453125-6.917968-15.453125-15.449218v-246.210938c0-8.535156 6.917969-15.453125 15.453125-15.453125 8.53125 0 15.453125 6.917969 15.453125 15.453125zm90.757812-245.300782-14.511718 246.207032c-.480469 8.210937-7.292969 14.542968-15.410156 14.542968-.304688 0-.613282-.007812-.921876-.023437-8.519531-.503906-15.019531-7.816406-14.515624-16.335937l14.507812-246.210938c.5-8.519531 7.789062-15.019531 16.332031-14.515625 8.519531.5 15.019531 7.816406 14.519531 16.335937zm0 0" fill="#494b74" data-original="#000000" style="" class=""/><path xmlns="http://www.w3.org/2000/svg" d="m397.648438 120.0625-10.148438-30.421875c-2.675781-8.019531-10.183594-13.429687-18.640625-13.429687h-339.410156c-8.453125 0-15.964844 5.410156-18.636719 13.429687l-10.148438 30.421875c-1.957031 5.867188.589844 11.851562 5.34375 14.835938 1.9375 1.214843 4.230469 1.945312 6.75 1.945312h372.796876c2.519531 0 4.816406-.730469 6.75-1.949219 4.753906-2.984375 7.300781-8.96875 5.34375-14.832031zm0 0" fill="#494b74" data-original="#000000" style="" class=""/></g></svg>
+
+											</span>
+											<span class="menu-text">Recycle Bin</span>
+										</a>
 									</li>
 									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "log" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
 										<a href="<?php echo base_url(); ?>log" class="menu-link">
@@ -214,7 +328,7 @@
 										</a>
 									</li>
 
-									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "encoder_log" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
+									<!-- <li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "encoder_log" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
 										<a href="<?php echo base_url(); ?>encoder_log" class="menu-link">
 											<span class="svg-icon menu-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g xmlns="http://www.w3.org/2000/svg"><path d="m497 91h-287v-30h15c8.284 0 15-6.716 15-15s-6.716-15-15-15h-60c-8.284 0-15 6.716-15 15s6.716 15 15 15h15v30h-165c-8.284 0-15 6.716-15 15v180c0 8.284 6.716 15 15 15h165v30h-15c-8.284 0-15 6.716-15 15s6.716 15 15 15h60c8.284 0 15-6.716 15-15s-6.716-15-15-15h-15v-30h287c8.284 0 15-6.716 15-15v-180c0-8.284-6.716-15-15-15zm-467 180v-150h150v150zm452 0h-272v-150h272z" fill="#494b74" data-original="#000000" style="" class=""/><path d="m135 151h-60c-8.284 0-15 6.716-15 15s6.716 15 15 15h15v45c0 8.284 6.716 15 15 15s15-6.716 15-15v-45h15c8.284 0 15-6.716 15-15s-6.716-15-15-15z" fill="#494b74" data-original="#000000" style="" class=""/><path d="m497 391h-482c-8.284 0-15 6.716-15 15s6.716 15 15 15h482c8.284 0 15-6.716 15-15s-6.716-15-15-15z" fill="#494b74" data-original="#000000" style="" class=""/><path d="m497 451h-482c-8.284 0-15 6.716-15 15s6.716 15 15 15h482c8.284 0 15-6.716 15-15s-6.716-15-15-15z" fill="#494b74" data-original="#000000" style="" class=""/></g></g></svg>
@@ -222,7 +336,7 @@
 											</span>
 											<span class="menu-text">Encoder's Log</span>
 										</a>
-									</li>
+									</li> -->
 
 									<li class="menu-item <?php echo strtolower($this->router->fetch_class()) == "backup" ? "menu-item-active" : '' ; ?> " aria-haspopup="true">
 										<a href="<?php echo base_url(); ?>backup" class="menu-link">
