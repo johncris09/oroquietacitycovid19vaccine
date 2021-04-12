@@ -57,7 +57,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_pre_registered; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format( $number_of_pre_registered ); ?></span>
 														<span class="font-weight-bold mt-2">Pre Registered</span>
 													</div>
 												</div>
@@ -74,7 +74,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_validated; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format($number_of_validated); ?></span>
 														<span class="font-weight-bold mt-2">Validated</span>
 													</div>
 												</div>
@@ -92,7 +92,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_vaccinated; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format( $number_of_vaccinated ); ?></span>
 														<span class="font-weight-bold mt-2">Vaccinated</span>
 													</div>
 												</div>
@@ -112,7 +112,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_user; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format( $number_of_user ); ?></span>
 														<span class="font-weight-bold mt-2">Users</span>
 													</div>
 												</div>
@@ -131,7 +131,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-dark">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_online_user; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format ($number_of_online_user ); ?></span>
 														<span class="font-weight-bold mt-2">Online User</span>
 													</div>
 												</div>
@@ -148,7 +148,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $registered_today; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format( $registered_today ); ?></span>
 														<span class="font-weight-bold mt-2">Registered Today </span>
 													</div>
 												</div>
@@ -173,7 +173,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_pre_registered; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo  number_format($number_of_pre_registered); ?></span>
 														<span class="font-weight-bold mt-2">Pre Registered</span>
 													</div>
 												</div>
@@ -190,7 +190,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_validated; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format( $number_of_validated ); ?></span>
 														<span class="font-weight-bold mt-2">Validated</span>
 													</div>
 												</div>
@@ -207,7 +207,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_vaccinated; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format( $number_of_vaccinated ); ?></span>
 														<span class="font-weight-bold mt-2">Vaccinated</span>
 													</div>
 												</div>
@@ -224,7 +224,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $registered_today; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format( $registered_today ); ?></span>
 														<span class="font-weight-bold mt-2">Registered Today </span>
 													</div>
 												</div>
@@ -249,7 +249,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_pre_registered; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format($number_of_pre_registered); ?></span>
 														<span class="font-weight-bold mt-2">Pre Registered</span>
 													</div>
 												</div>
@@ -266,7 +266,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_validated; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format($number_of_validated); ?></span>
 														<span class="font-weight-bold mt-2">Validated</span>
 													</div>
 												</div>
@@ -283,7 +283,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $number_of_vaccinated; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format($number_of_vaccinated ); ?></span>
 														<span class="font-weight-bold mt-2">Vaccinated</span>
 													</div>
 												</div>
@@ -300,7 +300,7 @@
 													</span>
 													<div class="d-flex flex-column text-right text-white">
 														<span
-															class="font-weight-bolder font-size-h1"><?php echo $registered_today; ?></span>
+															class="font-weight-bolder font-size-h1"><?php echo number_format($registered_today ); ?></span>
 														<span class="font-weight-bold mt-2">Registered Today </span>
 													</div>
 												</div>
@@ -311,9 +311,8 @@
 
 							<?php
 								}
-							?>
+							?> 
 
-							
 							<div class="row">
 								<div class="col">
 									<div class="card card-custom gutter-b">
@@ -396,7 +395,7 @@
 									</div>
 								</div>
 
-							</div>
+							</div> 
 
 
 
@@ -411,6 +410,16 @@
 											</div> 
 										</div>
 										<div class="card-body">
+											<div class="row justify-content-center">
+												<div class="col-6">
+													<label><strong>Filter Barangay</strong></label>
+													<select name="filter-barangay" class="form-control" id="barangay-chart-filter" >
+														<option value="All">All</option>
+														<option value="Rural">Rural</option>
+														<option value="Urban">Urban</option>
+													</select>
+												</div> 
+											</div>
 											<div id="barangay-chart"></div>
 										</div>
 									</div>
@@ -489,15 +498,15 @@
 									<div class="tab-content">
 										<div class="tab-pane fade show active" id="pre_registered_statistic" role="tabpanel" aria-labelledby="pre_registered_statistic">
 											<div class="row">
-												<div class="col-6">
+												<div class="col-lg-6 col-xl-6 col-sm-12 col-md-12 col-12">
 													<div class="text-center">
-														Gender Statistic
+														Gender Statistics
 													</div>
 													<div id="gender-statistic" class="d-flex justify-content-center"></div>
 												</div>
-												<div class="col-6">
+												<div class="col-lg-6 col-xl-6 col-sm-12 col-md-12 col-12">
 													<div class="text-center">
-														Age Statistic
+														Age Statistics
 													</div>
 													<div id="age-statistic" class="d-flex justify-content-center"></div>
 													
@@ -507,15 +516,15 @@
 										</div>
 										<div class="tab-pane fade" id="validated_statistic" role="tabpanel" aria-labelledby="validated_statistic">
 											<div class="row">
-												<div class="col-6">
+												<div class="col-lg-6 col-xl-6 col-sm-12 col-md-12 col-12">
 													<div class="text-center">
-														Gender Statistic
+														Gender Statistics
 													</div>
 													<div id="validated-gender-statistic" class="d-flex justify-content-center"></div>
 												</div>
-												<div class="col-6">
+												<div class="col-lg-6 col-xl-6 col-sm-12 col-md-12 col-12">
 													<div class="text-center">
-														Age Statistic
+														Age Statistics
 													</div>
 													<div id="validated-age-statistic" class="d-flex justify-content-center"></div>
 													
