@@ -126,14 +126,16 @@ var EditValidate = function () {
                             KTApp.unblock('body');
                         },
                         success: function (data) {
-                            console.info(data);
+                            // console.info(data);
                             if(!data.response){
+                                ERROR_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "error",
                                     showCancelButton: true, 
                                 })
                             }else{
+                                SUCCESS_ALERT_SOUND.play()
                                 Swal.fire({
                                     title: data.message,
                                     icon: "success",
