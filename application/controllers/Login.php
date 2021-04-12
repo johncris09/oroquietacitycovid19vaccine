@@ -63,6 +63,7 @@ class Login extends CI_Controller {
     {
         $user_info = $this->user_model->get_user_info($user_info);
         unset($user_info['password']);
+        $user_info['last_action'] = time();
         $this->session->set_userdata($user_info);   
     } 
     
