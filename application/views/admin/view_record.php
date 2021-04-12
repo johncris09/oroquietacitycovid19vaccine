@@ -117,7 +117,7 @@
 					</div>
 					<div style="position:absolute;top:150.624;left:26.400;">
 						<nobr> 
-							<span style="font-size:17.612;"><?php echo ucwords($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span> </nobr>
+							<span style="font-size:17.612;"><?php echo strtoupper($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span> </nobr>
 					</div>
 					<div style="position:absolute;top:151;left:600.728;">
 						<nobr> 
@@ -163,7 +163,7 @@
 					</div>
 					<div style="position:absolute;top:202.850;left:170;">
 						<nobr>
-							<span style="font-size:17.612;"><?php echo ucwords($record['street']); ?></span> 
+							<span style="font-size:17.612;"><?php echo strtoupper($record['street']); ?></span> 
 						</nobr>
 					</div>
 					<div style="position:absolute;top:202.850;left:710;">
@@ -210,7 +210,7 @@
 					</div>
 					<div style="position:absolute;top:255.076;left:758.693;">
 						<nobr> 
-							<span style="font-size:17.612;"><?php echo ucwords($record['position']) ?></span> 
+							<span style="font-size:17.612;"><?php echo strtoupper($record['position']) ?></span> 
 						</nobr>
 					</div>
 					<div style="position:absolute;top:287;left:25.826;">
@@ -240,7 +240,7 @@
 					</div>
 					<div style="position:absolute;top:307.302;left:246.338;">
 						<nobr> 
-							<span style="font-size:17.612;"><?php echo ucwords($record['governmentissuedid']) ?></span> 
+							<span style="font-size:17.612;"><?php echo $record['governmentissuedid'] ?></span> 
 						</nobr>
 					</div>
 					<div style="position:absolute;top:307.302;left:710.206;">
@@ -711,7 +711,7 @@
 						<nobr> <span style="font-size:15.889;">,</span> </nobr>
 					</div>
 					<div style="position:absolute;top:1113.374;left:120;">
-						<nobr> <span style="font-size:15.889;"><?php echo ucwords($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span> </nobr>
+						<nobr> <span style="font-size:15.889;"><?php echo strtoupper($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span> </nobr>
 					</div>
 					<div style="position:absolute;top:1113.374;left:440;">
 						<nobr> <span style="font-size:19.130;"><?php echo $age; ?></span> </nobr>
@@ -720,7 +720,7 @@
 						<nobr> <span style="font-size:15.889;">ang pangidaron, nga nagpuyo sa</span> </nobr>
 					</div>
 					<div style="position:absolute;top:1113.374;left:734.415;">
-						<nobr> <span style="font-size:15.889;"><?php echo ucwords($record['purok'] .', '.$record['barangay']);?></span> </nobr>
+						<nobr> <span style="font-size:15.889;"><?php echo strtoupper($record['purok'] .', '.$record['barangay']);?></span> </nobr>
 					</div>
 					<div style="position:absolute;top:1134.226;left:26.209;">
 						<nobr> <span style="font-size:15.889;"></span> </nobr>
@@ -762,7 +762,7 @@
 						<nobr> <span style="font-size:15.889;">posibleng side effects na akong mabatian pagkahuman nako mabakunahan.</span> </nobr>
 					</div>
 					<div style="position:absolute;top:1399.755;left:200.173;">
-						<nobr> <span style="font-size:15.889;"><?php echo ucwords($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span>  </nobr>
+						<nobr> <span style="font-size:15.889;"><?php echo strtoupper($record['lastname'] .', '.$record['firstname'].' '.$record['middlename']);?></span>  </nobr>
 					</div>
 					<div style="position:absolute;top:1399.755;left:650;">
 						<nobr><span style="font-size:19.130;"><?php echo date('m/d/Y', strtotime($record['date_registered'])) ; ?></span> </nobr>
