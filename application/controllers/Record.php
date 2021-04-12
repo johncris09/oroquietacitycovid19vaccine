@@ -264,6 +264,38 @@ class Record extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function restore_record($id)
+	{
+		$data = array(
+			"id" => $id,
+			"deletestatus " => 0,
+		);
+
+		$update = $this->record_model->update($data);
+		if($update > 0){
+
+            $log_data = array(
+                'description' => 'restore a record whose id is ' . $id,
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+
+			$data = array(
+				'response' => true,
+				'message'  => 'Data restored successfully!',
+			);
+  
+		}else{ 
+			$data = array(
+				'response' => false,
+				'message'  => 'Data not restore!',
+			);
+		} 
+		echo json_encode($data); 
+	}
+
 	public function view($id)
 	{
     	$data['page_title'] = "View Record";
