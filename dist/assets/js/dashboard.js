@@ -150,47 +150,24 @@ var Chart = function () {
 var BarangayChart = function () {
     var _init = function () {
 
-        const apexChart = "#barangay-chart"; 
+        const apexChart = "#barangay-chart";
 
-        // $(document).on('click', '.filter-by', function(e){
-        //     e.preventDefault();
-        //     // console.info(1)
-        //     $('#barangay-chart').html('')
-        //     barangay_chart($(this).data('fileterBy')); 
-        // })
+        $(document).on('change', 'select#barangay-chart-filter', function(e){
+            e.preventDefault();
+            var barangay_type = $(this).val();
+            $('#barangay-chart').html('')
+            barangay_chart( barangay_type )
 
-        // $(document).on('submit', 'form#record-date-range-form', function(e){
-        //     e.preventDefault();
-        //     $('#barangay-chart').html('')
+        });
 
-        //     var data_range = $(this).serializeArray();
-        //     var arr        = [];
-        //     $(data_range).each(function () {
-        //         arr.push(this.value)
-        //     })
-            
-        //     barangay_chart(arr);  
-        // })
-
-        // $(document).on('click', '#reset', function(e){
-
-        //     $('#record-chart').html('')
-        //     var data_range = $('form#record-date-range-form input');
-        //     $(data_range).each(function () {
-        //         $(this).val('')
-        //     })
-
-        //     barangay_chart();
-        // })
-
-        
-
-
-        function barangay_chart(){
+        function barangay_chart(barangay_type){
             $.ajax({
                 url   : BASE_URL + 'dashboard/barangay_chart',
                 method  : 'post',
                 dataType: "json",
+                data: { 
+                    barangay_type: barangay_type 
+                },
                 beforeSend: function () {
                     KTApp.block('#record-chart', {
                         overlayColor: '#000000',
@@ -202,6 +179,7 @@ var BarangayChart = function () {
                     KTApp.unblock('#record-chart');
                 },
                 success: function (data) {
+                    // console.info(data)
                     // console.info(data.pre_registered)
                     $('#range').html(data.range);
                     var options = {
@@ -259,7 +237,7 @@ var BarangayChart = function () {
             });
         }
 
-        barangay_chart();
+        barangay_chart("All");
         
 
     };
@@ -276,7 +254,7 @@ var GenderStatistic = function () {
     var _init = function () {
         const apexChart = "#gender-statistic";
         
-
+  
         $.ajax({
                 url   : BASE_URL + 'dashboard/gender_statistic',
                 method  : 'post',
@@ -299,7 +277,10 @@ var GenderStatistic = function () {
                             width: 400,
                             type: 'pie',
                         },
-                        labels: ['Male - ' + data.data[0], 'Female - ' + data.data[1] ],
+                        labels: [
+                            'Male - ' + data.data[0], 
+                            'Female - ' + data.data[1]
+                        ],
                         responsive: [{
                             breakpoint: 480,
                             options: {
@@ -437,7 +418,10 @@ var ValidatedGenderStatistic = function () {
                             width: 400,
                             type: 'pie',
                         },
-                        labels: ['Male - ' + data.data[0], 'Female - ' + data.data[1] ],
+                        labels: [
+                            'Male - ' + data.data[0], 
+                            'Female - ' + data.data[1]
+                        ],
                         responsive: [{
                             breakpoint: 480,
                             options: {
