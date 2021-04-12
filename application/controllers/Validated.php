@@ -20,8 +20,12 @@ class Validated extends CI_Controller {
 
     public function add()
     {
-    	$data['page_title'] = "Add Record";
-		$this->load->view('admin/add_validated', $data);
+    	if( strtolower( $_SESSION['role_type'] )  == "super admin" || strtolower( $_SESSION['role_type'] )  == "sub admin" ){
+	    	$data['page_title'] = "Add Validated";
+	    	$this->load->view('admin/add_validated', $data);
+    	}else{
+    		show_404();
+    	}
     }
 
 	
@@ -98,7 +102,7 @@ class Validated extends CI_Controller {
 		if($record_id){
 
             $log_data = array(
-                'description' => 'added and validated a new record whose name is "' . $data['firstname']  . $data['middlename'] . $data['lastname'] . '"',
+                'description' => 'added and validated a new record whose name is "' . strtolower($data['firstname'] . ' ' . $data['middlename'] . ' ' . $data['lastname']) . '"',
                 'user_id' => $_SESSION['user_id'],
                 'date' => date('Y-m-d H:i:s'),
             );
@@ -132,7 +136,6 @@ class Validated extends CI_Controller {
 		// 	array_push($arr, $_POST['other-illness']);
 		// 	// echo 1;
 		// }
- 
 		echo json_encode( $data );
 	}
 
@@ -157,9 +160,13 @@ class Validated extends CI_Controller {
 
 	public function edit($id)
 	{
-    	$data['page_title'] = "Edit Record";
-    	$data['validated'] = $this->record_model->get_record($id);
-		$this->load->view('admin/edit_validated', $data);
+		if( strtolower( $_SESSION['role_type'] )  == "super admin" || strtolower( $_SESSION['role_type'] )  == "sub admin" ){
+	    	$data['page_title'] = "Edit Record";
+	    	$data['validated'] = $this->record_model->get_record($id);
+			$this->load->view('admin/edit_validated', $data);
+    	}else{
+    		show_404();
+    	}
 	}
 
 	public function update($id)
@@ -203,7 +210,7 @@ class Validated extends CI_Controller {
 		if($update > 0){
 
             $log_data = array(
-                'description' => 'updated a record whose name is "' . $data['firstname']  . $data['middlename'] . $data['lastname'] . '"',
+                'description' => 'updated a record whose name is "' . strtolower($data['firstname'] . ' ' . $data['middlename'] . ' ' . $data['lastname']) . '"',
                 'user_id' => $_SESSION['user_id'],
                 'date' => date('Y-m-d H:i:s'),
             );
