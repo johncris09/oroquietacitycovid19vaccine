@@ -20,8 +20,12 @@ class Record extends CI_Controller {
 
     public function add()
     {
-    	$data['page_title'] = "Add Pre Registered";
-		$this->load->view('admin/add_record', $data);
+    	if( strtolower( $_SESSION['role_type'] )  == "super admin" || strtolower( $_SESSION['role_type'] )  == "sub admin" ){
+	    	$data['page_title'] = "Add Pre Registered";
+			$this->load->view('admin/add_record', $data);
+    	}else{
+    		show_404();
+    	}
     }
 
 	
@@ -96,7 +100,7 @@ class Record extends CI_Controller {
 
 
             $log_data = array(
-                'description' => 'added a new record whose name is "' . $data['firstname']  . $data['middlename'] . $data['lastname'] . '"',
+                'description' => 'added a new record whose name is "' . strtolower($data['firstname'] . ' ' . $data['middlename'] . ' ' . $data['lastname']) . '"',
                 'user_id' => $_SESSION['user_id'],
                 'date' => date('Y-m-d H:i:s'),
             );
@@ -127,9 +131,14 @@ class Record extends CI_Controller {
 
 	public function edit($id)
 	{
-    	$data['page_title'] = "Edit Record";
-    	$data['record'] = $this->record_model->get_record($id);
-		$this->load->view('admin/edit_record', $data);
+		if( strtolower( $_SESSION['role_type'] )  == "super admin" || strtolower( $_SESSION['role_type'] )  == "sub admin" ){
+	    	$data['page_title'] = "Edit Pre Registered";
+	    	$data['record'] = $this->record_model->get_record($id);
+			$this->load->view('admin/edit_record', $data);
+    	}else{
+    		show_404();
+    	}
+
 	}
 
 	public function update($id)
@@ -174,7 +183,7 @@ class Record extends CI_Controller {
 		if($update > 0){
 
             $log_data = array(
-                'description' => 'updated a record whose name is "' . $data['firstname']  . $data['middlename'] . $data['lastname'] . '"',
+                'description' => 'updated a record whose name is "' . strtolower($data['firstname'] . ' ' . $data['middlename'] . ' ' . $data['lastname']) . '"',
                 'user_id' => $_SESSION['user_id'],
                 'date' => date('Y-m-d H:i:s'),
             );
