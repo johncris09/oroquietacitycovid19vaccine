@@ -3,6 +3,10 @@
 	<head>
 		<?php $this->view('template/meta-info.php'); ?>
 		<?php $this->view('template/css-link.php'); ?>
+
+
+		<link href="<?php echo base_url(); ?>dist/assets/css/pages/typeahead.css" rel="stylesheet" type="text/css" />
+
 		<style>
 			input[type="radio"]:checked+label { font-weight: bold; }
 		</style>
@@ -52,7 +56,7 @@
 											<div class="form-group row">
 												<label class="col-lg-3 col-xl-3 col-sm-3 col-md-3 col-4 col-form-label">Person Name<span class="text-danger">*</span> </label>
 												<div class="col-lg-9 col-xl-9 col-sm-9 col-md-9 col-9"> 
-													<input class="form-control input-sm" type="hidden" name="id" name="id" />
+													<input class="form-control input-sm" type="text" name="id" name="id" />
 													<input class="form-control input-sm" id="search-person" type="text" name="person_name" placeholder="Search..." autocomplete="off" autofocus="" />
 												</div>
 											</div>
