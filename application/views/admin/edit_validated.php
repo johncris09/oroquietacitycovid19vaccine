@@ -116,7 +116,7 @@
 												<div class="form-group row">
 													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 														<label class="text-sm">Birthdate<span class="text-danger">*</span></label> 
-														<input type="text" id="birthdate" value="<?php echo date('d/m/Y', strtotime( $validated['birthdate'])); ?>" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
+														<input type="text" placeholder="mm/dd/yyyy" id="birthdate" value="<?php echo date('m/d/Y', strtotime( $validated['birthdate'])); ?>" class="form-control input-sm"  name="birthdate"  autocomplete="off" />
 													</div>
 
 													<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -131,7 +131,7 @@
 														<input type="text" class="form-control input-sm" name="age" value="<?php echo $age; ?>" placeholder="0" readonly="" disabled="" />
 													</div> 
 
-													<div class="col-12 col-sm-3 col-md-3 col-lg-4 col-xl-4">
+													<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 														<label class="text-sm">Occupation<span class="text-danger">*</span></label>
 														<select name="occupation" class="form-control" >
 															<option value="">Select</option>
@@ -145,7 +145,7 @@
 
 														</select>
 													</div>
-													<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+													<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 														<label class="text-sm">Position</label>
 														<input type="text" class="form-control input-sm" value="<?php echo ucwords($validated['position']); ?>"  placeholder="Position" name="position"  />
 													</div>
