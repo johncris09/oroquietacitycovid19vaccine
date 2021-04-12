@@ -259,4 +259,12 @@ class Record_model extends CI_Model
             ->result_array();
     }
 
+    public function get_deleted_record()
+    {
+        return $this->db
+            ->where('deletestatus', 1)
+            ->order_by('date_registered','DESC')
+            ->get('record');
+            // ->result_array();
+    }
 }
