@@ -22,6 +22,7 @@ var BackUp = function () {
                 },
                 success: function (data) {
                     if(data.response){
+                        SUCCESS_ALERT_SOUND.play()
                         Swal.fire("Good job!", data.message, "success");
                     } 
                 },
