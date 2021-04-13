@@ -16,6 +16,7 @@ class Schedule_model extends CI_Model
             ->where('schedule.deletestatus', 0)
             ->where('schedule.vaccination_site = vaccination_site.vaccination_site_id')
             ->where('schedule.created_by= user.user_id')
+			->order_by('schedule.created_on desc')
             ->get('schedule, vaccination_site, user');
             // ->result_array();
     }
@@ -40,6 +41,16 @@ class Schedule_model extends CI_Model
             ->where('log.user_id = user.user_id')
             ->order_by('unix_timestamp(`date`)','DESC')
             ->get('log, user');
+    }
+
+	
+    public function delete($id)
+    {
+        $data = array(
+            'deletestatus' => 1
+        );
+        return $this->db->where('id', $id)
+            ->update('schedule', $data);
     }
 
 
