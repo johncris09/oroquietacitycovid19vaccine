@@ -136,4 +136,38 @@ class Schedule extends CI_Controller {
 
 
     }
+
+	
+	public function delete($id)
+	{
+		$delete = $this->schedule_model->delete($id);
+
+		if($delete){
+			
+
+			// remove vaccination schedule
+			$this->vaccination_schedule_model->delete_completely($id);
+
+			// log
+            $log_data = array(
+                'description' => 'deleted a schedule whose id is "' . $id . '"',
+                'user_id' => $_SESSION['user_id'],
+                'date' => date('Y-m-d H:i:s'),
+            );
+
+            $this->log_model->insert( $log_data );
+            
+
+			$data = array(
+				'response' => true,
+				'message'  => 'Data deleted successfully!',
+			);
+		}else{
+			$data = array(
+				'response' => false,
+			);
+		} 
+
+		echo json_encode($data);
+	}
 }
