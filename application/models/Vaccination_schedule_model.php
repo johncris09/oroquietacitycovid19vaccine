@@ -21,5 +21,12 @@ class Vaccination_schedule_model extends CI_Model
         }
     }
 
+    public function delete_completely($id)
+    {
+        return $this->db
+            ->where('schedule_id', $id)
+            ->delete('vaccination_schedule');
+    }
+
 
 }
